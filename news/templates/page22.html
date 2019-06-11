@@ -9,6 +9,7 @@
     <link href="../static/css/style-responsive.css" rel="stylesheet">
     <script src="../static/js/echarts.min.js"></script>
     <link href="../static/css/dateRange.css" rel="stylesheet">
+    <link href="../static/graph/vis.css" rel="stylesheet" type="text/css" />
     <style>
         body {
             background: #262D39;
@@ -421,7 +422,6 @@
             color: #000;
             z-index: 999;
         }
-
         /* 
             品牌车型对比条件
          */
@@ -432,10 +432,10 @@
             margin-left: 14px;
             position: relative;
             background-color: #FFF;
-            /* border:1px solid #d8d8d8; */
             border-left:none;
             line-height: 30px;
             font-size: 14px;
+            overflow: hidden;
         }
 
         .search img{
@@ -488,7 +488,7 @@
         .dropCityUl li {
             width: 120px;
             height: 50px;
-            padding-left: 20px;
+            padding-left: 10px;
             color: #9fa3b0;
             line-height: 50px;
             cursor: pointer
@@ -501,7 +501,7 @@
             margin-top: 50px;
             position: absolute;
             top: 0px;
-            left: 26%;
+            left: 0px
         }
         .dropDown div {
             width: 120px;
@@ -546,8 +546,8 @@
             关系图谱
          */
          /* 云捷绿 #00c7cb */
-        .page_cloud2{position:relative;}
-        .page_cloud2>div{width: 90%;height: 98%;margin: 2% 2% 8% 0;background:none;display: flex;justify-content: center;align-items: center;overflow: hidden;}
+        .page_cloud2{position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 0;}
+        .page_cloud2>div{width: 100%;height: 100%;margin-top: 2%; background:none;display: flex;justify-content: center;align-items: center;overflow: hidden;}
         .page_cloud2>div>div{width: 1200px;height: 1200px;background:rgba(0,0,0,.1);border-radius: 50%;display: flex;justify-content: center;align-items: center;overflow: hidden;position: relative;}
         .page_cloud2>div>div>div{width: 800px;height: 800px;background:rgba(0,0,0,.1);border-radius: 50%;display: flex;justify-content: center;align-items: center;}
         .page_cloud2>div>div>div>div{width: 450px;height: 450px;background:rgba(0,0,0,.1);border-radius: 50%;display: flex;justify-content: center;align-items: center;}
@@ -558,10 +558,10 @@
         .page_cloud2 .posi_center>div>div{border-radius: 50%;}
         .page_cloud2 .posi_center>div>p{width: 500px;text-align: center;font-size: 14px;color: #FFF;margin-top: 2px;}
 
-        .page_cloud2 .page_cloud2_select{ position: absolute;top: 0%;right: 5%;text-align: center;color: #FFF;display: flex;justify-content: center;align-items: center;margin-top: 10px;}
+        .page_cloud2 .page_cloud2_select{ position: absolute;top: 30px;right: 5%;text-align: center;color: #FFF;display: flex;justify-content: center;align-items: center;margin-top: 10px;}
         .page_cloud2 .page_cloud2_select select{width: 100px;height: 30px;border: 1px solid #CCC;color: #FFF;background: #374151;padding-left: 5px;}
 
-        .page_cloud2 .page_cloud2_tip{position: absolute;top: -7%;right: 5%;text-align: right;color: #FFF;display: flex;justify-content: center;align-items: center;}
+        .page_cloud2 .page_cloud2_tip{position: absolute;top: 2px;right: 5%;text-align: right;color: #FFF;display: flex;justify-content: center;align-items: center;}
         .page_cloud2 .page_cloud2_tip>span{display: flex;justify-content: center;align-items: center;color: #CCC;}
         .page_cloud2 .zs span:nth-child(1){width: 8px;height: 8px;border-radius: 50%;background: #CCC;display: inline-block;margin-left: 10px;}
         .page_cloud2 .qs span:nth-child(1){width: 17px;height: 17px;border-radius: 50%;background: #44C3A2;display: inline-block;margin: 0 8px;}
@@ -598,22 +598,22 @@
                         <span style="color: #FFF;font-size: 16px;margin-left: 20px;">品牌/车型：</span>
                         <div class="keyword_item" id="keyword_item_1">
                             <div class="keyword-item__stripe" style="background-color: #00c7cb;"></div>
-                            <div class="search" style="width: 80px;border-radius: 0 3px 3px 0;" data_id="0" class="keyword-item__input ui-autocomplete-input">
+                            <div class="search" style="width: 80px;border-radius: 0 3px 3px 0;" class="keyword-item__input ui-autocomplete-input">
                                 <div class="citySelect">
                                     <span class="cityName">奥迪A4L</span>
                                 </div>
                                 <img src="../static/images/close.png" alt="">
                             </div>
+                            <div class="dropDown">
+                                <div class="dropProv">
+                                    <ul class="dropProvUl dropUl"></ul>
+                                </div>
+                                <div class="dropCity">
+                                    <ul class="dropCityUl dropUl"></ul>
+                                </div>
+                            </div>
                             <a href="javascript:;" class="clear" hidden style="display: none;"></a>
                             <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                        </div>
-                        <div class="dropDown">
-                            <div class="dropProv">
-                                <ul class="dropProvUl dropUl"></ul>
-                            </div>
-                            <div class="dropCity">
-                                <ul class="dropCityUl dropUl"></ul>
-                            </div>
                         </div>
                         <a href="javascript:;" class="add_items" onclick="add_items(this)">+添加对比</a>
                         <a href="javascript:;" class="submit" id="submit">分析</a>
@@ -761,38 +761,39 @@
                             <div style="width:95% ;display: block;height: 3px; background: #fed755; margin-top: 15px;">
                             </div>
                         </div>
-                        <div style="height: 375px;" class="page_cloud2" id="page_cloud2">
-                            <div>
+                        <div class="col-md-12" style="height: 370px; display: flex;justify-content: center;align-items: center;overflow: hidden;">
+                            <div id="mynetwork" style="width:95%;height: 91%;margin-top: 2%; display:inline-block;"></div>
+                            <div class="page_cloud2" id="page_cloud2">
                                 <div>
                                     <div>
                                         <div>
                                             <div>
-                                                <div class="center_text">丰田</div>
-                                                <div class="posi_center"></div>
+                                                <div>
+                                                    <div class="center_text"></div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <span class="line">
+                                            <span>弱 <span></span> 相关性 <span></span> 强</span>
+                                            <span>强 <span></span> 相关性 <span></span> 弱</span>
+                                        </span>
                                     </div>
-                                    <span class="line">
-                                        <span>弱 <span></span> 相关性 <span></span> 强</span>
-                                        <span>强 <span></span> 相关性 <span></span> 弱</span>
-                                    </span>
                                 </div>
-                               
+                                <span class="page_cloud2_tip">
+                                    <span class="tip">词频 </span>
+                                    <span class="zs">低 <span></span> <span></span> <span></span> 高</span>
+                                    <span class="tip">词频趋势</span>
+                                    <span class="qs">上升 <span></span> 下降 <span></span></span>
+                                </span>
+                                <span class="page_cloud2_select">
+                                    <select name="" id="">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </span>
                             </div>
-                            <span class="page_cloud2_tip">
-                                <span class="tip">词频 </span>
-                                <span class="zs">低 <span></span> <span></span> <span></span> 高</span>
-                                <span class="tip">词频趋势</span>
-                                <span class="qs">上升 <span></span> 下降 <span></span></span>
-                            </span>
-                            <span class="page_cloud2_select">
-                                <select name="" id="">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -812,157 +813,338 @@
 <!-- <script src="../static/js/bootstrap-datetimepicker.zh-CN.js"></script> -->
 <script src="../static/js/echarts-wordcloud.min.js" type="text/javascript"></script>
 <script src="../static/js/jquery.ba-resize.min.js"></script>
-
+<script type="text/javascript" src="../static/graph/vis.js"></script>
+<script type="text/javascript" src="../static/layer/layer.js"></script>
 <script type="text/javascript">
-    $(function(){
+$(function(){
 
-        // 滚动监听
-        $(window).scroll(function(){
-            var $obj = $(parent.document);
-            $obj.find(".child_li").eq(0).addClass("hover")
-            $obj.find(".child_li").eq(0).siblings().removeClass("hover")
-            var topp = $(document).scrollTop();
-            if(topp <= 440){
-                $obj.find(".child_li").eq(3).addClass("hover")
-                $obj.find(".child_li").eq(3).siblings().removeClass("hover")
-            }else if(topp >= 440 && topp <= 895){
-                $obj.find(".child_li").eq(4).addClass("hover")
-                $obj.find(".child_li").eq(4).siblings().removeClass("hover")
-            }else if(topp > 895){
-                $obj.find(".child_li").eq(5).addClass("hover")
-                $obj.find(".child_li").eq(5).siblings().removeClass("hover")
-            }
-        })
-        
-        // 品牌/车型的下拉
-        $(".head").delegate(".search","mouseover",function(){
-            $(this).children("img").show()
-        })
-        $(".head").delegate(".search","mouseout",function(){
-            $(this).children("img").hide()
-        })
-        // 删除品牌/车型
-        $(".head").delegate(".search img","click",function(e){
-            e.stopPropagation();
-            $(this).parents(".keyword_item").remove()
-            if ($(".search").length <= 3) {
-                $(".add_items").show();
-            }
-        })
+    // 滚动监听
+    $(window).scroll(function(){
+        var $obj = $(parent.document);
+        $obj.find(".child_li").eq(0).addClass("hover")
+        $obj.find(".child_li").eq(0).siblings().removeClass("hover")
+        var topp = $(document).scrollTop();
+        if(topp <= 440){
+            $obj.find(".child_li").eq(3).addClass("hover")
+            $obj.find(".child_li").eq(3).siblings().removeClass("hover")
+        }else if(topp >= 440 && topp <= 895){
+            $obj.find(".child_li").eq(4).addClass("hover")
+            $obj.find(".child_li").eq(4).siblings().removeClass("hover")
+        }else if(topp > 895){
+            $obj.find(".child_li").eq(5).addClass("hover")
+            $obj.find(".child_li").eq(5).siblings().removeClass("hover")
+        }
+    })
+    
+    // 品牌/车型的下拉
+    $(".head").delegate(".search","mouseover",function(){
+        $(this).children("img").show()
+    })
+    $(".head").delegate(".search","mouseout",function(){
+        $(this).children("img").hide()
+    })
+    // 删除品牌/车型
+    $(".head").delegate(".search img","click",function(e){
+        e.stopPropagation();
+        $(this).parents(".keyword_item").remove()
+        if ($(".search").length <= 3) {
+            $(".add_items").show();
+        }
+    })
 
-        // 分析按钮
-        $(".submit").click(function(){
-            var carArr = []
-            $(".cityName").each(function(){
-                carArr.push($(this).text())
-            })
-            console.log(carArr)
+    // 分析按钮
+    $(".submit").click(function(){
+        var carArr = []
+        $(".cityName").each(function(){
+            carArr.push($(this).text())
         })
+        console.log(carArr)
+    })
 
-        // dateRange时间段选择实例化
-        var dateRange1 = new pickerDateRange('date1', {
-            isTodayValid : true,
-            startDate : '2019-05-4',
-            endDate : '2019-05-10',
-            needCompare : false,
-            defaultText : ' 至 ',
-            autoSubmit : true,
-            inputTrigger : 'input_trigger1',
-            theme : 'ta',
-            success : function(obj) {
-                $("#dCon2").html('开始时间 : ' + obj.startDate + '<br/>结束时间 : ' + obj.endDate);
-            }
-        });
+    // dateRange时间段选择实例化
+    var dateRange1 = new pickerDateRange('date1', {
+        isTodayValid : true,
+        startDate : '2019-05-4',
+        endDate : '2019-05-10',
+        needCompare : false,
+        defaultText : ' 至 ',
+        autoSubmit : true,
+        inputTrigger : 'input_trigger1',
+        theme : 'ta',
+        success : function(obj) {
+            $("#dCon2").html('开始时间 : ' + obj.startDate + '<br/>结束时间 : ' + obj.endDate);
+        }
+    });
 
-        // 品牌车型二级联动
-        addArray();
-        function addArray(){
-            arr=["奥迪","宝马", "北京", "奔驰", "丰田","奥迪","宝马", "北京", "奔驰", "丰田","奥迪","宝马", "北京", "奔驰", "丰田"];
-            arr2=[];
-            //加载省级列表
-            for(let i=0;i<arr.length;i++) {
+    // 品牌车型二级联动
+    addArray();
+    function addArray(){
+        arr=["奥迪","宝马", "北京", "奔驰", "丰田","奥迪","宝马", "北京", "奔驰", "丰田","奥迪","宝马", "北京", "奔驰", "丰田"];
+        arr2=[];
+        //加载省级列表
+        var order = 0;
+        for(let i=0;i<arr.length;i++) {
+            if(i<=3){
+                $('.dropProvUl').append("<li class='dropProvLi' data-id="+order+">" + arr[i] + "</li>");
+                order++;
+            }else{
                 $('.dropProvUl').append("<li class='dropProvLi'>" + arr[i] + "</li>");
             }
             
-            function addTo(id,iArray){
-                arr2[id] = [];
-                for(let i=0;i<iArray.length;i++){
-                    arr2[id][i]=iArray[i];
-                }
-
-            }
-            addTo("0",["A4L","A8L"]);
-            addTo("1",["天津"]);
-            addTo("2",["上海"]);
-            addTo("3",["重庆"]);
-            addTo("4",["石家庄","张家口","承德","秦皇岛","唐山","廊坊","保定","衡水","沧州","邢台","邯郸"]);
-            addTo("5",["太原","朔州","大同","阳泉","长治","晋城","忻州","晋中","临汾","吕梁","运城"]);
-        };
-
-        var that_ = '';
-        //点击选择品牌车型时，先隐藏选择块
-        $(".head").delegate(".search","click",function(){
-            that_ = this;
-            $(".dropDown").children('.dropCity').css('display',"none");
-            $(".dropDown").children('.dropProv').toggle();
-            //选择车型回显
+        }
         
-        });
-        $('.dropProvLi').on("click", function () {
-            $(that_).children(".citySelect").children(".cityName").html($(this).text());
-            $('.dropDown div').css("display","none");
-        });
-        //给品牌列表添加mouseover事件
-        $('.dropProvLi').on('mouseover',function(){
-            $('.dropCity').css("display","block");
-            $('.dropProvLi').css("background-color","white");
-            $('.dropCityUl').empty();
-            $(this).css("background-color","#f1f3f6");
-            //渲染车型列表
-            for(let j=0;j<arr2[$(this).index()].length;j++){
-                $('.dropCityUl').append("<li class='dropCityLi'>"+arr2[$(this).index()][j]+"</li>");
+        function addTo(id,iArray){
+            arr2[id] = [];
+            for(let i=0;i<iArray.length;i++){
+                arr2[id][i]=iArray[i];
             }
-            //选择车型回显
-            $('.dropCityLi').on("click", function () {
-                $(that_).children(".citySelect").children(".cityName").html($(this).text());
-                $('.dropDown div').css("display","none");
+
+        }
+        addTo("0",["A4L","A8L"]);
+        addTo("1",["天津天津天津天津天津天津"]);
+        addTo("2",["上海"]);
+        addTo("3",["重庆"]);
+        addTo("4",["石家庄","张家口","承德","秦皇岛","唐山","廊坊","保定","衡水","沧州","邢台","邯郸"]);
+        addTo("5",["太原","朔州","大同","阳泉","长治","晋城","忻州","晋中","临汾","吕梁","运城"]);
+    };
+
+    //点击选择品牌车型时，先隐藏选择块
+    $(".head").delegate(".search","click",function(){
+        var that = this;
+        $(".dropDown").children('.dropCity').css('display',"none");
+        $(".dropDown").children('.dropProv').toggle();
+            //给品牌列表添加mouseover事件
+            $('.dropProvLi').on('mouseover',function(){
+                $('.dropCity').css("display","block");
+                $('.dropProvLi').css("background-color","white");
+                $('.dropCityUl').empty();
+                $(this).css("background-color","#f1f3f6");
+                //渲染车型列表
+                for(let j=0;j<arr2[$(this).attr('data-id')].length;j++){
+                    $('.dropCityUl').append("<li class='dropCityLi'>"+arr2[$(this).index()][j]+"</li>");
+                }
+                //选择车型回显
+                $('.dropCityLi').on("click", function () {
+                    $(that).children(".citySelect").children(".cityName").html($(this).text());
+                    $('.dropDown div').css("display","none");
+                });
             });
         });
-        // 关系图谱数据渲染(left:-830~230;top:-220~170)
-        var gxArr = [
-            {title:'丰田一',width:'10',bgColor:'#F78F7C',left:'203',top:'200'},
-            {title:'丰田二',width:'15',bgColor:'#F78F7C',left:'269',top:'30'},
-            {title:'丰田三',width:'17',bgColor:'#44C3A2',left:'-250',top:'120'},
-            {title:'丰田四',width:'28',bgColor:'#F78F7C',left:'-592',top:'50'},
-            {title:'丰田五',width:'35',bgColor:'#44C3A2',left:'-800',top:'70'},
-            {title:'丰田六',width:'40',bgColor:'#F78F7C',left:'36',top:'99'},
-            {title:'丰田七',width:'28',bgColor:'#F78F7C',left:'-99',top:'-78'},
-            {title:'丰田八',width:'18',bgColor:'#F78F7C',left:'81',top:'-99'},
-            {title:'丰田九',width:'12',bgColor:'#44C3A2',left:'-190',top:'-166'},
-            {title:'丰田十',width:'16',bgColor:'#F78F7C',left:'-459',top:'-100'},
-            {title:'丰田十一',width:'11',bgColor:'#F78F7C',left:'85',top:'-5'},
-            {title:'丰田十二',width:'19',bgColor:'#F78F7C',left:'-750',top:'-89'},
-            {title:'丰田十三',width:'39',bgColor:'#44C3A2',left:'-556',top:'-40'}
-        ]
-        addItem(gxArr)
     });
+    
 
     // 关系图谱数据渲染(left:-830~230;top:-220~170)
-    function addItem(arr){
-        for(var i = 0;i<arr.length;i++){
-            $(".posi_center").append('<div style="top:'+arr[i].top+'px;left:'+arr[i].left+'px; "><div style="width:'+arr[i].width+'px;height:'+arr[i].width+'px;background:'+arr[i].bgColor+';"></div><p>'+arr[i].title+'</p></div>')
+
+    var from_to1=[['上海车展', '雷克萨斯', 81], ['丰田', '雷克萨斯', 81], ['突破', '雷克萨斯', 81], ['华销量', '雷克萨斯', 81], ['月份', '雷克萨斯', 81], ['月销量', '雷克萨斯', 81], ['同比', '雷克萨斯', 81], ['中国市场', '雷克萨斯', 81], ['埃尔法', '雷克萨斯', 81], ['混动', '雷克萨斯', 81], ['豪华品牌', '雷克萨斯', 81], ['超越', '雷克萨斯', 81], ['销量', '雷克萨斯', 81], ['美国', '雷克萨斯', 81], ['上海车展', '丰田', 56], ['雷克萨斯', '丰田', 56], ['普拉多', '丰田', 56], ['汽车', '丰田', 56], ['亚洲龙', '丰田', 56], ['雷凌', '丰田', 56], ['中国市场', '丰田', 56], ['埃尔法', '丰田', 56], ['大众', '丰田', 56], ['混动', '丰田', 56], ['凯美瑞', '丰田', 56], ['汉兰达', '丰田', 56], ['卡罗拉', '丰田', 56], ['本田', '丰田', 56], ['上海车展', '奥迪', 61], ['豪华品牌', '奥迪', 61], ['宝马', '奥迪', 61], ['大众', '奥迪', 61], ['奔驰', '奥迪', 61], ['上海车展', '大众', 65], ['别克', '大众', 65], ['丰田', '大众', 65], ['平台', '大众', 65], ['迈腾', '大众', 65], ['宝来', '大众', 65], ['消费者', '大众', 65], ['帕萨特', '大众', 65], ['发动机', '大众', 65], ['欧洲', '大众', 65], ['大众汽车', '大众', 65], ['日产', '大众', 65], ['速腾', '大众', 65], ['途观', '大众', 65], ['高尔夫', '大众', 65], ['捷达', '大众', 65], ['曝光', '大众', 65], ['途昂', '大众', 65], ['大众集团', '大众', 65], ['1.4t', '大众', 65], ['奥迪', '大众', 65], ['朗逸', '大众', 65], ['suv车型', '大众', 65], ['合资', '大众', 65], ['上汽大众', '大众', 65], ['中国市场', '大众', 65], ['本田', '大众', 65], ['车企', '大众', 65], ['领克', '大众', 65], ['内饰', '大众', 65], ['动力', '大众', 65], ['品牌', '大众', 65], ['探歌', '大众', 65]];
+    var cipin_dict={'突破': [91.26598040528397, 0], '华销量': [210.1305703169318, 0], '奔驰': [4013.4018434066415, 1], '月份': [264.96188858210667, 0], '宝来': [296.4533424653739, 0], '帕萨特': [562.2131583824798, 0], '亚洲龙': [1156.4737739200948, 0], '雷克萨斯': [3002.7739332415917, 1], '雷凌': [1612.2897586379552, 0], '超越': [131.08871603784596, 0], 'suv车型': [246.73735744832703, 0], '美国': [357.6343873590235, 0], '曝光': [907.7357182955934, 0], '汽车': [756.6631509418974, 0], '合资': [355.37370415778133, 0], '奥迪': [3033.6832934231, 1], '朗逸': [799.5527925059677, 0], '途观': [471.1599977157129, 0], '上海车展': [301.44151234535326, 0], '日产': [1532.5679190740937, 1], '丰田': [3685.680180324868, 1], '中国市场': [447.08496000829035, 0], '平台': [251.77991831674495, 0], '凯美瑞': [1173.3486622874163, 0], '别克': [1101.6266870851255, 1], '动力': [616.2729076447229, 0], '迈腾': [440.72798293211315, 0], '混动': [621.0133629723119, 0], '内饰': [1027.1724825684669, 0], '消费者': [172.31428682483835, 0], '领克': [724.1220425612876, 1], '大众': [6126.992989548899, 1], '月销量': [438.76866655056756, 0], '普拉多': [1256.307716162604, 0], '欧洲': [131.13099664422285, 0], '豪华品牌': [252.05787835286765, 0], '速腾': [616.8314178360072, 0], '宝马': [3427.0318675996778, 1], '探歌': [630.4032068257578, 0], '高尔夫': [1013.9646544380956, 0], '卡罗拉': [936.7139582014778, 0], '捷达': [765.9115897584865, 0], '途昂': [836.1591919512186, 0], '大众集团': [46.05767606583961, 0], '1.4t': [130.82837283077788, 0], '上汽大众': [112.23085366340538, 1], '大众汽车': [46.67218317111248, 0], '销量': [891.9507279248769, 0], '品牌': [364.00641502146823, 0], '同比': [438.33750575950137, 0], '埃尔法': [1276.379123304629, 0], '本田': [2562.1892880133955, 1], '车企': [214.8353419879758, 0], '汉兰达': [1667.4501397876218, 0], '发动机': [522.2269220656304, 0]};
+
+    function change_dict(from_to1,cipin_dict) {
+        var n = 1;
+        var id_label = new Array;
+        var from_to = new Array;
+        var id_dict = new Array;
+        for(var i in cipin_dict){
+            if(cipin_dict[i][1]==1) {
+                id_label.push({id: n, label: i, value: cipin_dict[i][0], color: '#9c6'});
+            }
+            else {
+                id_label.push({id: n, label: i, value: cipin_dict[i][0], color: '#aaccff'});
+            }
+            id_dict[i] = n;
+            n++;
         }
+        for(var i in from_to1){
+            from_to.push({from:id_dict[from_to1[i][0]],to:id_dict[from_to1[i][1]],value:from_to1[i][2]});
+        }
+        var id_dict1 = new Array;
+        for(var key in id_dict){
+            id_dict1[id_dict[key]] = key
+        }
+        return [id_label,from_to,id_dict1];
     }
+    function get_w2v(word) {
+        var words = new Array;
+        $.ajax({
+            url: "/get_w2v/",
+            type: 'POST',
+            dataType: 'json',
+            async : false,
+            data: {
+                'word': word
+            },
+            beforeSend: function (xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", "cz5UkavPEZ781qHnsHojnIpgULzCzGBqvQdshD5fGYLNI78cp2o3z2DuxoiJoHwg");
+            },
+            success: function (data) {
+                words = data.words;
+                // console.log(words);
+                return words;
+            }
+        });
+
+        return words;
+    }
+    function draw(from_to1,cipin_dict) {
+        layer.load(2);
+        dict_data = change_dict(from_to1,cipin_dict);
+        var nodes = new vis.DataSet(dict_data[0]);
+        var edges = new vis.DataSet(dict_data[1]);
+        var container = document.getElementById('mynetwork');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        console.log(nodes);
+        console.log(edges);
+        data = {
+            nodes:[{id: 1, label: "中国市场", value: 100, color: "#aaccff",mass:2,fixed:true,x:0,y:0,shape:'circle'},
+            {id: 2, label: "中国0", value: 1, color: "#aaccff",mass:2},
+            {id: 3, label: "中国1", value: 50, color: "#aaccff",mass:2},
+            {id: 4, label: "中国2", value: 20, color: "#aaccff",mass:2},
+            {id: 5, label: "中国3", value: 5, color: "#aaccff",mass:2},
+            {id: 6, label: "中国4", value: 2, color: "#aaccff",mass:2},
+            {id: 7, label: "中国5", value: 2, color: "#aaccff",mass:2},
+            {id: 8, label: "中国6", value: 2, color: "#aaccff",mass:2},
+            {id: 9, label: "中国7", value: 13, color: "#aaccff",mass:2},
+            {id: 10, label: "中国8", value: 15, color: "#aaccff",mass:2},
+            {id: 11, label: "中国9", value: 20, color: "#aaccff",mass:2}],
+            edges:[{from: 1, to: 2, value: 1, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd7e1",length:850,hidden:true},
+            {from: 1, to: 2, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd7e2",length:350,hidden:true},
+            {from: 1, to: 3, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd7e3",length:350,hidden:true},
+            {from: 1, to: 4, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd7e4",length:150,hidden:true},
+            {from: 1, to: 5, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd7e5",length:150,hidden:true},
+            {from: 1, to: 6, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd7e7",length:350,hidden:true},
+            {from: 1, to: 7, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd757",length:350,hidden:true},
+            {from: 1, to: 8, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd747",length:350,hidden:true},
+            {from: 1, to: 9, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd737",length:150,hidden:true},
+            {from: 1, to: 10, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd727",length:350,hidden:true},
+            {from: 1, to: 11, value: 10, id: "0f8b58f7-cf0c-4b25-95f6-2de02c1cd717",length:350,hidden:true}]
+        }
+        var options = {
+            nodes: {
+              label:'dot',
+              scaling:{
+                  //min:10,
+                  max:50,
+              },
+                font: {
+                    size: 20,
+                    color: '#ffffff'
+                },
+              //  shadow:{
+              //      enabled:true,
+              //      color:'#eee9e9',
+              //      size:15,
+              //      x:2,
+              //      y:2,
+              //  }
+              shape:'dot'
+            },
+          edges:{
+                //length:100,
+                chosen: true,
+                color: {
+                  color:'#797878',
+                  highlight:'#0a5dba',
+                  hover: '#e87878',
+                  inherit: 'from',
+                  opacity:3.0
+                },
+                scaling:{
+                      min:1,
+                      max:15,
+                      label: true,
+                },
+                shadow: true,
+                smooth: {
+                    type:'vertical',
+                    
+                },
+          },
+            interaction: {
+                    dragNodes:false,
+                    dragView:false,
+                    zoomView:false,
+            //    hideEdgesOnDrag: true,
+            //    navigationButtons:true,
+            },
+            layout:{randomSeed:292325},
+            physics:{stabilization:{fit:false}}
+        };
+        var network = new vis.Network(container, data, options);
+        network.once("stabilizationIterationsDone", function() {
+            layer.closeAll('loading');
+        });
+        network.on("click", function (params) {
+            params.event = "[original event]";
+            ci = dict_data[2][params["nodes"][0]];
+            show_data = {"词汇":ci,"节点热度":cipin_dict[ci][0],"联想词汇":get_w2v(ci)};
+            document.getElementById('eventSpan').innerHTML = JSON.stringify(show_data, null, 2);
+        });
+        console.log(network.getSeed());
+    }
+    draw(from_to1,cipin_dict);
+
+
+
+    // var gxArr = [
+    //     {title:'丰田一',width:'10',bgColor:'#F78F7C',left:'203',top:'200'},
+    //     {title:'丰田二',width:'15',bgColor:'#F78F7C',left:'269',top:'30'},
+    //     {title:'丰田三',width:'17',bgColor:'#44C3A2',left:'-250',top:'120'},
+    //     {title:'丰田四',width:'28',bgColor:'#F78F7C',left:'-592',top:'50'},
+    //     {title:'丰田五',width:'35',bgColor:'#44C3A2',left:'-800',top:'70'},
+    //     {title:'丰田六',width:'40',bgColor:'#F78F7C',left:'36',top:'99'},
+    //     {title:'丰田七',width:'28',bgColor:'#F78F7C',left:'-99',top:'-78'},
+    //     {title:'丰田八',width:'18',bgColor:'#F78F7C',left:'81',top:'-99'},
+    //     {title:'丰田九',width:'12',bgColor:'#44C3A2',left:'-190',top:'-166'},
+    //     {title:'丰田十',width:'16',bgColor:'#F78F7C',left:'-459',top:'-100'},
+    //     {title:'丰田十一',width:'11',bgColor:'#F78F7C',left:'85',top:'-5'},
+    //     {title:'丰田十二',width:'19',bgColor:'#F78F7C',left:'-750',top:'-89'},
+    //     {title:'丰田十三',width:'39',bgColor:'#44C3A2',left:'-556',top:'-40'}
+    // ]
+    // addItem(gxArr)
+    // function addItem(arr){
+    //     for(var i = 0;i<arr.length;i++){
+    //         $(".posi_center").append('<div style="top:'+arr[i].top+'px;left:'+arr[i].left+'px; "><div style="width:'+arr[i].width+'px;height:'+arr[i].width+'px;background:'+arr[i].bgColor+';"></div><p>'+arr[i].title+'</p></div>')
+    //     }
+    // }
 
     // 添加对比条件
     function add_items(which) {
         var bgcolor_list = ['#00c7cb','#44ADDB', '#107691'];
-        var index = 0 || $(".search").length
+
+        if($(".search").length == 0){
+            var pre_id = 0;
+        }else{
+            var pre_id = parseInt($(which).prev().attr('id').replace('keyword_item_', ''));
+        }
+        
         if ($(".search").length >= 2) {
             $(".add_items").hide();
         }
-        $(".add_items").before('<div class="keyword_item"><div class="keyword-item__stripe" style="background-color: ' + bgcolor_list[index] + ';"></div><div class="search" style="width: 80px;border-radius: 0 3px 3px 0;" class="keyword-item__input ui-autocomplete-input"><div class="citySelect"><span class="cityName">奥迪A4L</span></div><img src="../static/images/close.png" alt=""></div><a href="javascript:;" class="clear" hidden></a></div>');
+
+        $(".add_items").before('<div class="keyword_item" id="keyword_item_' + (pre_id + 1) + '"><div class="keyword-item__stripe" style="background-color: ' + bgcolor_list[pre_id] + ';"></div><div class="search" style="width: 80px;border-radius: 0 3px 3px 0;" class="keyword-item__input ui-autocomplete-input"><div class="citySelect"><span class="cityName">奥迪A4L</span></div><img src="../static/images/close.png" alt=""></div><a href="javascript:;" class="clear" hidden></a></div>');
+        init_autocomplete('keyword_item_' + (pre_id + 1));
     }
+    function init_autocomplete(id) {
+        $("#" + id + ' input').autocomplete({
+            lookup: pp,
+            minChars: 0,
+            groupBy: 'category'
+        });
+        $("#" + id + ' input').on('focus', function () {
+            $(this).autocomplete().onValueChange();
+        });
+    }
+    var pp = new Array;
+    $.get("/static/json/brand2.json", function (result) {
+        try {
+            pp = JSON.parse(result);
+        } catch (e) {
+            pp = result;
+        }
+        init_autocomplete('keyword_item_1')
+    });
 
     // 柱状图（媒体来源、汽车垂直媒体、自媒体、门户网站）
     init_media_sources_Chart('media_sources') // 媒体来源
