@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
+		<meta name="description" content="">
+		<meta name="author" content="ThemeBucket">
+		<link rel="icon" type="image/png" href="images/favicon.png">
+
+		<title>云捷Data Plus</title>
+
+		<link href="css/clndr.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/style-responsive.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/iconfont.css" rel="stylesheet">
+		<link href="css/bootstrap-reset.css" rel="stylesheet">
+		<link href="css/style-responsive.css" rel="stylesheet">
+		<link href="css/jquery-ui-1.10.3.css" rel="stylesheet">
+		<link href="css/bootstrap-fileupload.min.css" rel="stylesheet">
+		<script>
+			if(window != top)
+				top.location.href = location.href;
+		</script>
+
+	</head>
+
+	<body class="sticky-header" style="overflow-y:hidden;">
+
+		<section style="height:100%;">
+			<!-- left side start-->
+			<div class="left-side sticky-left-side">
+
+				<!--logo and iconic logo start-->
+				<div class="logo">
+					<a href="./index.html" style="text-decoration: none; color: #fff;">
+						<p>云捷Data Plus</p>
+					</a>
+				</div>
+
+				<div class="logo-icon text-center">
+					<a href="index.do"><img src="images/login-logo.png" alt="" style=" width:100%;"></a>
+				</div>
+				<!--logo and iconic logo end-->
+
+				<div class="left-side-inner">
+
+					<!-- 折叠之后头像用户名显示 -->
+					<div class="visible-xs hidden-sm hidden-md hidden-lg">
+						<div class="media logged-user">
+							<img alt="" src="images/avatar-mini.jpg" class="media-object">
+							<div class="media-body">
+								<h4><a href="#">demo</a></h4>
+							</div>
+						</div>
+					</div>
+
+					<!--左侧菜单-->
+					<ul class="nav nav-pills nav-stacked custom-nav">
+						<li class="menu-list">
+							<a href="">
+								<i class="fa iconfont icon-pc fabook"></i>
+								<span>汽车销量数据</span>
+							</a>
+							<ul class="sub-menu-list" style="display: none;">
+								<li>
+									<a href="./carServey.html" target="right">销量数据概况</a>
+								</li>
+
+								<li>
+									<a href="./carDomestic.html" target="right">国产乘用车</a>
+								</li>
+
+								<li>
+									<a href="./carImported.html" target="right">进口乘用车</a>
+								</li>
+
+								<li>
+									<a href="./carBrandSearch.html" target="right">厂商品牌查询</a>
+								</li>
+
+							</ul>
+						</li>
+						<li>
+							<a href="./userPortrait.html" target="right">
+								<i class="fa fabook iconfont icon-zhanghao"></i>
+								<span>用户画像</span>
+							</a>
+							
+						</li>
+						<li>
+							<a href="./waiting.html" target="right">
+								<i class="fa iconfont icon-permission fabook"></i>
+								<span>汽车参数库</span>
+							</a>
+							
+						</li>
+						
+					</ul>
+					<!--sidebar nav end-->
+
+				</div>
+			</div>
+			<!-- left side end-->
+
+			<!-- main content start-->
+			<div class="main-content">
+
+				<!-- header section start-->
+				<div class="header-section">
+
+					<!--toggle button start-->
+					<a class="toggle-btn"><i class="fa fa-bars"></i></a>
+					<!--toggle button end-->
+
+					<!--notification menu start -->
+					<div class="menu-right">
+						<ul class="notification-menu">
+
+							<li>
+								<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									demo
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+									<!--<li>
+										<a href="pass.do" target="right"><i class="fa fa-cog"></i> 修改密码</a>
+									</li>-->
+									<li>
+										<a href=""><i class="fa fa-sign-out"></i> 退出</a>
+									</li>
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+					<!--notification menu end -->
+
+				</div>
+				<!-- header section end-->
+
+				<!--body wrapper start-->
+				<div class="wrapper" style="font-size:0;">
+					<iframe scrolling="auto" frameborder="0" src="./welcome.html" name="right" width="100%" height="100%" id="iframeId" style="padding-bottom:78px;"></iframe>
+				</div>
+				<!--body wrapper end-->
+
+				<!--footer section start-->
+				<footer >
+					2017 &copy; 北京云捷亮数科技有限公司
+				</footer>
+				<!--footer section end-->
+
+			</div>
+			<!-- main content end-->
+		</section>
+
+		<!-- Placed js at the end of the document so the pages load faster -->
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.nicescroll.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<!--common scripts for all pages-->
+		<script src="js/scripts.js"></script>
+
+	</body>
+
+</html>

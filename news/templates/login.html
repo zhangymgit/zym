@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: #FFF;
+        }
+
+        .login_bg {
+            background: #090113 url("../static/images/login-bg.png") no-repeat fixed;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .login_content {
+            width: 20%;
+            min-width: 390px;
+            height: auto;
+            position: absolute;
+            top: 200px;
+            right: 20%;
+            text-align: center;
+        }
+
+        .login_content .login_logo {
+            width: 20%;
+            height: auto;
+        }
+
+        .login_content .login_text {
+            font-size: 28px;
+            color: #23b5c0;
+            font-weight: bolder;
+            margin: 10px 0 25px;
+            letter-spacing: 5px;
+        }
+
+        .login_content .login_box {
+            width: 70%;
+            min-width: 280px;
+            border-radius: 10px;
+            margin: 0 auto;
+            background: #374151;
+        }
+
+        .login_content .login_box div {
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .login_content .login_box .login_line {
+            border-bottom: 1px solid #515965;
+        }
+
+        .login_content .login_box img {
+            height: 20px;
+            margin: 0 10px;
+        }
+
+        .login_content .login_box input {
+            width: 80%;
+            height: 20px;
+            background: rgb(55, 65, 81);
+            border: none;
+            outline: none;
+        }
+
+        .login_content .login_btn {
+            font-size: 16px;
+            letter-spacing: 8px;
+            width: 70%;
+            min-width: 280px;
+            margin-top: 30px;
+            height: 40px;
+            border: none;
+            outline: none;
+            background: #23b5c0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .foot {
+            color: #7A7676;
+            font-size: 12px;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body class="login_bg">
+<div class="login_content">
+    <img src="../static/images/logo.png" class="login_logo">
+    <p class="login_text">云捷新闻监测平台</p>
+    <div class="login_box">
+        <div class="login_line">
+            <img src="../static/images/user.png" alt="">
+            <input type="text" placeholder="请输入登录账号" id="user_name" autocomplete="off">
+        </div>
+        <div>
+            <img src="../static/images/lock.png" alt="">
+            <input type="password" placeholder="输入您的密码" id="pwd">
+        </div>
+    </div>
+    <button class="login_btn" onclick="login()">登录</button>
+
+</div>
+<div class="foot">
+    <p style="text-align: center;color: #7A7676;">技术支持 & 版权所有 北京云捷里亮数科技有限公司</p>
+</div>
+</body>
+<script src="../static/js/jquery-1.10.2.min.js"></script>
+<script>
+    function login() {
+        var formData = new FormData();
+        formData.append("csrfmiddlewaretoken", "{{ csrf_token }}");
+        formData.append("user_name", $('#user_name').val());
+        formData.append("pwd", $('#pwd').val());
+        $.ajax({
+            url: "/user_login_handle/",
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                window.location.href = "/";
+            },
+        })
+    }
+</script>
+</html>

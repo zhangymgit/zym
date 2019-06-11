@@ -1,0 +1,884 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>汽车新闻概况</title>
+    <link href="../static/css/clndr.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/style-responsive.css" rel="stylesheet">
+    <script src="../static/js/echarts.min.js"></script>
+    <link href="../static/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #262D39;
+            padding: 0px 30px;
+        }
+
+        .postdate {
+            width: 50%;
+            height: 25px;
+            padding: 5px;
+            text-align: center;
+            color: #fff !important;
+            border: 1px solid #FFF;
+            background: transparent;
+        }
+
+        .d_value {
+            text-align: center;
+            font-size: 24px;
+            margin: 50px 0;
+        }
+
+        .news_count {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .m20 {
+            margin: 20px 0;
+        }
+
+        #tips > div {
+            height: 94.6px;
+            /*line-height: 94.6px;*/
+            text-align: center;
+            font-size: 10px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #tips > div span {
+            margin: 0 4px 0 4px;
+            font-size: 11px;
+        }
+
+        .panel {
+            background: transparent;
+            border-radius: 0;
+        }
+
+        .paneler {
+            background: #374151 !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .bigtable td:nth-child(odd) {
+            background: transparent;
+        }
+
+        .bigtable tr:nth-child(even) {
+            background: #303947;
+        }
+
+        .bigtable td {
+            height: 31px;
+            text-align: center;
+            border-bottom: none;
+            color: #E6E7E9;
+            /*min-width: 70px;*/
+        }
+
+        .row_div {
+            margin: 0;
+            padding: 0;
+            height: 80px;
+            line-height: 80px;
+        }
+
+        .logo-text {
+            color: #23b5c0;
+            font-size: 28px;
+            font-weight: bolder;
+            margin-left: 1%;
+        }
+
+        .tab img {
+            width: 15px;
+            height: auto;
+            margin-right: 2px;
+        }
+
+        .tab a {
+            display: inline-block;
+            font-size: 16px;
+            width: 45%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .active {
+            background-color: #374151;
+        }
+
+        .tab a:hover {
+            color: #65CEA7;
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .right {
+            color: #b6b7b9;
+        }
+
+        .right .set {
+            width: 23px;
+            height: 23px;
+            margin: 0 5% 0 5%
+        }
+
+        .right .mtou {
+            width: 32px;
+            height: 32px;
+            margin-left: 2%
+        }
+
+        .bigtable tr.head td {
+            background: #424f63;
+            color: #fff;
+            border-right: none;
+        }
+
+        .chuang {
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 10px;
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            background: #23b5c0;
+            color: #fff;
+            text-align: center;
+            z-index: 999;
+        }
+
+        .bigtable tr.head td {
+            background: #424f63;
+            color: #fff;
+            border-right: none;
+            padding: 0;
+        }
+
+        td {
+            padding: 0;
+        }
+
+        tbody td:last-child {
+            width: 20%;
+        }
+
+        td:first-child {
+            width: 25%;
+        }
+
+        td img {
+            height: 17px;
+        }
+
+        #page_cloud:before {
+            position: absolute;
+            content: '按照词频统计';
+            color: #ccc;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+        }
+
+        #feeling:before {
+            position: absolute;
+            content: '按照篇频统计';
+            color: #CCC;
+            bottom: -22px;
+            right: -5px;
+            font-size: 12px;
+        }
+
+        .page1_tips {
+            /*width: 91%;
+            margin: 0 auto;
+            margin-left: 9%;*/
+            margin-bottom: 10px;
+            background: #374151;
+        }
+
+        .page1_tips div img {
+            margin-top: 18px;
+        }
+
+        .page1_tips div .row:first-child {
+            font-size: 15px;
+        }
+
+        .page1_tips div .row:last-child {
+            font-size: 30px;
+        }
+
+        select {
+            background: transparent;
+            border: 1px solid #fff;
+        }
+
+        .qinggan {
+            width: 30%;
+            height: 80%;
+            background: #FFD39B;
+            position: absolute;
+            left: -35px;
+            margin-top: 20%;
+        }
+
+        .qinggan > div {
+            width: 100%;
+            position: relative;
+        }
+
+        .qinggan .zhengxiang {
+            height: 20%;
+            background: #65D2B2;
+        }
+
+        .qinggan .zhongxing {
+            height: 70%;
+            background: #FFD39B;
+        }
+
+        .qinggan .fuxiang {
+            height: 10%;
+            background: #FF7D7A;
+        }
+
+        .tip_qinggan {
+            position: absolute;
+            right: 54px;
+            bottom: 37px;
+        }
+
+        .tip_qinggan > div {
+            color: #FFF;
+            font-size: 12px;
+        }
+
+        .tip_qinggan > div > div {
+            height: 10px;
+            width: 10px;
+            background: #65D2B2;
+            display: inline-block;
+        }
+
+        .tip_qinggan > div > div {
+            margin-right: 7px;
+            color: #fff;
+        }
+
+        .tip_qinggan .zhongxing {
+            background: #FFD39B;
+        }
+
+        .qinggan > div span {
+            display: block;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            font-size: 12px;
+        }
+
+        .tip_qinggan .fuxiang {
+            background: #FF7D7A;
+        }
+
+        .paneler_before:before {
+            position: absolute;
+            content: '按照词频统计';
+            color: #ccc;
+            bottom: 15px;
+            right: 20px;
+            font-size: 12px;
+        }
+
+        #mediaChart:before {
+            position: absolute;
+            content: '单渠道低于3%合并为其他选项';
+            color: #ccc;
+            bottom: -18px;
+            right: 0;
+            font-size: 12px;
+        }
+
+        .feeling canvas {
+            height: 300px !important;
+        }
+
+        #postdate {
+            text-decoration: none;
+        }
+
+        #postdate:disabled {
+            background-color: #364150;
+        }
+    </style>
+</head>
+
+<body class="sticky-header">
+<section style="padding-bottom:30px;">
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel" style="overflow: hidden;">
+                                <div class="row" id="tips">
+                                    <div class="row page1_tips" style="color: #30BBC1;">
+                                        <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1">
+                                            <img src="../static/images/clockhour.png"/>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="row" style="text-align: left;line-height: 40px;">
+                                                时间筛选：
+                                            </div>
+                                            <div class="row" style="position: relative;">
+                                                <input type="text" placeholder="时间段" class="form-control postdate" id="postdate" value="查询中..." autocomplete="off" disabled
+                                                       style="font-size: 30px;color: #30BBC1 !important;width: 92%;height: 45px;text-decoration: underline;border: none;position: absolute;right: 0px;top: -8px;text-align: left;z-index: 100;border: none;outline: none;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row page1_tips" style="color: #FF7D7A;">
+                                        <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1">
+                                            <img src="../static/images/articlenews.png"/>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="row" style="text-align: left;line-height: 40px;">
+                                                新闻数量：
+                                            </div>
+                                            <div class="row" id="current_count">
+                                                ---
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row page1_tips" style="color: #8277B3;">
+                                        <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1">
+                                            <img src="../static/images/trafficstatistic.png"/>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="row" style="text-align: left;line-height: 40px;">
+                                                比前一日：
+                                            </div>
+                                            <div class="row" id="Day_on_Day">
+                                                ---
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row page1_tips" style="color: #65D2B2;">
+                                        <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1">
+                                            <img src="../static/images/statisticgraph.png"/>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="row" style="text-align: left;line-height: 40px;">
+                                                30天贡献量：
+                                            </div>
+                                            <div class="row" id="ThirtyDaysCBT">
+                                                ---
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel">
+                                <div class="panel-body paneler">
+                                    <div class="row" style="padding-left: 15px;color: #EAEAEC; font-size:18px;">
+                                        <img style="vertical-align: bottom;margin-right: 10px;height: 20px;" src="../static/images/img02.png">媒体占比
+                                        <div style="width:95% ;display: block;height:29px;height: 3px; background: #30BBC1;margin-top: 15px;"></div>
+                                    </div>
+                                    <div id="cxsl" class="panele-box" style="height: 335px;">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div id="mediaChart" style="height: 339px;top: -20px !important;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel" style="overflow: hidden ;">
+                                <div class="panel-body paneler paneler_before1">
+                                    <div class="row" style="padding-left: 15px;color: #EAEAEC; font-size:18px;">
+                                        <img style="vertical-align: bottom;margin-right: 10px;height: 20px;" src="../static/images/img04.png"/>情感分布图
+                                        <div style="width:95% ;display: block;height:29px;height: 3px; background: #30BBC1; margin-top: 15px;"></div>
+                                    </div>
+                                    <div id="feeling" style="height: 319px"></div>
+                                    <div style="height: 20px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel" style="overflow: hidden;">
+                                <div class="panel-body paneler ">
+                                    <div class="row" style="padding-left: 15px;color: #EAEAEC; font-size:18px;">
+                                        <img style="vertical-align: bottom;margin-right: 10px;height: 20px;" src="../static/images/img02.png"/>词云图
+                                        <div style="width:95% ;display: block;height: 3px; background: #30BBC1; margin-top: 15px;"></div>
+                                    </div>
+                                    <div style="height: 339px;" id="page_cloud"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="panel">
+                        <div class="panel-body paneler">
+                            <div class="row" style="padding-left: 15px;color: #EAEAEC; font-size:18px;">
+                                <img style="vertical-align: bottom;margin-right: 10px;height: 20px;" src="../static/images/img01.png"/>
+                                <span>新闻量走势图</span>
+                                <select id="days" class="date_input" style="width: auto;margin-left: 20px;font-size: 15px;">
+                                    <option value="7">近7天</option>
+                                    <option value="30">近30天</option>
+                                    <option value="180">近半年</option>
+                                    <option value="365">近一年</option>
+                                </select>
+                                <span id="userSelectTime"></span>
+                                <div style="width:98% ;display: block;height:29px;height: 3px; background: #23B5C0; margin-top: 15px;"></div>
+                            </div>
+                            <div id="dayTrend" style="height: 300px"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<p style="text-align: center;margin-top: 10px; color: #7A7676;">技术支持 & 版权所有 北京云捷亮数科技有限公司</p>
+</body>
+<script src="../static/js/jquery-1.10.2.min.js"></script>
+<script src="../static/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+<script src="../static/js/jquery.nicescroll.js"></script>
+<script src="../static/js/scripts.js"></script>
+<script src="../static/js/bootstrap-datetimepicker.min.js"></script>
+<!-- <script src="../static/js/bootstrap-datetimepicker.zh-CN.js"></script> -->
+<script src="../static/js/echarts-wordcloud.min.js"></script>
+<script src="../static/js/jquery.ba-resize.min.js"></script>
+
+<script type="text/javascript">
+
+    function init_worldCloudcharts(wordCloud_area, series_data, color) {
+        var worldCloudcharts = echarts.init(document.getElementById(wordCloud_area));
+        var worldCloudoption = {
+            /*title: {
+             text: '关键词云',
+             x: 'left',
+             textStyle: {
+             color: '#EAEAEC'
+             }
+             },*/
+            series: [{
+                name: '关键词云',
+                type: 'wordCloud',
+                sizeRange: [16, 50],
+                rotationRange: [-45, 90],
+                textPadding: 0,
+                autoSize: {
+                    enable: true,
+                    minSize: 16
+                },
+                tooltip: {
+                    show: true
+                },
+                textStyle: {
+                    normal: {
+                        color: function () {
+                            if (color == undefined) {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160)
+                                ].join(',') + ')';
+                            } else {
+                                return color;
+                            }
+
+                        }
+                    },
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                data: series_data
+            }]
+        };
+        $('#' + wordCloud_area).parent().resize(function () {
+            worldCloudcharts.resize();
+        });
+        worldCloudcharts.setOption(worldCloudoption);
+    }
+
+    function init_feelingChart(qgfb_fuzhu, qgfb_juti) {
+        var follow6 = document.getElementById('feeling');
+        var myChart6 = echarts.init(follow6);
+        option = {
+            grid: {
+                x: 50,
+                y: 25,
+                x2: 10,
+                y2: 35
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                },
+                formatter: function (params) {
+                    var tar;
+                    if (params[1].value != '-') {
+                        tar = params[1];
+                    } else {
+                        tar = params[0];
+                    }
+                    return tar.name + ' : ' + tar.value + '%';
+                }
+            },
+            grid: {
+                left: '10%',
+                right: '10%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                splitLine: {
+                    show: false
+                },
+                data: ['负向', '中性', '正向'],
+                axisLabel: {
+                    textStyle: {
+                        color: '#EAEAEC'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#454F5D',
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value} %'
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: ['#454F5D'],
+                        width: 1,
+                        type: 'solid'
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#EAEAEC'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#454F5D',
+                    }
+                }
+            },
+            series: [{
+                name: '辅助',
+                type: 'bar',
+                stack: '总量',
+                itemStyle: {
+                    normal: {
+                        barBorderColor: 'rgba(0,0,0,0)',
+                        color: 'rgba(0,0,0,0)'
+                    },
+                    emphasis: {
+                        barBorderColor: 'rgba(0,0,0,0)',
+                        color: 'rgba(0,0,0,0)'
+                    }
+                },
+                data: qgfb_fuzhu
+            }, {
+                name: '具体',
+                type: 'bar',
+                barWidth: '50%',
+                stack: '总量',
+                itemStyle: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                        color: function (params) {
+                            var colorList = [
+                                '#FF7D7A', '#FFD39B', '#65D2B2'
+                            ];
+                            return colorList[params.dataIndex]
+                        }
+                    }
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    formatter: '{c}%'
+                },
+                data: qgfb_juti
+            },]
+        };
+        $('#feeling').parent().resize(function () {
+            myChart6.resize();
+        });
+        myChart6.setOption(option);
+    }
+
+    function init_lineChart(id, xAxis_data, series_data) {
+        var dayRangeChart = echarts.init(document.getElementById(id));
+        dayRangeChart.clear();
+        var option = {
+            backgroundColor: '#374151',
+            color: ['#FF7D7A'],
+
+            grid: {
+                top: '8%',
+                bottom: '10%',
+                left: '5%',
+                right: '10%'
+            },
+
+            xAxis: {
+                type: 'category',
+                data: xAxis_data,
+                axisLabel: {
+                    textStyle: {
+                        color: '#EAEAEC'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#454F5D',
+                    }
+                }
+
+            },
+            yAxis: {
+                type: 'value',
+                //					splitLine:{show: false},//去除网格线
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: ['#454F5D'],
+                        width: 1,
+                        type: 'solid'
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#EAEAEC'
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#454F5D',
+                    }
+                }
+
+            },
+            tooltip: {
+                formatter: '日期:{b} <br/>数量:{c}'
+            },
+            series: [{
+                data: series_data,
+                type: 'line',
+                markLine: {
+                    precision: 0,
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ],
+                    tooltip: {
+                        formatter: '{b}:{c}'
+                    }
+                }
+            }]
+        };
+        $('#' + id).parent().resize(function () {
+            dayRangeChart.resize();
+        });
+        dayRangeChart.setOption(option)
+    }
+
+    function init_mediaChart(series_data) {
+        var mediaChart = echarts.init(document.getElementById("mediaChart"));
+        mediaChart.clear();
+        var option = {
+            color: ['#6a8abe', '#4acacb', '#fc8675', '#5ab6df', '#f3d970', '#b9857e', '#5e6e8b', '#f9c1b1'],
+            tooltip: {
+                trigger: 'item',
+                formatter: function (data) {
+                    return data['name'] + "<br>" + data['value'] + " (" + data['percent'].toFixed(1) + "%)"
+                }
+            },
+            calculable: true,
+            series: [{
+                name: '媒体来源',
+                type: 'pie',
+                radius: '50%',
+                center: ['50%', '60%'],
+                data: series_data,
+                label: {
+                    normal: {
+                        formatter(v) {
+                            let text = v.name;
+                            if (text.length >= 5) {
+                                return `${text.slice(0, 3)}\n${text.slice(3)}`
+                            } else if (text.length == 4) {
+                                return `${text.slice(0, 2)}\n${text.slice(2)}`
+                            } else {
+                                return text
+                            }
+
+                        }
+                    }
+                }
+            }]
+        };
+        $('#mediaChart').parent().resize(function () {
+            mediaChart.resize();
+        });
+        mediaChart.setOption(option)
+    }
+
+
+    $(".mtou").mouseenter(function () {
+        $(".chuang").show();
+    });
+
+    $(".right").mouseleave(function () {
+        $(".chuang").hide();
+    });
+
+    $(".chuang").click(function () {
+        window.location.href = "/user_logout/";
+    });
+
+    function isOK(count, postdate) {
+        if (count % 4 == 0) {
+            $('#postdate').removeAttr("disabled");
+            $('#postdate').val(postdate);
+        } else {
+            $('#postdate').val('查询中...');
+            $('#postdate').attr("disabled", "disabled");
+        }
+    }
+
+    function change_day(postdate) {
+        var count = 0;
+        $.get('/get_dayInfo/?postdate=' + postdate, function (data) {
+            $('#current_count').html(data.current_count);
+            $('#Day_on_Day').html(data.Day_on_Day);
+            $('#ThirtyDaysCBT').html(data.ThirtyDaysCBT);
+            count++;
+            isOK(count, postdate);
+        });
+        $.get('/get_dayswordCloud/?startDate=' + postdate + '&endDate=' + postdate, function (data) {
+            init_worldCloudcharts('page_cloud', data.wordCloudData.series_data);
+            count++;
+            isOK(count, postdate);
+        });
+        $.get('/get_daysfeelingInfo/?startDate=' + postdate + '&endDate=' + postdate, function (data) {
+            init_feelingChart(data.feelingChartData.qgfb_fuzhu, data.feelingChartData.qgfb_juti);
+            count++;
+            isOK(count, postdate);
+        });
+        $.get('/get_mediaInfo/?postdate=' + postdate, function (data) {
+            init_mediaChart(data.mediaChartData.series_data);
+            count++;
+            isOK(count, postdate);
+        });
+    }
+
+    function GetDateStr(AddDayCount) {
+        var dd = new Date();
+        dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期
+        var y = dd.getFullYear();
+        var m = (dd.getMonth() + 1) < 10 ? "0" + (dd.getMonth() + 1) : (dd.getMonth() + 1);//获取当前月份的日期，不足10补0
+        var d = dd.getDate() < 10 ? "0" + dd.getDate() : dd.getDate();//获取当前几号，不足10补0
+        return y + "-" + m + "-" + d;
+    }
+
+    function get_newsTrend(days) {
+        if (days != '') {
+            var str = 'days=' + days;
+        } else {
+            var str = 'startDate=' + $('#startDate').val() + '&endDate=' + $('#endDate').val();
+        }
+        $.get("/get_newsTrend/?" + str, function (data) {
+            xAxis_data = data.chart_data.xAxis_data;
+            series_data = data.chart_data.series_data;
+            avg = data.chart_data.avg;
+            init_lineChart('dayTrend', xAxis_data, series_data, avg);
+        });
+    }
+
+    $(function () {
+        var postdate = '{{ postdate }}';
+        var days = $('#days').val();
+        change_day(postdate);
+        get_newsTrend(days);
+
+        $('#days').change(function () {
+            get_newsTrend($('#days').val());
+        });
+
+        var endDate = new Date();
+        endDate.setDate(endDate.getDate() - 1);
+
+        $('#postdate').datetimepicker({
+            language: "zh-CN", //汉化
+            todayBtn: "true", //显示今天按钮
+            autoclose: true, //选择日期后自动关闭日期选择框
+            todayHighlight: true, //当天高亮显示
+            minView: "month", //不显示时分秒
+            showMeridian: 1,
+            format: "yyyy-mm-dd",
+            pickerPosition: "bottom-left",
+            endDate: endDate
+        }).on('changeDate', function (e) {
+            var postdate = $('#postdate').val();
+            $('#postdate').val('查询中...');
+            $('#postdate').attr("disabled", "disabled");
+            change_day(postdate);
+        });
+    })
+</script>
+
+</html>

@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/clndr.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/style-responsive.css" rel="stylesheet">
+		<script src="js/echartsold.min.js"></script>
+		<script src="js/echarts.min.js"></script>
+		<style type="text/css">
+			.notification-menu .dropdown-toggle {
+				padding: 10px 10px;
+			}
+			
+			.identical {
+				color: #000000 !important;
+				margin-right: 5px;
+			}
+			.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+	background: #CCC;
+}
+		</style>
+	</head>
+
+	<body class="sticky-header">
+		<section style="padding-bottom:30px;">
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 42px; height: 44px;font-size: 24px;">
+					<!--more statistics box start-->
+					2018年11月销量数据概况
+					<!--more statistics box end-->
+					<div style="float: right; ">
+						<ul class="notification-menu">
+
+							<li>
+								<a style="background: #2A323F; color: #fff;" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">年/月<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+									<li>
+										<a href="" target="right">一月</a>
+									</li>
+									<li>
+										<a href="" target="right">二月</a>
+									</li>
+									<li>
+										<a href="" target="right">三月</a>
+									</li>
+									<li>
+										<a href="" target="right">四月</a>
+									</li>
+									<li>
+										<a href="" target="right">五月</a>
+									</li>
+									<li>
+										<a href="" target="right">六月</a>
+									</li>
+
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-md-4">
+
+					<div class="row">
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							<div class="panel">
+								<div class="panel-body paneler">
+									<div class="row">
+										<div class="col-md-12 ">11月销量</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 text-center text-large">21,490,222</div>
+									</div>
+									<!--<div class="row">
+										<div class="col-md-6 col-xs-6 col-sm-6">同比</div>
+										<div class="col-md-6 col-xs-6 col-sm-6">环比</div>
+									</div>-->
+									<div class="row">
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-green"><span class="identical">环比:</span>-12%↓</div>
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-red"><span class="identical">同比:</span> 2.80%↑</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							<div class="panel">
+								<div class="panel-body paneler">
+									<div class="row">
+										<div class="col-md-12">11月国产乘用车销量</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 text-center text-large">1,894,500</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-green"><span class="identical">环比:</span>-23%↓</div>
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-red"><span class="identical">同比:</span>4.70%↑</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							<div class="panel">
+								<div class="panel-body paneler">
+									<div class="row">
+										<div class="col-md-12">11月进口乘用车销量</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 text-center text-large">1,739</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-green"><span class="identical">环比:</span>-10%↓</div>
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-red"><span class="identical">同比:</span>3.50%↑</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="member-trend" class="panele-box" style="height: 370px;"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<!--more statistics box start-->
+				<div class="col-md-4 col-xs-12 col-sm-12 text-center">
+					<!--<p style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;">车辆销量及占比</p>-->
+					<div class="row" style="margin-bottom: 10px;text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;">车型销量及占比</div>
+					<!--<div id="salesVolume"></div>-->
+					<div class="row">
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							<div class="panel">
+								<div class="panel-body paneler">
+									<div id="salesVolume" class="panele-box" style="height: 300px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12 col-sm-12 text-center">
+					<!--<p style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;">车辆销量及占比</p>-->
+					<div class="row" style="margin-bottom: 10px;text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;">燃料形式销量形式</div>
+					<!--<div id="salesVolume"></div>-->
+					<div class="row">
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							<div class="panel">
+								<div class="panel-body paneler">
+									<div id="fuelVolume" class="panele-box" style="height: 300px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12 col-sm-12 text-center">
+					<!--<p style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;">车辆销量及占比</p>-->
+					<div class="row" style="margin-bottom: 10px;text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;">地域销量及占比</div>
+					<!--<div id="salesVolume"></div>-->
+					<div class="row">
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							<div class="panel">
+								<div class="panel-body paneler">
+									<div id="areaVolume" class="panele-box" style="height: 300px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--more statistics box end-->
+
+			</div>
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;">
+					<!--more statistics box start-->
+					汽车销量top10
+					<!--more statistics box end-->
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-md-6 col-xs-12 col-sm-12">
+					<div class="row" style="height: 40px; ">
+						<div class="col-md-4 col-xs-4 col-sm-4" style="padding-right: 5px;">
+
+							<span style="margin:0;padding:0;">选择厂商:</span>
+							<label style=";margin-left: 0% ;">
+								<select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm car_select " style="width: 100%;">
+									<option value="">按车型</option>	
+									<option value="">按品牌</option>
+									<option value="">按生产商</option>
+								</select>
+							</label>
+
+							<!--排序方式：<span class="btn-com">按车型</span>-->
+						</div>
+						<div class="col-md-5 col-xs-4 col-sm-4" style="padding-left: 5px;padding-right: 5px;">
+							<span style="margin:0;padding:0;">细分市场:</span>
+							<label style=";margin-left: 0%;">
+								<select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm car_select " style="width: 100%;">
+				                    <option id="ztsc" value="整体市场">整体市场</option>
+				                    <option value="CAR">CAR</option> 
+				                    <option value="CAR -">CAR -</option> 
+				                    <option value="CAR A">CAR A</option> 
+				                    <option value="CAR B-L">CAR B-L</option> 
+				                    <option value="CAR B-U">CAR B-U</option> 
+				                    <option value="CAR C-L">CAR C-L</option> 
+				                    <option value="CAR C-M">CAR C-M</option> 
+				                    <option value="CAR C-U">CAR C-U</option> 
+				                    <option value="CAR D-L">CAR D-L</option> 
+				                    <option value="CAR D-M">CAR D-M</option> 
+				                    <option value="CAR D-U">CAR D-U</option> 
+				                    <option value="CAR E-L">CAR E-L</option> 
+				                    <option value="CAR E-M">CAR E-M</option> 
+				                    <option value="MPV">MPV</option> 
+				                    <option value="MPV -">MPV -</option> 
+				                    <option value="MPV B">MPV B</option> 
+				                    <option value="MPV B-L">MPV B-L</option> 
+				                    <option value="MPV B-U">MPV B-U</option> 
+				                    <option value="MPV C-L">MPV C-L</option> 
+				                    <option value="MPV C-M">MPV C-M</option> 
+				                    <option value="MPV C-U">MPV C-U</option> 
+				                    <option value="MPV D-L">MPV D-L</option> 
+				                    <option value="MPV D-M">MPV D-M</option> 
+				                    <option value="MPV D-U">MPV D-U</option> 
+				                    <option value="MPV E-L">MPV E-L</option> 
+				                    <option value="SUV">SUV</option> 
+				                    <option value="SUV -">SUV -</option> 
+				                    <option value="SUV A">SUV A</option> 
+				                    <option value="SUV B-L">SUV B-L</option> 
+				                    <option value="SUV B-M">SUV B-M</option> 
+				                    <option value="SUV B-U">SUV B-U</option> 
+				                    <option value="SUV C-L">SUV C-L</option> 
+				                    <option value="SUV C-M">SUV C-M</option> 
+				                    <option value="SUV C-U">SUV C-U</option> 
+				                    <option value="SUV D-L">SUV D-L</option> 
+				                    <option value="SUV D-M">SUV D-M</option> 
+				                    <option value="SUV D-U">SUV D-U</option> 
+				                    <option value="SUV E-M">SUV E-M</option> 
+				                    <option value="交叉型">交叉型</option> 
+				                    <option value="交叉型 -">交叉型 -</option> 
+				                    <option value="交叉型 C-M">交叉型 C-M</option> 
+				                    <option value="交叉型乘用车">交叉型乘用车</option> 
+				                    <option value="交叉型乘用车 -">交叉型乘用车 -</option> 
+				                    <option value="轿车">轿车</option> 
+				                    <option value="轿车 -">轿车 -</option> 
+				                    <option value="轿车 A">轿车 A</option> 
+				                    <option value="轿车 B-L">轿车 B-L</option> 
+				                    <option value="轿车 B-M">轿车 B-M</option> 
+				                    <option value="轿车 B-U">轿车 B-U</option> 
+				                    <option value="轿车 C-L">轿车 C-L</option> 
+				                    <option value="轿车 C-M">轿车 C-M</option> 
+				                    <option value="轿车 C-U">轿车 C-U</option> 
+				                    <option value="轿车 D-L">轿车 D-L</option> 
+				                    <option value="轿车 D-M">轿车 D-M</option> 
+				                    <option value="轿车 D-U">轿车 D-U</option> 
+				                    <option value="轿车 E-L">轿车 E-L</option> 
+				                    <option value="轿车 E-M">轿车 E-M</option> 
+				                    <option value="轿车 E-U">轿车 E-U</option> 
+								</select>
+							</label>
+
+						</div>
+						<div class="col-md-2 col-xs-3 col-sm-3">
+							<span class="btn-com" style="background: #2CB1B1; color: #fff;">确定</span>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="panel">
+							<div class="panel-body paneler" style="box-shadow: none;">
+								<div id="topTen" class="panele-box" style="height: 400px;"></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-6 col-xs-12 col-sm-12" style="padding-top: 40px;">
+					<div class="panel" style="overflow-x:auto;">
+						<div class="panel-body paneler" style="padding:0;">
+							<table width="100%" border="0" class="bigtable table-hover" style="" id="myTable">
+								<thead>
+									<tr class="head" style="background-color: rgb(255, 255, 255);">
+										<td class="out col-md-1" style="width:14.166666661%">排名</td>
+										<td class="col-md-1" style="width:28.333333322%;" class="over">厂商</td>
+										<td class="out col-md-1" style="width:14.166666661%">销量</td>
+										<td class="over col-md-1" style="width:14.166666661%">月同比</td>
+										<td class="out col-md-1" style="width:14.166666661%">月环比</td>
+										<td class="over col-md-1" style="width:14.166666661%">市场份额</td>
+									</tr>
+								</thead>
+								<tbody id="tbody-renzheng">
+									<tr>
+										<td>1</td>
+										<td>朗逸</td>
+										<td>47595</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>全新英朗</td>
+										<td>35398</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>轩逸</td>
+										<td>33920</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>卡罗拉</td>
+										<td>31105</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>福瑞斯</td>
+										<td>26484</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>速腾</td>
+										<td>26215</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>捷达</td>
+										<td>22851</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td>新桑塔纳</td>
+										<td>22325</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td>帝豪EC7</td>
+										<td>20527</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td>宝来</td>
+										<td>19444</td>
+										<td>10%</td>
+										<td>10%</td>
+										<td>20%</td>
+									</tr>
+
+								</tbody>
+							</table>
+							<div id="jindu" style="display: none;">
+								<img src="images/timg.gif">
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 42px; height: 44px;font-size: 24px;">
+					<!--more statistics box start-->
+					2018年1-11月累计销量数据概况
+				</div>
+
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-md-4">
+
+					<div class="row">
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							<div class="panel">
+								<div class="panel-body paneler">
+									<div class="row">
+										<div class="col-md-12 ">1-11月累计销量</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 text-center text-large">21,490,222</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-green"><span class="identical">环比:</span>-12%↓</div>
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-red"><span class="identical">同比:</span>2.80%↑</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							<div class="panel">
+								<div class="panel-body paneler">
+									<div class="row">
+										<div class="col-md-12">1-11月国产乘用车累计销量</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 text-center text-large">1,894,500</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-green"><span class="identical">环比:</span>-23%↓</div>
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-red"><span class="identical">同比:</span>4.70%↑</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12">
+							<div class="panel">
+								<div class="panel-body paneler">
+									<div class="row">
+										<div class="col-md-12">1-11月进口乘用车累计销量</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 text-center text-large">1,739</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-green"><span class="identical">环比:</span>-10%↓</div>
+										<div class="col-md-6 col-xs-6 col-sm-6 text-center text-red"><span class="identical">同比:</span>3.50%↑</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="member-trend2" class="panele-box" style="height: 370px;"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</section>
+	</body>
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery.nicescroll.js"></script>
+	<script src="js/scripts.js"></script>
+	<script type="text/javascript">
+		var follow1 = document.getElementById('member-trend');
+		var myChart1 = echarts.init(follow1);
+		var follow2 = document.getElementById('salesVolume');
+		var myChart2 = echarts.init(follow2);
+		var follow3 = document.getElementById('fuelVolume');
+		var myChart3 = echarts.init(follow3);
+		var follow4 = document.getElementById('areaVolume');
+		var myChart4 = echarts.init(follow4);
+		var follow5 = document.getElementById('topTen');
+		var myChart5 = echarts.init(follow5);
+		var follow6 = document.getElementById('member-trend2');
+		var myChart6 = echarts.init(follow6);
+
+		var option1 = {
+
+			title: {
+				text: "月销量趋势图",
+				textStyle: {        
+					fontSize: 14,
+					        fontStyle: 'normal',
+					        fontWeight: 'normal',
+					      
+				},
+				 x:'center',
+        y:'top',
+        textAlign:'left'
+			},
+			color: ['rgba(44,177,177,.4)', 'rgba(44,177,177,.9)'],
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'cross',
+					crossStyle: {
+						color: '#999'
+					}
+				}
+			},
+			toolbox: {
+				feature: {
+					/*dataView: {
+						show: true,
+						readOnly: false
+					},*/
+					magicType: {
+						show: true,
+						type: ['line', 'bar']
+					}
+				}
+			},
+			legend: {
+				data: ['2018年', '2019年'],
+				 orient: 'vertical',
+					left: 'right',
+					top:'70%',
+			},
+			xAxis: [{
+				type: 'category',
+				data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+				splitLine: {
+					"show": false
+				},
+				"axisTick": { //y轴刻度线
+					"show": false
+				},
+				axisPointer: {
+					type: 'shadow'
+				}
+			}],
+			yAxis: [{
+					type: 'value',
+					name: '销量(万辆)',
+					min: 0,
+					max: 250,
+					interval: 50,
+					splitLine: {
+						"show": false
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+
+				}
+
+			],
+			series: [{
+					name: '2018年',
+					type: 'bar',
+					data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+				}, {
+					name: '2019年',
+					type: 'bar',
+					data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+				}
+
+			]
+
+		}
+		myChart1.setOption(option1);
+
+		var option2 = {
+
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b} : {c} ({d}%)"
+			},
+			legend: {
+					orient: 'vertical',
+					left: 'right',
+					top:'bottom',
+					data: ['轿车', '交叉型', 'SUV', 'MPV'],
+					textStyle:{
+                            fontSize: 10,//字体大小
+                        },
+
+					
+				},
+			series: [{
+				name: '车型销量',
+				type: 'pie',
+				radius: '60%',
+				center: ['50%', '50%'],
+				data: [{
+					value: 1378464,
+					name: '轿车',
+					itemStyle: {
+						color:'#FA8677'
+					}
+				}, {
+					value: 1063495,
+					name: '交叉型',
+					itemStyle: {
+						color: '#52CAC9'
+					}
+				}, {
+					value: 97581,
+					name: 'SUV',
+					itemStyle: {
+						color: '#5eb8dd'
+					}
+				}, {
+					value: 59382,
+					name: 'MPV',
+					itemStyle: {
+						color: '#6B8BBC'
+					}
+				}, ],
+				itemStyle: {
+					emphasis: {
+						shadowBlur: 10,
+						shadowOffsetX: 0,
+						shadowColor: 'rgba(0, 0, 0, 0.5)'
+					},
+					normal: {
+						borderWidth:2,
+						borderColor:'#FFFFFF',
+						label: {
+							show: true,
+							formatter: '{d}%'
+								// formatter:function(data){ return data.percent.toFixed(1)+"%";}
+						},
+						labelLine: {
+							show: true
+						}
+					}
+				}
+			}]
+
+		}
+		myChart2.setOption(option2);
+		var option3 = {
+
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b} : {c} ({d}%)"
+			},
+			legend: {
+				orient: 'vertical',
+				left: 'right',
+				top:'bottom',
+				data: ['汽油', '纯电动', '油电混合', '插电式混合动力', '柴油'],
+				textStyle:{
+                            fontSize: 10,//字体大小
+                        },
+			},
+			series: [{
+				name: '燃料形式销量',
+				type: 'pie',
+				radius: '60%',
+				center: ['50%', '50%'],
+				data: [{
+					value: 2271458,
+					name: '汽油',
+					itemStyle: {
+						color:'#FA8677'
+					}
+				}, {
+					value: 215375,
+					name: '纯电动',
+					itemStyle: {
+						color: '#52CAC9'
+					}
+				}, {
+					value: 64215,
+					name: '油电混合',
+					itemStyle: {
+						color: '#5eb8dd'
+					}
+				}, {
+					value: 32997,
+					name: '插电式混合动力',
+					itemStyle: {
+						color: '#6B8BBC'
+					}
+				}, {
+					value: 4095,
+					name: '柴油',
+					itemStyle: {
+						color: '#F2d877'
+					}
+				}, ],
+				itemStyle: {
+					emphasis: {
+						shadowBlur: 10,
+						shadowOffsetX: 0,
+						shadowColor: 'rgba(0, 0, 0, 0.5)'
+					},
+					normal: {borderWidth:2,
+						borderColor:'#FFFFFF',
+						label: {
+							show: true,
+							formatter: '{d}%',
+						},
+						labelLine: {
+							show: true
+						}
+					}
+				}
+			}]
+
+		}
+		myChart3.setOption(option3);
+		var option4 = {
+
+			tooltip: {
+				trigger: 'item',
+				formatter: "{a} <br/>{b} :({d}%)"
+			},
+			legend: {
+				orient: 'vertical',
+				left: 'right',
+				top:'bottom',
+				data: ['华东', '华中', '华南', '华北', '西南','西北','东北'],
+				textStyle:{
+                            fontSize: 10,//字体大小
+                        },
+				
+			},
+			series: [{
+				name: '地域销量',
+				type: 'pie',
+				radius: '60%',
+				center: ['50%', '50%'],
+				data: [{
+					value: 836476,
+					name: '华东',
+					itemStyle: {
+						color:'#FA8677'
+					}
+				}, {
+					value: 364841,
+					name: '华中',
+					itemStyle: {
+						color: '#52CAC9'
+					}
+				}, {
+					value: 363005,
+					name: '华南',
+					itemStyle: {
+						color: '#5eb8dd'
+						
+					}
+				}, {
+					value: 341883,
+					name: '华北',
+					itemStyle: {
+						color: '#6B8BBC'
+					}
+				}, {
+					value: 311771,
+					name: '西南',
+					itemStyle: {
+						color: '#F2d877'
+					}
+				}, , {
+					value: 153991,
+					name: '西北',
+					itemStyle: {
+						color: '#B8867F'
+					}
+				}, , {
+					value: 120222,
+					name: '东北',
+					itemStyle: {
+						color: '#5F6E89'
+					}
+				}],
+				itemStyle: {
+					emphasis: {
+						shadowBlur: 10,
+						shadowOffsetX: 0,
+						shadowColor: 'rgba(0, 0, 0, 0.5)'
+					},
+					normal: {borderWidth:2,
+						borderColor:'#FFFFFF',
+						label: {
+							show: true,
+							formatter: '{d}%'
+						},
+						labelLine: {
+							show: true
+						}
+					}
+				}
+			}]
+
+		}
+		myChart4.setOption(option4);
+		var option5 = {
+
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'shadow'
+				}
+			},
+
+			grid: {
+				x: 90,
+				y: 20,
+				x2: 30,
+				y2: 0
+			},
+			xAxis: {
+				type: 'value',
+				boundaryGap: [0, 0.01],
+				splitLine: {
+					"show": false
+				},
+				"axisTick": { //y轴刻度线
+					"show": false
+				},
+			},
+			yAxis: {
+				type: 'category',
+				data: ['宝来', '帝豪EC7', '新桑塔纳', '捷达', '速腾', '福瑞斯', '卡罗拉', '轩逸', '全新英朗', '朗逸'],
+				"axisTick": { //y轴刻度线
+					"show": false
+				},
+				offset: 10,
+				nameTextStyle: {
+					fontSize: 15
+				}
+			},
+			series: [{
+					name: '2011年',
+					type: 'bar',
+					barWidth: 25,
+					data: [19444, 20527, 22325, 22851, 26215, 26484, 31105, 33920, 35398, 47595],
+					label: {
+						normal: {
+							show: true,
+							position: 'right',
+							offset: [5, -2],
+							textStyle: {
+								color: '#000',
+								fontSize: 13
+							}
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: function(params) {
+								var colorList = ['rgba(44,177,177,.4)', 'rgba(44,177,177,.4)', 'rgba(44,177,177,.4)', 'rgba(44,177,177,.4)', 'rgba(44,177,177,.5)', 'rgba(44,177,177,.6)', 'rgba(44,177,177,.7)', 'rgba(44,177,177,.8)', 'rgba(44,177,177,.9)', 'rgba(44,177,177,1)'];
+								return colorList[params.dataIndex];
+							}
+						},
+						emphasis: {
+//							color: '#00ffff'
+						}
+					},
+				}
+
+			]
+		}
+		myChart5.setOption(option5);
+		var option6 = {
+
+			title: {
+				text: "累计销量趋势图",
+				textStyle: {        
+					fontSize: 14,
+					        fontStyle: 'normal',
+					        fontWeight: 'normal',
+					      
+				},
+				 x:'center',
+        y:'top',
+        textAlign:'left'
+
+			},
+			color: ['rgba(44,177,177,.4)', 'rgba(44,177,177,.9)'],
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'cross',
+					crossStyle: {
+						color: '#999'
+					}
+				}
+			},
+			toolbox: {
+				feature: {
+					/*dataView: {
+						show: true,
+						readOnly: false
+					},*/
+					magicType: {
+						show: true,
+						type: ['line', 'bar']
+					}
+				}
+			},
+			legend: {
+				data: ['2018年', '2019年'],
+				orient: 'vertical',
+					left: 'right',
+					top:'70%',
+			},
+			xAxis: [{
+				type: 'category',
+				data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+				splitLine: {
+					"show": false
+				},
+				"axisTick": { //y轴刻度线
+					"show": false
+				},
+				axisPointer: {
+					type: 'shadow'
+				}
+			}],
+			yAxis: [{
+					type: 'value',
+					name: '销量(万辆)',
+					min: 0,
+					max: 250,
+					interval: 50,
+					splitLine: {
+						"show": false
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+
+				}
+
+			],
+			series: [{
+					name: '2018年',
+					type: 'bar',
+					data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+				}, {
+					name: '2019年',
+					type: 'bar',
+					data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+				}
+
+			]
+
+		}
+		myChart6.setOption(option6);
+	</script>
+
+</html>

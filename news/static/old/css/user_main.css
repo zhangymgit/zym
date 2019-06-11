@@ -1,0 +1,250 @@
+body {
+    font-family: 'Microsoft Yahei';
+    font-size: 12px;
+    color: #666;
+}
+
+html, body {
+    height: 100%
+}
+
+/* 登录页 */
+
+.login_form {
+    width: 368px;
+    height: 378px;
+    /* border: 1px solid #c6c6c5;
+    background-color: #fff; */
+    margin: 0 auto;
+}
+
+.login_title {
+    height: 60px;
+    width: 308px;
+    margin: 10px auto;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.login_title h1 {
+    font-size: 24px;
+    height: 60px;
+    line-height: 60px;
+    color: #a8a8a8;
+    float: left;
+    font-weight: bold;
+    margin-left: 44px;
+}
+
+.login_title a {
+    width: 100px;
+    height: 20px;
+    display: block;
+    font-size: 16px;
+    color: #0097c9;
+    text-indent: 26px;
+    float: left;
+    margin: 20px 0 0 36px
+}
+
+.form_input {
+    width: 308px;
+    height: 250px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.name_input, .pass_input {
+    width: 306px;
+    height: 36px;
+    border: 1px solid #e0e0e0;
+    background: url(../img/icons02.png) 280px -41px no-repeat #f8f8f8;
+    outline: none;
+    font-size: 14px;
+    text-indent: 10px;
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.pass_input {
+    top: 65px;
+    background-position: 280px -95px;
+}
+
+.user_error, .pwd_error, .vertify_error {
+    color: #f00;
+    position: absolute;
+    left: 0;
+    top: 43px;
+    display: none
+}
+
+.pwd_error {
+    top: 110px;
+}
+.vertify_error{
+    top: 210px
+}
+
+.more_input {
+    position: absolute;
+    left: 0;
+    top: 130px;
+    width: 100%
+}
+
+.more_input input {
+    float: left;
+    margin-top: 2px;
+}
+
+.more_input label {
+    float: left;
+    margin-left: 10px;
+}
+
+.more_input a {
+    float: right;
+    color: #666
+}
+
+.more_input a:hover {
+    color: #ff8800
+}
+
+.input_submit {
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 165px;
+    background-color: #0097c9;
+    color: #fff;
+    font-size: 22px;
+    border: 0px;
+    font-family: 'Microsoft Yahei';
+    cursor: pointer;
+}
+
+.input_submit{
+    height: 46px;
+}
+
+.vertify_btn{
+    width: 100%;
+    height: 46px;
+    position: absolute;
+    left: 0;
+    top: 160px;
+    background-color: #0097c9;
+    color: #fff;
+    font-size: 22px;
+    border: 0px;
+    font-family: 'Microsoft Yahei';
+    cursor: pointer;
+}
+
+/* 注册页面 */
+
+.r_con {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.reg_title {
+    width: 360px;
+    height: 50px;
+    float: left;
+    margin-left: 30px;
+    border-bottom: 1px solid #e0e0e0
+}
+
+.reg_title h1 {
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    font-size: 24px;
+    color: #a8a8a8;
+    font-weight: bold;
+}
+
+.reg_title a {
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    color: #0097c9;
+    padding-right: 20px;
+    margin-top: 15px
+}
+
+.reg_form {
+    width: 360px;
+    margin: 30px 0 0 30px;
+    float: left;
+    position: relative;
+}
+
+.reg_form li {
+    height: 70px;
+}
+
+.reg_form li label {
+    width: 70px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    font-size: 14px;
+    color: #a8a8a8
+}
+
+.reg_form li input {
+    width: 288px;
+    height: 38px;
+    border: 1px solid #e0e0e0;
+    float: left;
+    outline: none;
+    text-indent: 10px;
+    background-color: #f8f8f8
+}
+
+.reg_form li.agreement input {
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin-top: 13px
+}
+
+.reg_form li.agreement label {
+    width: 300px;
+    float: left;
+    margin-left: 10px;
+}
+
+
+.reg_form li.reg_sub input{
+    height: 46px;
+}
+
+
+.reg_form li .error_tip {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 70px;
+    color: #e62e2e;
+    display: none;
+}
+
+.reg_form li .error_tip2 {
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    color: #e62e2e;
+    display: none;
+}
+
+.vertify_fun{
+    position: relative;
+    top: -70px;
+}

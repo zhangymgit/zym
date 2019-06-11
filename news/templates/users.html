@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../static/css/clndr.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/style-responsive.css" rel="stylesheet">
+    <link href="../static/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="../static/css/jquery.pagination.css" rel="stylesheet">
+    <style type="text/css">
+        .ztable {
+            width: 100%;
+            position: relative;
+        }
+
+        .ztable tr.head {
+            font-size: 15px;
+            color: #000;
+            height: 50px;
+            text-align: center;
+        }
+
+        .ztable td {
+            height: 38px;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+            color: #666;
+            min-width: 70px;
+        }
+
+        .ztable tr.head td {
+            background: #424f63;
+            color: #fff;
+        }
+
+        .ztable tr:nth-child(odd) {
+            background: #f5f5f5;
+        }
+
+        .form-control {
+            color: #767676;
+        }
+
+        .car_btn {
+            color: #FFF;
+            width: 100px;
+            background: #2CB1B1;
+            border: 1px solid #979797;
+            cursor: pointer;
+        }
+
+        .car_btn:hover, .car_btn:link, .car_btn:visited, .car_btn:active {
+            color: #FFF;
+        }
+    </style>
+</head>
+
+<body class="sticky-header">
+<section style="padding-bottom:30px;">
+    <div class="row" style="padding-bottom: 20px;">
+        <div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;">用户管理</div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div style="overflow-x:auto;">
+                <div>
+                    <table width="100%" border="0" class="ztable" id="main_body">
+                        <thead>
+                        <tr class="head">
+                            <td>序号</td>
+                            <td>用户名</td>
+                            <td>真实姓名</td>
+                            <td>电话</td>
+                            <td>QQ</td>
+							<td>Email</td>
+                            <td>可导出</td>
+                            <td>有效期至</td>
+                            <td>当前状态</td>
+                            <td>操作</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for tr in rows %}
+                            <tr>
+                                <td class="">{{ tr.user_id }}</td>
+                                <td class="">{{ tr.login_id }}</td>
+                                <td class="">{{ tr.user_name }}</td>
+                                <td class="">{{ tr.mobile }}</td>
+                                <td class="">{{ tr.qq }}</td>
+                                <td class="">{{ tr.email }}</td>
+                                <td class=""><input type="checkbox" {% if tr.is_export %} checked {% endif %}/> </td>
+                                <td class="">{{ tr.effective_to }}</td>
+                                <td class="">{% ifequal  tr.is_enabled '已启用' %}<span class='btn btn-success'>已启用</span>{% else %} {% ifequal  tr.is_enabled '已停用' %}<span class='btn btn-primary'>已停用</span>{% else %}<span class='btn btn-warning'>已过期</span>{% endifequal %}{% endifequal %}</td>
+                                <td class=""><a class="btn btn-warning" href="#" onclick="javascript:moduleEdit(this,'edit')" style="margin:2px;">修改</a><a class="btn btn-danger" href="/users_manage/?id={{ tr.user_id}}&type=del" style="margin:2px;">删除</a><a class="btn btn-success" href="/users_manage/?id={{ tr.user_id}}&type=enabled" style="margin:2px;">启用</a><a class="btn btn-primary" href="/users_manage/?id={{ tr.user_id}}&type=disabled" style="margin:2px;">停用</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                    <div id="pagination" style="text-align: center;margin-top: 10px;"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+</body>
+<script src="../static/js/jquery-1.10.2.min.js"></script>
+<script src="../static/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+<script src="../static/js/jquery.pagination.min.js"></script>
+<script src="../static/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../static/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript">
+
+    
+
+    function init_pagaination(count = 10, currentPage = 1, totalPage = 10) {
+        $("#pagination").pagination({
+            jump: true,
+            coping: true,
+            homePage: '首页',
+            endPage: '末页',
+            prevContent: '上页',
+            nextContent: '下页',
+            callback: PageCallback,
+            count: count,
+            currentPage: currentPage,
+            totalPage: totalPage,
+        });
+    }
+	console.log({{page.allCount}});
+	init_pagaination({{page.pageLimit}},{{page.pageIndex}},{{page.pageCount}});
+    function PageCallback(page_index) {
+        get_userInfo(page_index)
+    }
+
+
+    function get_userInfo(page_index = '') {
+        var formData = new FormData();
+        if (page_index != '') {
+            formData.append("page_index", page_index);
+        }
+        formData.append("csrfmiddlewaretoken", "{{ csrf_token }}");
+
+        $.ajax({
+            url: "/users/",
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                all_html = '';
+                result = data.rows;
+                for (var i = 0; i < result.length; i++) {
+					console.log(result[i]['is_enabled']);
+					if(result[i]['is_export']==1){is_export="checked"}else{is_export=""};
+					if(result[i]['is_enabled']=="已启用"){is_enabled='<span class="btn btn-success">已启用</span>'};
+					if(result[i]['is_enabled']=="已停用"){is_enabled='<span class="btn btn-primary">已停用</span>'};
+					if(result[i]['is_enabled']=="已过期"){is_enabled='<span class="btn btn-warning">已过期</span>'};
+					html = '<tr><td class="">'+ result[i]['user_id']+'</td><td class="">'+ result[i]['login_id']+'</td><td class="">'+ result[i]['user_name']+'</td><td class="">'+ result[i]['mobile']+'</td><td class="">'+ result[i]['qq']+'</td><td class="">'+ result[i]['email']+'</td><td class=""><input type="checkbox" '+ is_export +'/></td> <td class="">'+ result[i]['effective_to']+'</td><td class="">'+is_enabled+'</td><td class=""><a class="btn btn-warning" href="#" onclick="javascript:moduleEdit(this,\'edit\')" style="margin:2px;">修改</a><a class="btn btn-danger" href="/users_manage/?id='+result[i]['user_id']+'&type=del" style="margin:2px;">删除</a><a class="btn btn-success" href="/users_manage/?id='+result[i]['user_id']+'&type=enabled" style="margin:2px;">启用</a><a class="btn btn-primary" href="/users_manage/?id='+result[i]['user_id']+'&type=disabled" style="margin:2px;">停用</a></td></tr>'
+                    all_html = all_html + html;
+                }
+                $('#main_body tbody').html(all_html);
+                $('#result_count').html(data.page.allCount);
+
+                init_pagaination(count = data.page.pageLimit, currentPage = data.page.pageIndex, totalPage = data.page.pageCount);
+            },
+        })
+    }
+</script>
+</html>

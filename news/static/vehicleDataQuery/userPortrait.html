@@ -1,0 +1,6592 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/clndr.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/style-responsive.css" rel="stylesheet">
+		<!--<script src="js/echartsold.min.js"></script>-->
+		<script src="js/echarts.min.js"></script>
+		<script src="js/china.js"></script>
+		<!--<script src="js/jquery.nicescroll.js"></script>-->
+		<!--<script src="js/scripts.js"></script>-->
+		<script src="js/area.js"></script>
+		<style type="text/css">
+			p.zhiweiTip {
+				position: absolute;
+				left: 50.5%;
+				top: 11%;
+				font-size: 13px;
+				color: #FFF;
+				transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				-moz-transform: translateX(-50%);
+				-webkit-transform: translateX(-50%);
+				-o-transform: translateX(-50%);
+			}
+			
+			.notification-menu .dropdown-toggle {
+				padding: 10px 10px;
+			}
+			
+			.identical {
+				color: #000000 !important;
+				margin-right: 5px;
+			}
+			
+			.table-hover> tbody> tr:hover> td,
+			.table-hover> tbody> tr:hover> th {
+				background: #CCC;
+			}
+			
+			.hide {
+				display: none !important;
+			}
+			
+			.logoresourse {
+				position: relative;
+			}
+			
+			.logoresourse:before {
+				content: "";
+				display: block;
+				height: 30px;
+				width: 30px;
+				border-radius: 50%;
+				background: url(images/logo.png) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				right: 25px;
+				bottom: 10px;
+				z-index: 1;
+			}
+			
+			.car_btn {
+				color: #FFF;
+				width: 100px;
+				background: #2CB1B1;
+				border: 1px solid #979797;
+				opacity: 1 !important;
+				margin-left: 20px;
+			}
+			
+			.carNum {
+				text-align: center;
+				width: 32%;
+				display: inline-block;
+				top: 50%;
+				position: absolute;
+				transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				-moz-transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+				-o-transform: translateY(-50%);
+			}
+			
+			.renzheng span {
+				top: 51px;
+				content: "";
+				position: absolute;
+				display: block;
+				height: 17px;
+				width: 50px;
+				background: url(images/renzheng.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			.shiming span {
+				top: 51px;
+				content: "";
+				position: absolute;
+				display: block;
+				height: 17px;
+				width: 50px;
+				background: url(images/shiming.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			#geo01:before,
+			#geo02:before,
+			#geo03:before {
+				content: "数据来源：2018年销量数据";
+				position: absolute;
+				display: inline-block;
+				height: 23px;
+				color: #000;
+				z-index: 1;
+				font-size: 12px;
+				bottom: 0;
+				right: 0;
+			}
+		</style>
+	</head>
+
+	<body class="sticky-header">
+
+		<section>
+
+			<div class="row">
+
+				<div class="col-sm-12">
+					<input type="hidden" name="" id="carId" value="1" />
+					<span class="" style="margin:0;padding:0;">
+							<span style="width: 10%; margin:0;padding:0;">选择车型:</span>
+					<label style="margin-right: 20px">
+								<select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm car_select" style="width: 100%;">
+									<option value="">丰田</option>
+								</select>
+							</label>
+					</span>
+					<span class="" style="margin:0;padding:0;">
+							<span style="width: 10%; margin:0;padding:0;">选择品牌:</span>
+					<label>
+								<select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm car_select" style="width: 100%;" id="pinpai">
+									<option value="1">卡罗拉</option>
+									<option value="2">凯美瑞</option>	
+									<option value="3">RAV4荣放</option>
+								</select>
+							</label>
+					</span>
+					<button class="btn car_btn">确定</button>
+				</div>
+
+			</div>
+
+		</section>
+
+		<section style="padding-bottom:30px;" id="kaluola">
+
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 42px; height: 44px;font-size: 24px;">
+					<!--more statistics box start-->
+					车型评价
+					<!--more statistics box end-->
+
+				</div>
+
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="carMark" class="panele-box" style="height: 400px;position: relative;">
+								<div class="col-md-8 col-xs-8 col-sm-8">
+									<div style="font-size: 26px;line-height: 75px;">卡罗拉</div>
+									<img style="width: 100%;    margin-top: 52px;" src="images/kaluola.png">
+								</div>
+								<div class="col-md-4 col-xs-4 col-sm-4" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); line-height: 27px;">
+									<p>综合评分：</p>
+									<p style="font-size: 19px;text-align: center;">4.61</p>
+									<p>车型印象:</p>
+									<p style="text-align: center;">舒适的</p>
+									<p style="text-align: center;">经典的</p>
+									<p style="text-align: center;">安全的</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="radar01" class="panele-box" style="height: 400px;"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="panel logoresourse">
+						<div class="panel-body paneler">
+							<div id="commonList" class="panele-box" style="height: 400px;">
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="renzheng" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/R4vaVDNUfsu0cuRWR8vmZyKpnXJt7V0ViczhYgYGpJl9HkrDlBlKv0FK32D6mkfBrZGAbUuhDgQhge4Ba0psMHREcibLkqbZ4P/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><span style="font-weight: 700;"><img src="images/dui.png" style="margin-right: 5px;"/></span>"丰田经典车，性能油耗都基本满意，畅销多年是有道理的，性价比也不错"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" /></span>"外观内饰真的很一般，追求高颜值的就别考虑了，普通家用通勤可以"</div>
+									</div>
+								</div>
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="renzheng" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/R4vaVDNUfstyn2EMZ757AhcmUa31tCfNJ9U6iax01Jic6oEaHXstJJBRRco6DHVl1ica3nb8Rv5reV29nhUwf0C7qmY5k2ibE4f7/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"丰田汽车性能优越，起步快发动机好，省油经济实惠，后期保养费用也不贵，是工人阶层能接受的范围之内"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"底盘有点高，在跑高速的时候有点飘，感觉不稳"</div>
+									</div>
+								</div>
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="renzheng" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/PP0wP9iaaVH0qhMG7qTQPia2joygucQI3PoVkwRh6uEkaehFcicyDZKJsGzLu1p5VLjibAIYT0jM6TlymsuLP17VxQhG4XiaQmMwS/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"无特别优点，无特别缺点油耗不会太高也不会太省，但也没与出现故障，日常家用合适"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"起步略肉，起步瞬时油耗大，40Km/h后动力就上来了，内饰一般"</div>
+									</div>
+								</div>
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="shiming" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;text-align: center;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/R4vaVDNUfsu0cuRWR8vmZ8pEBQILjTWx3ZtxEphYRCHlDlicwabzCNxoiaDdYkjwKiaiawqAKpbE5rAxAUpmibl8WcxwLmsGgyDibz/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"最满意的还是外观，因为这款车的外观让我很喜欢，很炫酷，特别是尾部的造型很有个性"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"红绿灯起步再加上开了空调，感觉起步较慢，转速高起来了又会感觉有点串"</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 42px; height: 44px;font-size: 24px;">
+					<!--more statistics box start-->
+					用户画像
+					<!--more statistics box end-->
+
+				</div>
+
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="carMark" class="panele-box" style="height: auto;">
+
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: #26AFB4;color:#fff;line-height: 40px;margin-bottom: 10px;font-size:16px;">经济进取型</p>
+										<img style=" width: 100%; border-bottom: 3px solid #26AFB4;" src="images/01.png" />
+										<div style="position: absolute;bottom: 0;left: 50%;background: #352f2f;transform: translateX(-50%); width: 100%;opacity: 0.6;color: #fff;margin-bottom: 3px;">
+											<!--<p style="text-align: center;width: 100%;">年轻化</p>
+											<p style="text-align: center;">单身/二人世界</p>
+											<p style="text-align: center;">事业起步</p>-->
+											<!--<p style="text-align: center;">舒适的</p>-->
+
+										</div>
+									</div>
+								</div>
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">潜力稳进型</p>
+										<img style=" width: 100%;" src="images/03_1.png" />
+
+									</div>
+								</div>
+
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">体面顾家型</p>
+										<img style=" width: 100%;" src="images/02_1.png" />
+
+									</div>
+								</div>
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">富有精英型</p>
+										<img style=" width: 100%;" src="images/04_1.png" />
+
+									</div>
+								</div>
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">稳健务实型</p>
+										<img style=" width: 100%;" src="images/05_1.png" />
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;font-size:18px;">
+				<!--more statistics box start-->
+				人口属性
+				<!--more statistics box end-->
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<!--性别，年龄-->
+								<div class="row" style="height: 200px">
+									<div class="row" style="    height: 16px;    line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>性别</span></div>
+									<div class="row" style="margin-top: 20px;">
+										<span style="display: inline-block; height: 34px; line-height: 34px; width: 72px; text-align: center; vertical-align: top; margin-right: 20px; background: #00B7EE; margin-left: 47px; margin-top: 13px; color: #Fff;">男:63%</span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+									<div class="row" style="margin-top: 18px;">
+										<span style=" display: inline-block; height: 34px; line-height: 34px; width: 72px; text-align: center; vertical-align: top; margin-right: 20px; background: #F075A2; margin-left: 47px; margin-top: 13px; color: #Fff;">女:37%</span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+								</div>
+
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>年龄</span></div>
+									<div class="row">
+										<div id="age01" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6" style="height: 400px;">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>学历</span></div>
+									<div class="row">
+										<div id="xueli01" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>家庭</span></div>
+									<div class="row">
+										<div id="jiating01" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>居住地</span></div>
+								<div id="geo01" class="panele-box" style="height: 400px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;font-size:18px;">
+				<!--more statistics box start-->
+				社会属性
+				<!--more statistics box end-->
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<!--性别，年龄-->
+								<div class="row" style="height: 200px">
+									<div class="row" style="    height: 16px;    line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>个人月收入</span></div>
+									<div class="row" style="margin-top: 20px;line-height: 12;text-align: center;">
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+								</div>
+
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>家庭月收入</span></div>
+									<div class="row" style="margin-top: 20px;line-height: 12;text-align: center;">
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6" style="height: 400px;">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>行业</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">通信业</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">服务业</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">零售业</span>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>企业性质</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">个体</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">私营企业</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">国营企业</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>职位</span></div>
+									<div class="row">
+										<!--<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">中层管理</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">一般职员</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">高层管理</span>
+											</div>
+										</div>-->
+										<div style="width: 87%; margin:0 auto;height: 200px;position: relative;">
+											<div class="carNum zhiwei" style="">
+												<p>
+													<img src="images/zhiwei01.png" />
+												</p>
+												<p style="margin-top: 10px;" class="zhiweiTip">中层管理</p>
+											</div>
+											<div class="carNum zhiwei" style="left: 32%;">
+												<p>
+													<img src="images/zhiwei02.png" />
+												</p>
+												<p style="margin-top: 10px;" class="zhiweiTip" style="font-size: 15px;font-weight: 700;">一般职员</p>
+											</div>
+											<div class="carNum zhiwei" style="left: 64%;top: 52%;">
+												<p>
+													<img src="images/zhiwei03.png" />
+												</p>
+												<p style="margin-top: 10px;" class="zhiweiTip">高层管理</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>职业年限</span></div>
+									<div class="row">
+										<!--<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">工作3年以内</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">工作3-9年</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">工作10-19年</span>
+											</div>
+										</div>-->
+										<div style="    position: relative;    left: 20%;    top: 60%;margin-top: 20px;">
+											<img src="images/nianxian.png" />
+											<span style="    position: absolute;    top: -7%;font-size: 15px;font-weight: 700;">工作3-9年</span>
+											<span style="    position: absolute;    top: 23%;">工作3年以内</span>
+											<span style="    position: absolute;    top: 52%;">工作10-19年</span>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;font-size:18px;">
+				<!--more statistics box start-->
+				汽车相关
+				<!--more statistics box end-->
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<!--性别，年龄-->
+								<div class="row" style="height: 200px">
+									<div class="row" style="    height: 16px;    line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>车辆用途</span></div>
+									<div class="row">
+										<!--<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">油耗</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">性价比</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">配置</span>
+											</div>
+										</div>-->
+										<div style="width: 87%; margin:0 auto;height: 200px;position: relative;">
+											<div class="carNum" style="">
+												<p>
+													<img src="images/yongtu01.png" />
+												</p>
+												<p style="margin-top: 10px;">周末出游</p>
+											</div>
+											<div class="carNum" style="left: 32%;top: 45%;">
+												<p>
+													<img src="images/yongtu02.png" />
+												</p>
+												<p style="margin-top: 10px;">上班代步</p>
+											</div>
+											<div class="carNum" style="left: 64%;">
+												<p>
+													<img src="images/yongtu03.png" />
+												</p>
+												<p style="margin-top: 10px;">接送孩子</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>驾龄</span></div>
+									<div class="row">
+										<div id="jialing01" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6" style="height: 400px;">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>购车渠道</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">论坛</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">专业汽车网站</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">门户网站</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>购车重视点</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 71px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">油耗</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">性价比</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">配置</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>新增换购</span></div>
+									<div class="row">
+										<div id="zenggou01" class="panele-box" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>保有车辆数</span></div>
+									<div class="row" style="height: 180px;">
+										<div style="width: 87%;margin:0 auto;height: 100%;position: relative;top: 22px;">
+											<div class="carNum" style="">
+												<p>
+													<img src="images/carNum.png" />
+												</p>
+												<p style="margin-top: 10px;">一辆车96%</p>
+											</div>
+											<div class="carNum" style="left: 32%;">
+												<p>
+													<img src="images/carNum.png" />
+													<img src="images/carNum.png" />
+												</p>
+												<p style="margin-top: 10px;">两辆车：3%</p>
+											</div>
+											<div class="carNum" style="left: 64%;">
+												<p>
+													<img src="images/carNum.png" />
+													<img src="images/carNum.png" />
+													<img src="images/carNum.png" />
+												</p>
+												<p style="margin-top: 10px;">三辆及以上：1%</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section style="padding-bottom:30px;" id="kaimeirui">
+
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 42px; height: 44px;font-size: 24px;">
+					<!--more statistics box start-->
+					车型评价
+					<!--more statistics box end-->
+
+				</div>
+
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="carMark" class="panele-box" style="height: 400px;position: relative;">
+								<div class="col-md-8 col-xs-8 col-sm-8">
+									<div style="font-size: 26px;line-height: 75px;">凯美瑞</div>
+									<img style="width: 100%;    margin-top: 52px;" src="images/kaimeirui.png">
+								</div>
+								<div class="col-md-4 col-xs-4 col-sm-4" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); line-height: 27px;">
+									<p>综合评分：</p>
+									<p style="font-size: 19px;text-align: center;">4.56</p>
+									<p>车型印象:</p>
+									<p style="text-align: center;">安全的</p>
+									<p style="text-align: center;">优雅的</p>
+									<p style="text-align: center;">舒适的</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="radar02" class="panele-box" style="height: 400px;"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="panel logoresourse">
+						<div class="panel-body paneler">
+							<div id="commonList" class="panele-box" style="height: 400px;">
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="renzheng" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;">
+											<span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/PP0wP9iaaVH0PtvicbcF6qONsLhLeTpJlz3QickcW5Z8GxDXqA80OOmxkzQHJ8ytP8UcNRNXKqCHrRV18Q6UOueCVgib6fcaTH1q/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"性能很好，油耗一般，外观漂亮，很舒适。"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"底盘偏低，每次郊外都会被刮到底盘。"</div>
+									</div>
+								</div>
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="shiming" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;">
+											<span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/R4vaVDNUfsu0cuRWR8vmZ1SBLTHucLU4gpRHzmT9ywib0UxicI9Dt1F7RZ0OFXJPBg25sMQ23bT6Fe5zxpyrN5zaAbRSL78A6o/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"性能还不错.目前油耗9升左右。舒适度不错。主要上下班代代步。偶尔跑个小长途"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"导航不好用。除了主驾窗有、其他3门没有一健升降。车内烟灰缸有3个。"</div>
+									</div>
+								</div>
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="renzheng" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/UG0ElvicR3jCIsGRUKibhE8YwBM3djSPPwkcyVbbPQBGHariaxV7bnJqmIMS29fnibMzibdtrZJMwjvok0iaSaL0y35icnibS55GQTor/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"1.整车隔音非常不错2.音响一流 3.坐椅均有透气与加热功能 上价格比较有震撼力，家用、商用皆可。"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"音响效果比较一般，低配轮胎的尺寸偏小，但是整体还行，这些小瑕疵还是可以容忍的。"</div>
+
+									</div>
+								</div>
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="renzheng" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/uMH80ibUticaey168GeyYvytzJYPBUcAoZG208bUBwHIHLSef3kEDibM11Ex3nxIssZpTDvkySpIm4PFib5Yxic8F5QvL2GueXhDu/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"节能方便相当不错，挺喜欢，推荐大家购买"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"车身外观一般，车漆太薄，希望提高这方面的不足"</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 42px; height: 44px;font-size: 24px;">
+					<!--more statistics box start-->
+					用户画像
+					<!--more statistics box end-->
+
+				</div>
+
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="carMark" class="panele-box" style="height: auto;">
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">经济进取型</p>
+										<img style=" width: 100%;" src="images/01_1.png" />
+
+									</div>
+								</div>
+
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">潜力稳进型</p>
+										<img style=" width: 100%;" src="images/03_1.png" />
+
+									</div>
+								</div>
+
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: #26AFB4;color:#fff;line-height: 40px;margin-bottom: 10px;font-size:16px;">体面顾家型</p>
+										<img style=" width: 100%; border-bottom: 3px solid #26AFB4;" src="images/02.png" />
+										<!--<div style="position: absolute;bottom: 0;left: 50%;background: #352f2f;transform: translateX(-50%); width: 100%;opacity: 0.6;color: #fff;margin-bottom: 3px;">
+											<p style="text-align: center;width: 100%;">中年微熟型</p>
+											<p style="text-align: center;">三口之家</p>
+											<p style="text-align: center;">私企业主</p>
+										</div>-->
+									</div>
+								</div>
+
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">富有精英型</p>
+										<img style=" width: 100%;" src="images/04_1.png" />
+
+									</div>
+								</div>
+
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">稳健务实型</p>
+										<img style=" width: 100%;" src="images/05_1.png" />
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;font-size:18px;">
+				<!--more statistics box start-->
+				人口属性
+				<!--more statistics box end-->
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<!--性别，年龄-->
+								<div class="row" style="height: 200px">
+									<div class="row" style="    height: 16px;    line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>性别</span></div>
+									<div class="row" style="margin-top: 20px;">
+										<span style="display: inline-block; height: 34px; line-height: 34px; width: 72px; text-align: center; vertical-align: top; margin-right: 20px; background: #00B7EE; margin-left: 47px; margin-top: 13px; color: #Fff;">男:72%</span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+									<div class="row" style="margin-top: 18px;">
+										<span style=" display: inline-block; height: 34px; line-height: 34px; width: 72px; text-align: center; vertical-align: top; margin-right: 20px; background: #F075A2; margin-left: 47px; margin-top: 13px; color: #Fff;">女:28%</span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman02.png) no-repeat; background-size: 100% 100%;"></span>
+										<!--<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman02.png) no-repeat; background-size: 100% 100%;"></span>-->
+									</div>
+								</div>
+
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>年龄</span></div>
+									<div class="row">
+										<div id="age02" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6" style="height: 400px;">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>学历</span></div>
+									<div class="row">
+										<div id="xueli02" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>家庭</span></div>
+									<div class="row">
+										<div id="jiating02" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>居住地</span></div>
+								<div id="geo02" class="panele-box" style="height: 400px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;font-size:18px;">
+				<!--more statistics box start-->
+				社会属性
+				<!--more statistics box end-->
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<!--性别，年龄-->
+								<div class="row" style="height: 200px">
+									<div class="row" style="    height: 16px;    line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>个人月收入</span></div>
+									<div class="row" style="margin-top: 20px;line-height: 12;text-align: center;">
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+								</div>
+
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>家庭月收入</span></div>
+									<div class="row" style="margin-top: 20px;line-height: 12;text-align: center;">
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6" style="height: 400px;">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>行业</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">金融/地产业</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">零售业</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">餐饮业</span>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>企业性质</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">私营企业</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">个体</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">国营企业</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>职位</span></div>
+									<div class="row">
+										<!--<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">一般职员</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">中层管理</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">高层管理</span>
+											</div>
+										</div>-->
+										<div style="width: 87%; margin:0 auto;height: 200px;position: relative;">
+											<div class="carNum zhiwei" style="">
+												<p>
+													<img src="images/zhiwei01.png" />
+												</p>
+												<p style="margin-top: 10px;" class="zhiweiTip">一般职员</p>
+											</div>
+											<div class="carNum zhiwei" style="left: 32%;">
+												<p>
+													<img src="images/zhiwei02.png" />
+												</p>
+												<p style="margin-top: 10px;" class="zhiweiTip" style="font-size: 15px;font-weight: 700;">中层管理</p>
+											</div>
+											<div class="carNum zhiwei" style="left: 64%;top: 52%;">
+												<p>
+													<img src="images/zhiwei03.png" />
+												</p>
+												<p style="margin-top: 10px;" class="zhiweiTip">高层管理</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>职业年限</span></div>
+									<div class="row">
+										<!--<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">工作3-9年</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">工作10-19年</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">工作3年以内</span>
+											</div>
+										</div>-->
+										<div style="    position: relative;    left: 20%;    top: 60%;margin-top: 20px;">
+											<img src="images/nianxian.png" />
+											<span style="    position: absolute;    top: -7%;font-size: 15px;font-weight: 700;">工作10-19年</span>
+											<span style="    position: absolute;    top: 23%;">工作3-9年</span>
+											<span style="    position: absolute;    top: 52%;">工作3年以内</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;font-size:18px;">
+				<!--more statistics box start-->
+				汽车相关
+				<!--more statistics box end-->
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<!--性别，年龄-->
+								<div class="row" style="height: 200px">
+									<div class="row" style="    height: 16px;    line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>车辆用途</span></div>
+									<div class="row">
+										<div style="width: 87%; margin:0 auto;height: 200px;position: relative;">
+											<div class="carNum" style="">
+												<p>
+													<img src="images/yongtu01.png" />
+												</p>
+												<p style="margin-top: 10px;">周末出游</p>
+											</div>
+											<div class="carNum" style="left: 32%;top: 45%;">
+												<p>
+													<img src="images/yongtu02.png" />
+												</p>
+												<p style="margin-top: 10px;">上班代步</p>
+											</div>
+											<div class="carNum" style="left: 64%;">
+												<p>
+													<img src="images/yongtu04.png" />
+												</p>
+												<p style="margin-top: 10px;">城市往来</p>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>驾龄</span></div>
+									<div class="row">
+										<div id="jialing02" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6" style="height: 400px;">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>购车渠道</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top:42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">论坛</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">专业汽车网站</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">微信订阅号</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>购车重视点</span></div>
+									<div class="row">
+										<!--<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">周末出游</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">上班代步</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">城往来</span>
+											</div>
+										</div>-->
+										<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 71px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">外观</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">舒适性</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">性价比</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>新增换购</span></div>
+									<div class="row">
+										<div id="zenggou02" class="panele-box" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>保有车辆数</span></div>
+									<div class="row" style="height: 180px;">
+										<div style="width: 87%;margin:0 auto;height: 100%;position: relative;top: 22px;">
+											<div class="carNum" style="">
+												<p>
+													<img src="images/carNum.png" />
+												</p>
+												<p style="margin-top: 10px;">一辆车92%</p>
+											</div>
+											<div class="carNum" style="left: 32%;">
+												<p>
+													<img src="images/carNum.png" />
+													<img src="images/carNum.png" />
+												</p>
+												<p style="margin-top: 10px;">两辆车：6%</p>
+											</div>
+											<div class="carNum" style="left: 64%;">
+												<p>
+													<img src="images/carNum.png" />
+													<img src="images/carNum.png" />
+													<img src="images/carNum.png" />
+												</p>
+												<p style="margin-top: 10px;">三辆及以上：2%</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section style="padding-bottom:30px;" id="rongfang">
+
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 42px; height: 44px;font-size: 24px;">
+					<!--more statistics box start-->
+					车型评价
+					<!--more statistics box end-->
+
+				</div>
+
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="carMark" class="panele-box" style="height: 400px;position: relative;">
+								<div class="col-md-8 col-xs-8 col-sm-8">
+									<div style="font-size: 26px;line-height: 75px;">RAV4荣放</div>
+									<img style="width: 100%;    margin-top: 52px;" src="images/rongfang.png">
+								</div>
+								<div class="col-md-4 col-xs-4 col-sm-4" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); line-height: 27px;">
+									<p>综合评分：</p>
+									<p style="font-size: 19px;text-align: center;">4.50</p>
+									<p>车型印象:</p>
+									<p style="text-align: center;">舒适的</p>
+									<p style="text-align: center;">动感的</p>
+									<p style="text-align: center;">安全的</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="radar03" class="panele-box" style="height: 400px;"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="panel logoresourse">
+						<div class="panel-body paneler">
+							<div id="commonList" class="panele-box" style="height: 400px;">
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="shiming" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/PP0wP9iaaVH3zQNyHCYw64wXpxfUVrAy5Sfv80f0tkGhFGbiahPd6Sic69hyBoNuMtZL6ffE2s36dhPuNAj2EWCxWleaibK8BqTz/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"作为标准的城市SUV外观比较讨喜，虽然不够硬朗，但有动感。没什么小毛病，动力也还不错，城市开也不费油"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"高配性价比不高，空间不大，后排空调制冷慢，后备箱空间一般。"</div>
+									</div>
+								</div>
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="renzheng" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/R4vaVDNUfssgKv0HDfgcQP76SkgjiahCrd6xJrLpWhPUXesmG24aKicRQPYoEojGX8WqU6rGUTtgePass3uibIZ4gxxgibuc1Czj/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"动力强，空间较大，适合家用性价比高。"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"油耗过于高，起步速度不太快，内饰不够豪华"</div>
+									</div>
+								</div>
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="renzheng" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/PiajxSqBRaEIFdLtKqtdQiaFHp0KKBDRt3Np5zckfUc6En0NKDjv0E7iaeGwYktSItUGkHIwTJma3DMVvu97HEKDQ/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"外形发动机给力，整体舒适，透气，开车感受稳定。"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"油耗高，遇到一些不平地势，动力差，维修费用高"</div>
+									</div>
+								</div>
+								<div class="row" style="height: 100px;overflow: hidden;">
+									<div class="col-md-2 col-xs-2 col-sm-2">
+										<div class="shiming" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden;text-align: center;"><span></span>
+											<img style="width: 100%;" src="http://thirdwx.qlogo.cn/mmopen/PP0wP9iaaVH144eyfKZjuGS9weMN53Liayy5HMHHvqO6vyrsJpFxqM5c8vTRDcEPSc7AfaJg1VzycVLvuIeWty5REy0ejTvTxo/132">
+										</div>
+									</div>
+									<div class="col-md-10 col-xs-10 col-sm-10">
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/dui.png" style="margin-right: 5px;" /></span>"油耗适中，通过能力够用，空间也够大。最喜欢它背个小书包的造型。"</div>
+										<div class="row" style="margin-left: 0;margin-right: 0;"><img src="images/cuo.png" style="margin-right: 5px;" /></span>"内饰一如既往的丰田风格，又老气又廉价感满满。科技配置也是远远不如十万的国产车。"</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 42px; height: 44px;font-size: 24px;">
+					<!--more statistics box start-->
+					用户画像
+					<!--more statistics box end-->
+
+				</div>
+
+			</div>
+
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div id="carMark" class="panele-box" style="height: auto;">
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">经济进取型</p>
+										<img style=" width: 100%;" src="images/01_1.png" />
+
+									</div>
+								</div>
+
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: #26AFB4;color:#fff;line-height: 40px;margin-bottom: 10px;font-size:16px;">潜力稳进型</p>
+										<img style=" width: 100%; border-bottom: 3px solid #26AFB4;" src="images/03.png" />
+										<!--<div style="position: absolute;bottom: 0;left: 50%;background: #352f2f;transform: translateX(-50%); width: 100%;opacity: 0.6;color: #fff;margin-bottom: 3px;">
+											
+<p style="text-align: center;width: 100%;">年轻化</p>
+											<p style="text-align: center;">单身/二人世界</p>
+											<p style="text-align: center;">高学历</p>
+
+
+										</div>-->
+									</div>
+								</div>
+
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">体面顾家型</p>
+										<img style=" width: 100%;" src="images/02_1.png" />
+									</div>
+								</div>
+
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">富有精英型</p>
+										<img style=" width: 100%;" src="images/04_1.png" />
+									</div>
+								</div>
+								<div class="col-md-11 col-xs-4 col-sm-4">
+									<div style="overflow: hidden;position: relative;">
+
+										<p style="text-align: center;background: rgba(244,244,244,1);color:#000;line-height: 40px;margin-bottom: 10px;font-size:16px;">稳健务实型</p>
+										<img style=" width: 100%;" src="images/05_1.png" />
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;font-size:18px;">
+				<!--more statistics box start-->
+				人口属性
+				<!--more statistics box end-->
+			</div>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<!--性别，年龄-->
+								<div class="row" style="height: 200px">
+									<div class="row" style="    height: 16px;    line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>性别</span></div>
+									<div class="row" style="margin-top: 20px;">
+										<span style="display: inline-block; height: 34px; line-height: 34px; width: 72px; text-align: center; vertical-align: top; margin-right: 20px; background: #00B7EE; margin-left: 47px; margin-top: 13px; color: #Fff;">男:68%</span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/man02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+									<div class="row" style="margin-top: 18px;">
+										<span style=" display: inline-block; height: 34px; line-height: 34px; width: 72px; text-align: center; vertical-align: top; margin-right: 20px; background: #F075A2; margin-left: 47px; margin-top: 13px; color: #Fff;">女:32%</span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman02.png) no-repeat; background-size: 100% 100%;"></span>
+										<!--<span style="display:inline-block;margin-left:10px;height: 50px;width: 19px;background: url(images/wman02.png) no-repeat; background-size: 100% 100%;"></span>-->
+									</div>
+								</div>
+
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>年龄</span></div>
+									<div class="row">
+										<div id="age03" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6" style="height: 400px;">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>学历</span></div>
+									<div class="row">
+										<div id="xueli03" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>家庭</span></div>
+									<div class="row">
+										<div id="jiating03" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>居住地</span></div>
+								<div id="geo03" class="panele-box" style="height: 400px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;font-size:18px;">
+				<!--more statistics box start-->
+				社会属性
+				<!--more statistics box end-->
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<!--性别，年龄-->
+								<div class="row" style="height: 200px">
+									<div class="row" style="    height: 16px;    line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>个人月收入</span></div>
+									<div class="row" style="margin-top: 20px;line-height: 12;text-align: center;">
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+								</div>
+
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>家庭月收入</span></div>
+									<div class="row" style="margin-top: 20px;line-height: 12;text-align: center;">
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money01.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+										<span style="display:inline-block;margin-left:10px;height: 43px;width:25px;background: url(images/money02.png) no-repeat; background-size: 100% 100%;"></span>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6" style="height: 400px;">
+								<div class="row" style="height: 200px">
+									<div class="row" style="height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>行业</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">金融/地产业</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">互联网行业</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">建筑业</span>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style="height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>企业性质</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">私营企业</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">个体</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">国营企业</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>职位</span></div>
+									<div class="row">
+										<!--<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">一般职员</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">中层管理</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">高层管理</span>
+											</div>
+										</div>-->
+										<div style="width: 87%; margin:0 auto;height: 200px;position: relative;">
+											<div class="carNum zhiwei" style="">
+												<p>
+													<img src="images/zhiwei01.png" />
+												</p>
+												<p style="margin-top: 10px;" class="zhiweiTip">一般职员</p>
+											</div>
+											<div class="carNum zhiwei" style="left: 32%;">
+												<p>
+													<img src="images/zhiwei02.png" />
+												</p>
+												<p style="margin-top: 10px;" class="zhiweiTip" style="font-size: 15px;font-weight: 700;">中层管理</p>
+											</div>
+											<div class="carNum zhiwei" style="left: 64%;top: 52%;">
+												<p>
+													<img src="images/zhiwei03.png" />
+												</p>
+												<p style="margin-top: 10px;" class="zhiweiTip">高层管理</p>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>职业年限</span></div>
+									<div class="row">
+										<!--<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">工作10-19年</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">工作3-9年</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">工作3年以内</span>
+											</div>
+										</div>-->
+										<div style="    position: relative;    left: 20%;    top: 60%;margin-top: 20px;">
+											<img src="images/nianxian.png" />
+											<span style="    position: absolute;    top: -7%;font-size: 15px;font-weight: 700;">工作3-9年</span>
+											<span style="    position: absolute;    top: 23%;">工作10-19年</span>
+											<span style="    position: absolute;    top: 52%;">工作3年以内</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12" style="text-align: center; color: #FFFFFF;background: #353F4F;line-height: 40px;font-size:18px;">
+				<!--more statistics box start-->
+				汽车相关
+				<!--more statistics box end-->
+			</div>
+			<div class="row" style="margin-top: 10px;">
+
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel">
+						<div class="panel-body paneler">
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<!--性别，年龄-->
+								<div class="row" style="height: 200px">
+									<div class="row" style="    height: 16px;    line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>车辆用途</span></div>
+									<div class="row">
+										<!--<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">外观</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">性价比</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">操控性</span>
+											</div>
+										</div>-->
+
+										<div style="width: 87%; margin:0 auto;height: 200px;position: relative;">
+											<div class="carNum" style="">
+												<p>
+													<img src="images/yongtu05.png" />
+												</p>
+												<p style="margin-top: 10px;">户外自驾</p>
+											</div>
+											<div class="carNum" style="left: 32%;top: 45%;">
+												<p>
+													<img src="images/yongtu02.png" />
+												</p>
+												<p style="margin-top: 10px;">上班代步</p>
+											</div>
+											<div class="carNum" style="left: 64%;">
+												<p>
+													<img src="images/yongtu01.png" />
+												</p>
+												<p style="margin-top: 10px;">周末出游</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>驾龄</span></div>
+									<div class="row">
+										<div id="jialing03" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6" style="height: 400px;">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>购车渠道</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 42px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">微信订阅号</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">专业汽车网站</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">微博/博客</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;font-size: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;"><span>购车重视点</span></div>
+									<div class="row">
+										<div style="height: 200px;">
+											<div style="position: relative; background: url(images/Divbg.png) no-repeat; background-size: 100% 100%; height: 68px; width: 64%; margin: 0 auto; margin-top: 71px;">
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:-6px;">外观</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -33%;left: 33%;font-size:15px;font-weight:700;">性价比</span>
+												<span style="display: inline-block;width: 33.33%;text-align: center;position: absolute;top:5px;top: -1%;right: 0;">操控性</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 col-xs-6 col-sm-6">
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>新增换购</span></div>
+									<div class="row">
+										<div id="zenggou03" class="panele-box" style="height: 200px;  padding-bottom: 20px;"></div>
+									</div>
+								</div>
+								<div class="row" style="height: 200px">
+									<div class="row" style=" height: 16px; line-height: 16px;margin-left: 20px;padding-left:5px;border-left: 2px solid #41B9B9;font-size: 16px;"><span>保有车辆数</span></div>
+									<div class="row" style="height: 180px;">
+										<div style="width: 87%;margin:0 auto;height: 100%;position: relative;top: 22px;">
+											<div class="carNum" style="">
+												<p>
+													<img src="images/carNum.png" />
+												</p>
+												<p style="margin-top: 10px;">一辆车94%</p>
+											</div>
+											<div class="carNum" style="left: 32%;">
+												<p>
+													<img src="images/carNum.png" />
+													<img src="images/carNum.png" />
+												</p>
+												<p style="margin-top: 10px;">两辆车：5%</p>
+											</div>
+											<div class="carNum" style="left: 64%;">
+												<p>
+													<img src="images/carNum.png" />
+													<img src="images/carNum.png" />
+													<img src="images/carNum.png" />
+												</p>
+												<p style="margin-top: 10px;">三辆及以上：1%</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</body>
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery.nicescroll.js"></script>
+	<script src="js/scripts.js"></script>
+	<script type="text/javascript">
+		kaluola();
+		kameirui();
+		rongfang();
+		$('#rongfang').addClass('hide')
+		$('#kaimeirui').addClass('hide')
+		$("#pinpai").change(function() {
+			$('#carId').val($("#pinpai").val())
+		});
+		$('.car_btn').click(function() {
+			var id = $('#carId').val()
+			if(id == 1) {
+				$('#kaluola').removeClass('hide')
+				$('#rongfang').addClass('hide')
+				$('#kaimeirui').addClass('hide')
+			} else if(id == 2) {
+				$('#kaimeirui').removeClass('hide')
+				$('#kaluola').addClass('hide')
+				$('#rongfang').addClass('hide')
+			} else if(id == 3) {
+				$('#rongfang').removeClass('hide')
+				$('#kaluola').addClass('hide')
+				$('#kaimeirui').addClass('hide')
+			}
+		})
+
+		function kaluola() {
+
+			var follow1 = document.getElementById('geo01');
+			var myChart1 = echarts.init(follow1);
+			var follow2 = document.getElementById('radar01');
+			var myChart2 = echarts.init(follow2);
+			var follow3 = document.getElementById('age01');
+			var myChart3 = echarts.init(follow3);
+			var follow4 = document.getElementById('xueli01');
+			var myChart4 = echarts.init(follow4);
+			var follow5 = document.getElementById('jiating01');
+			var myChart5 = echarts.init(follow5);
+			var follow6 = document.getElementById('jialing01');
+			var myChart6 = echarts.init(follow6);
+			var follow7 = document.getElementById('zenggou01');
+			var myChart7 = echarts.init(follow7);
+			var geoCoordMap = geoCoordMap1;
+			var map = {
+				"city": [{
+					"name": "阿坝州",
+					"value": 0
+				}, {
+					"name": "阿克苏地区",
+					"value": 185
+				}, {
+					"name": "阿拉善盟",
+					"value": 0
+				}, {
+					"name": "阿勒泰地区",
+					"value": 15
+				}, {
+					"name": "阿里地区",
+					"value": 0
+				}, {
+					"name": "安康",
+					"value": 209
+				}, {
+					"name": "安庆",
+					"value": 293
+				}, {
+					"name": "安顺",
+					"value": 86
+				}, {
+					"name": "安阳",
+					"value": 196
+				}, {
+					"name": "鞍山",
+					"value": 1026
+				}, {
+					"name": "巴彦淖尔",
+					"value": 167
+				}, {
+					"name": "巴音郭楞州",
+					"value": 230
+				}, {
+					"name": "巴中",
+					"value": 113
+				}, {
+					"name": "白城",
+					"value": 157
+				}, {
+					"name": "白山",
+					"value": 6
+				}, {
+					"name": "白银",
+					"value": 84
+				}, {
+					"name": "百色",
+					"value": 242
+				}, {
+					"name": "蚌埠",
+					"value": 316
+				}, {
+					"name": "包头",
+					"value": 662
+				}, {
+					"name": "宝鸡",
+					"value": 240
+				}, {
+					"name": "保定",
+					"value": 962
+				}, {
+					"name": "保山",
+					"value": 200
+				}, {
+					"name": "北海",
+					"value": 602
+				}, {
+					"name": "北京",
+					"value": 3356
+				}, {
+					"name": "本溪",
+					"value": 154
+				}, {
+					"name": "毕节",
+					"value": 13
+				}, {
+					"name": "滨州",
+					"value": 668
+				}, {
+					"name": "亳州",
+					"value": 114
+				}, {
+					"name": "博尔塔拉州",
+					"value": 12
+				}, {
+					"name": "沧州",
+					"value": 1102
+				}, {
+					"name": "昌都地区",
+					"value": 0
+				}, {
+					"name": "昌吉州",
+					"value": 158
+				}, {
+					"name": "常德",
+					"value": 557
+				}, {
+					"name": "常州",
+					"value": 1233
+				}, {
+					"name": "朝阳",
+					"value": 297
+				}, {
+					"name": "潮州",
+					"value": 604
+				}, {
+					"name": "郴州",
+					"value": 57
+				}, {
+					"name": "成都",
+					"value": 5733
+				}, {
+					"name": "承德",
+					"value": 197
+				}, {
+					"name": "池州",
+					"value": 9
+				}, {
+					"name": "赤峰",
+					"value": 438
+				}, {
+					"name": "崇左",
+					"value": 61
+				}, {
+					"name": "滁州",
+					"value": 116
+				}, {
+					"name": "楚雄州",
+					"value": 230
+				}, {
+					"name": "达州",
+					"value": 243
+				}, {
+					"name": "大理州",
+					"value": 449
+				}, {
+					"name": "大连",
+					"value": 4018
+				}, {
+					"name": "大庆",
+					"value": 662
+				}, {
+					"name": "大同",
+					"value": 496
+				}, {
+					"name": "大兴安岭地区",
+					"value": 86
+				}, {
+					"name": "丹东",
+					"value": 177
+				}, {
+					"name": "德宏州",
+					"value": 176
+				}, {
+					"name": "德阳",
+					"value": 86
+				}, {
+					"name": "德州",
+					"value": 308
+				}, {
+					"name": "迪庆州",
+					"value": 1
+				}, {
+					"name": "定西",
+					"value": 50
+				}, {
+					"name": "东莞",
+					"value": 19696
+				}, {
+					"name": "东营",
+					"value": 397
+				}, {
+					"name": "鄂尔多斯",
+					"value": 329
+				}, {
+					"name": "鄂州",
+					"value": 99
+				}, {
+					"name": "恩施州",
+					"value": 192
+				}, {
+					"name": "防城港",
+					"value": 425
+				}, {
+					"name": "佛山",
+					"value": 9345
+				}, {
+					"name": "福州",
+					"value": 3255
+				}, {
+					"name": "抚顺",
+					"value": 295
+				}, {
+					"name": "抚州",
+					"value": 293
+				}, {
+					"name": "阜新",
+					"value": 163
+				}, {
+					"name": "阜阳",
+					"value": 583
+				}, {
+					"name": "甘南州",
+					"value": 0
+				}, {
+					"name": "甘孜州",
+					"value": 75
+				}, {
+					"name": "赣州",
+					"value": 878
+				}, {
+					"name": "固原",
+					"value": 9
+				}, {
+					"name": "广安",
+					"value": 102
+				}, {
+					"name": "广元",
+					"value": 108
+				}, {
+					"name": "广州",
+					"value": 14756
+				}, {
+					"name": "贵港",
+					"value": 663
+				}, {
+					"name": "贵阳",
+					"value": 1358
+				}, {
+					"name": "桂林",
+					"value": 861
+				}, {
+					"name": "哈尔滨",
+					"value": 5893
+				}, {
+					"name": "哈密地区",
+					"value": 148
+				}, {
+					"name": "海北州",
+					"value": 3
+				}, {
+					"name": "海东地区",
+					"value": 28
+				}, {
+					"name": "海口",
+					"value": 3801
+				}, {
+					"name": "海南州",
+					"value": 5
+				}, {
+					"name": "海西州",
+					"value": 26
+				}, {
+					"name": "邯郸",
+					"value": 529
+				}, {
+					"name": "汉中",
+					"value": 144
+				}, {
+					"name": "杭州",
+					"value": 3295
+				}, {
+					"name": "合肥",
+					"value": 1334
+				}, {
+					"name": "和田地区",
+					"value": 130
+				}, {
+					"name": "河池",
+					"value": 310
+				}, {
+					"name": "河源",
+					"value": 967
+				}, {
+					"name": "菏泽",
+					"value": 537
+				}, {
+					"name": "贺州",
+					"value": 458
+				}, {
+					"name": "鹤壁",
+					"value": 118
+				}, {
+					"name": "鹤岗",
+					"value": 219
+				}, {
+					"name": "黑河",
+					"value": 120
+				}, {
+					"name": "衡水",
+					"value": 288
+				}, {
+					"name": "衡阳",
+					"value": 857
+				}, {
+					"name": "红河州",
+					"value": 341
+				}, {
+					"name": "呼和浩特",
+					"value": 840
+				}, {
+					"name": "呼伦贝尔",
+					"value": 121
+				}, {
+					"name": "葫芦岛",
+					"value": 223
+				}, {
+					"name": "湖州",
+					"value": 899
+				}, {
+					"name": "怀化",
+					"value": 217
+				}, {
+					"name": "淮安",
+					"value": 447
+				}, {
+					"name": "淮北",
+					"value": 120
+				}, {
+					"name": "淮南",
+					"value": 12
+				}, {
+					"name": "黄冈",
+					"value": 321
+				}, {
+					"name": "黄南州",
+					"value": 1
+				}, {
+					"name": "黄山",
+					"value": 11
+				}, {
+					"name": "黄石",
+					"value": 215
+				}, {
+					"name": "惠州",
+					"value": 3881
+				}, {
+					"name": "鸡西",
+					"value": 147
+				}, {
+					"name": "吉安",
+					"value": 292
+				}, {
+					"name": "吉林",
+					"value": 610
+				}, {
+					"name": "济南",
+					"value": 2947
+				}, {
+					"name": "济宁",
+					"value": 730
+				}, {
+					"name": "佳木斯",
+					"value": 297
+				}, {
+					"name": "嘉兴",
+					"value": 1311
+				}, {
+					"name": "嘉峪关",
+					"value": 1
+				}, {
+					"name": "江门",
+					"value": 5760
+				}, {
+					"name": "焦作",
+					"value": 177
+				}, {
+					"name": "揭阳",
+					"value": 1262
+				}, {
+					"name": "金昌",
+					"value": 10
+				}, {
+					"name": "金华",
+					"value": 1632
+				}, {
+					"name": "锦州",
+					"value": 251
+				}, {
+					"name": "晋城",
+					"value": 364
+				}, {
+					"name": "晋中",
+					"value": 330
+				}, {
+					"name": "荆门",
+					"value": 349
+				}, {
+					"name": "荆州",
+					"value": 564
+				}, {
+					"name": "景德镇",
+					"value": 18
+				}, {
+					"name": "九江",
+					"value": 438
+				}, {
+					"name": "酒泉",
+					"value": 115
+				}, {
+					"name": "喀什地区",
+					"value": 146
+				}, {
+					"name": "开封",
+					"value": 255
+				}, {
+					"name": "克拉玛依",
+					"value": 263
+				}, {
+					"name": "克孜勒苏州",
+					"value": 2
+				}, {
+					"name": "昆明",
+					"value": 2823
+				}, {
+					"name": "拉萨",
+					"value": 40
+				}, {
+					"name": "来宾",
+					"value": 367
+				}, {
+					"name": "莱芜",
+					"value": 25
+				}, {
+					"name": "兰州",
+					"value": 717
+				}, {
+					"name": "廊坊",
+					"value": 678
+				}, {
+					"name": "乐山",
+					"value": 205
+				}, {
+					"name": "丽江",
+					"value": 110
+				}, {
+					"name": "丽水",
+					"value": 310
+				}, {
+					"name": "连云港",
+					"value": 244
+				}, {
+					"name": "凉山州",
+					"value": 39
+				}, {
+					"name": "辽阳",
+					"value": 400
+				}, {
+					"name": "辽源",
+					"value": 93
+				}, {
+					"name": "聊城",
+					"value": 434
+				}, {
+					"name": "林芝地区",
+					"value": 12
+				}, {
+					"name": "临沧",
+					"value": 73
+				}, {
+					"name": "临汾",
+					"value": 602
+				}, {
+					"name": "临夏州",
+					"value": 10
+				}, {
+					"name": "临沂",
+					"value": 1425
+				}, {
+					"name": "柳州",
+					"value": 999
+				}, {
+					"name": "六安",
+					"value": 238
+				}, {
+					"name": "六盘水",
+					"value": 311
+				}, {
+					"name": "龙岩",
+					"value": 764
+				}, {
+					"name": "陇南",
+					"value": 14
+				}, {
+					"name": "娄底",
+					"value": 302
+				}, {
+					"name": "泸州",
+					"value": 354
+				}, {
+					"name": "洛阳",
+					"value": 497
+				}, {
+					"name": "漯河",
+					"value": 194
+				}, {
+					"name": "吕梁",
+					"value": 115
+				}, {
+					"name": "马鞍山",
+					"value": 53
+				}, {
+					"name": "茂名",
+					"value": 1701
+				}, {
+					"name": "眉山",
+					"value": 169
+				}, {
+					"name": "梅州",
+					"value": 1271
+				}, {
+					"name": "绵阳",
+					"value": 422
+				}, {
+					"name": "牡丹江",
+					"value": 267
+				}, {
+					"name": "那曲地区",
+					"value": 2
+				}, {
+					"name": "南昌",
+					"value": 1939
+				}, {
+					"name": "南充",
+					"value": 420
+				}, {
+					"name": "南京",
+					"value": 2706
+				}, {
+					"name": "南宁",
+					"value": 3814
+				}, {
+					"name": "南平",
+					"value": 189
+				}, {
+					"name": "南通",
+					"value": 1915
+				}, {
+					"name": "南阳",
+					"value": 560
+				}, {
+					"name": "内江",
+					"value": 33
+				}, {
+					"name": "宁波",
+					"value": 6417
+				}, {
+					"name": "宁德",
+					"value": 169
+				}, {
+					"name": "怒江州",
+					"value": 2
+				}, {
+					"name": "攀枝花",
+					"value": 2
+				}, {
+					"name": "盘锦",
+					"value": 416
+				}, {
+					"name": "平顶山",
+					"value": 475
+				}, {
+					"name": "平凉",
+					"value": 97
+				}, {
+					"name": "萍乡",
+					"value": 122
+				}, {
+					"name": "莆田",
+					"value": 482
+				}, {
+					"name": "濮阳",
+					"value": 207
+				}, {
+					"name": "普洱",
+					"value": 9
+				}, {
+					"name": "七台河",
+					"value": 42
+				}, {
+					"name": "齐齐哈尔",
+					"value": 506
+				}, {
+					"name": "黔东南州",
+					"value": 124
+				}, {
+					"name": "黔南州",
+					"value": 173
+				}, {
+					"name": "黔西南州",
+					"value": 141
+				}, {
+					"name": "钦州",
+					"value": 455
+				}, {
+					"name": "秦皇岛",
+					"value": 496
+				}, {
+					"name": "青岛",
+					"value": 1665
+				}, {
+					"name": "清远",
+					"value": 1349
+				}, {
+					"name": "庆阳",
+					"value": 150
+				}, {
+					"name": "衢州",
+					"value": 368
+				}, {
+					"name": "曲靖",
+					"value": 559
+				}, {
+					"name": "泉州",
+					"value": 3264
+				}, {
+					"name": "日喀则地区",
+					"value": 16
+				}, {
+					"name": "日照",
+					"value": 543
+				}, {
+					"name": "三门峡",
+					"value": 146
+				}, {
+					"name": "三明",
+					"value": 255
+				}, {
+					"name": "三亚",
+					"value": 770
+				}, {
+					"name": "厦门",
+					"value": 3993
+				}, {
+					"name": "山南地区",
+					"value": 38
+				}, {
+					"name": "汕头",
+					"value": 1748
+				}, {
+					"name": "汕尾",
+					"value": 671
+				}, {
+					"name": "商洛",
+					"value": 2
+				}, {
+					"name": "商丘",
+					"value": 467
+				}, {
+					"name": "上海",
+					"value": 4305
+				}, {
+					"name": "上饶",
+					"value": 181
+				}, {
+					"name": "韶关",
+					"value": 1058
+				}, {
+					"name": "邵阳",
+					"value": 356
+				}, {
+					"name": "绍兴",
+					"value": 1825
+				}, {
+					"name": "深圳",
+					"value": 11275
+				}, {
+					"name": "沈阳",
+					"value": 9548
+				}, {
+					"name": "十堰",
+					"value": 186
+				}, {
+					"name": "石家庄",
+					"value": 3430
+				}, {
+					"name": "石嘴山",
+					"value": 4
+				}, {
+					"name": "双鸭山",
+					"value": 150
+				}, {
+					"name": "朔州",
+					"value": 136
+				}, {
+					"name": "四平",
+					"value": 149
+				}, {
+					"name": "松原",
+					"value": 251
+				}, {
+					"name": "苏州",
+					"value": 5566
+				}, {
+					"name": "绥化",
+					"value": 94
+				}, {
+					"name": "随州",
+					"value": 223
+				}, {
+					"name": "遂宁",
+					"value": 28
+				}, {
+					"name": "塔城地区",
+					"value": 32
+				}, {
+					"name": "台州",
+					"value": 2082
+				}, {
+					"name": "太原",
+					"value": 1104
+				}, {
+					"name": "泰安",
+					"value": 465
+				}, {
+					"name": "泰州",
+					"value": 540
+				}, {
+					"name": "唐山",
+					"value": 1769
+				}, {
+					"name": "天津",
+					"value": 9216
+				}, {
+					"name": "天水",
+					"value": 188
+				}, {
+					"name": "铁岭",
+					"value": 288
+				}, {
+					"name": "通化",
+					"value": 132
+				}, {
+					"name": "通辽",
+					"value": 338
+				}, {
+					"name": "铜川",
+					"value": 0
+				}, {
+					"name": "铜陵",
+					"value": 284
+				}, {
+					"name": "铜仁",
+					"value": 117
+				}, {
+					"name": "吐鲁番地区",
+					"value": 3
+				}, {
+					"name": "威海",
+					"value": 633
+				}, {
+					"name": "潍坊",
+					"value": 1012
+				}, {
+					"name": "渭南",
+					"value": 296
+				}, {
+					"name": "温州",
+					"value": 1471
+				}, {
+					"name": "文山州",
+					"value": 170
+				}, {
+					"name": "乌海",
+					"value": 102
+				}, {
+					"name": "乌兰察布",
+					"value": 6
+				}, {
+					"name": "乌鲁木齐",
+					"value": 1415
+				}, {
+					"name": "无锡",
+					"value": 3413
+				}, {
+					"name": "芜湖",
+					"value": 335
+				}, {
+					"name": "吴忠",
+					"value": 54
+				}, {
+					"name": "梧州",
+					"value": 424
+				}, {
+					"name": "武汉",
+					"value": 4306
+				}, {
+					"name": "武威",
+					"value": 109
+				}, {
+					"name": "西安",
+					"value": 4168
+				}, {
+					"name": "西宁",
+					"value": 1266
+				}, {
+					"name": "西双版纳州",
+					"value": 41
+				}, {
+					"name": "锡林郭勒盟",
+					"value": 82
+				}, {
+					"name": "咸宁",
+					"value": 177
+				}, {
+					"name": "咸阳",
+					"value": 46
+				}, {
+					"name": "湘潭",
+					"value": 249
+				}, {
+					"name": "湘西州",
+					"value": 13
+				}, {
+					"name": "襄阳",
+					"value": 569
+				}, {
+					"name": "孝感",
+					"value": 327
+				}, {
+					"name": "忻州",
+					"value": 157
+				}, {
+					"name": "新乡",
+					"value": 420
+				}, {
+					"name": "新余",
+					"value": 437
+				}, {
+					"name": "信阳",
+					"value": 219
+				}, {
+					"name": "邢台",
+					"value": 1062
+				}, {
+					"name": "兴安盟",
+					"value": 203
+				}, {
+					"name": "宿迁",
+					"value": 760
+				}, {
+					"name": "宿州",
+					"value": 256
+				}, {
+					"name": "徐州",
+					"value": 815
+				}, {
+					"name": "许昌",
+					"value": 347
+				}, {
+					"name": "宣城",
+					"value": 83
+				}, {
+					"name": "雅安",
+					"value": 20
+				}, {
+					"name": "烟台",
+					"value": 1676
+				}, {
+					"name": "延安",
+					"value": 109
+				}, {
+					"name": "延边州",
+					"value": 177
+				}, {
+					"name": "盐城",
+					"value": 630
+				}, {
+					"name": "扬州",
+					"value": 649
+				}, {
+					"name": "阳江",
+					"value": 2056
+				}, {
+					"name": "阳泉",
+					"value": 86
+				}, {
+					"name": "伊春",
+					"value": 57
+				}, {
+					"name": "伊犁州",
+					"value": 179
+				}, {
+					"name": "宜宾",
+					"value": 121
+				}, {
+					"name": "宜昌",
+					"value": 930
+				}, {
+					"name": "宜春",
+					"value": 212
+				}, {
+					"name": "益阳",
+					"value": 155
+				}, {
+					"name": "银川",
+					"value": 681
+				}, {
+					"name": "鹰潭",
+					"value": 22
+				}, {
+					"name": "营口",
+					"value": 561
+				}, {
+					"name": "永州",
+					"value": 220
+				}, {
+					"name": "榆林",
+					"value": 248
+				}, {
+					"name": "玉林",
+					"value": 632
+				}, {
+					"name": "玉树州",
+					"value": 1
+				}, {
+					"name": "玉溪",
+					"value": 423
+				}, {
+					"name": "岳阳",
+					"value": 774
+				}, {
+					"name": "云浮",
+					"value": 900
+				}, {
+					"name": "运城",
+					"value": 682
+				}, {
+					"name": "枣庄",
+					"value": 321
+				}, {
+					"name": "湛江",
+					"value": 2270
+				}, {
+					"name": "张家界",
+					"value": 99
+				}, {
+					"name": "张家口",
+					"value": 494
+				}, {
+					"name": "张掖",
+					"value": 76
+				}, {
+					"name": "漳州",
+					"value": 1703
+				}, {
+					"name": "长春",
+					"value": 3384
+				}, {
+					"name": "长沙",
+					"value": 3385
+				}, {
+					"name": "长治",
+					"value": 199
+				}, {
+					"name": "昭通",
+					"value": 118
+				}, {
+					"name": "肇庆",
+					"value": 1887
+				}, {
+					"name": "镇江",
+					"value": 352
+				}, {
+					"name": "郑州",
+					"value": 5361
+				}, {
+					"name": "中山",
+					"value": 4169
+				}, {
+					"name": "中卫",
+					"value": 4
+				}, {
+					"name": "重庆",
+					"value": 3203
+				}, {
+					"name": "舟山",
+					"value": 216
+				}, {
+					"name": "周口",
+					"value": 589
+				}, {
+					"name": "珠海",
+					"value": 2994
+				}, {
+					"name": "株洲",
+					"value": 602
+				}, {
+					"name": "驻马店",
+					"value": 301
+				}, {
+					"name": "资阳",
+					"value": 50
+				}, {
+					"name": "淄博",
+					"value": 989
+				}, {
+					"name": "自贡",
+					"value": 138
+				}, {
+					"name": "遵义",
+					"value": 657
+				}, ],
+			}
+			var data = map.city;
+			var orderData = data.sort(function(a, b) {
+				return b.value - a.value;
+			})
+			var top10Data = orderData.slice(0, 10);
+			var convertData = function(city) {
+				var res = [];
+				for(var i = 0; i < city.length; i++) {
+					var geoCoord = geoCoordMap[city[i].name];
+					if(geoCoord) {
+						res.push({
+							name: city[i].name,
+							value: geoCoord.concat(city[i].value)
+						});
+					}
+				}
+				return res;
+			};
+			var categoryData = [];
+			for(var i = 0; i < top10Data.length; i++) {
+				categoryData.push(top10Data[i].name);
+			}
+			var option1 = {
+				backgroundColor: '#FFF',
+				animation: true,
+				animationDuration: 1000,
+				animationEasing: 'cubicInOut',
+				animationDurationUpdate: 1000,
+				animationEasingUpdate: 'cubicInOut',
+				title: {
+					//				text: '居住地',
+					textStyle: {
+						color: '#333'
+					}
+				},
+				legend: {
+					orient: 'vertical',
+					y: 'bottom',
+					x: 'right',
+					data: ['客户数量'],
+					textStyle: {
+						color: '#fff'
+					}
+				},
+				geo: {
+					map: 'china',
+					left: 50,
+					label: {
+						emphasis: {
+							show: false
+						}
+					},
+					roam: false,
+					itemStyle: {
+						normal: {
+							areaColor: '#e6e5e5',
+							borderColor: '#111'
+						},
+						emphasis: {
+							areaColor: '#c7c7c7'
+						}
+					}
+				},
+				series: [{
+					name: '',
+					type: 'scatter',
+					coordinateSystem: 'geo',
+					data: convertData(data),
+					symbolSize: function(val) {
+						var wid = document.getElementById("geo01").clientWidth;
+						if(val[2] < 50) {
+							return 1;
+						} else if(50 <= val[2] && val[2] < 200) {
+							return 2;
+						} else if(200 <= val[2] && val[2] < 500) {
+							return 4;
+						} else if(val[2] >= 500) {
+							var flag = Math.floor(val[2] / 500) * 1;
+							var item = 4 + flag;
+							return item;
+						}
+					},
+					label: {
+						normal: {
+							formatter: '{b}',
+							position: 'right',
+							show: false
+						},
+						emphasis: {
+							show: false
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: '#fc8675'
+						}
+					}
+				}, {
+					name: 'Top 5',
+					type: 'effectScatter',
+					coordinateSystem: 'geo',
+					data: convertData(data.sort(function(a, b) {
+						return b.value - a.value;
+					}).slice(0, 5)),
+					symbolSize: function(val) {
+						var wid = document.getElementById("geo01").clientWidth;
+						if(val[2] < 50) {
+							return 1;
+						} else if(50 <= val[2] && val[2] < 200) {
+							return 2;
+						} else if(200 <= val[2] && val[2] < 500) {
+							return 4;
+						} else if(val[2] >= 500) {
+							var flag = Math.floor(val[2] / 500) * 1;
+							var item = 4 + flag;
+							return item;
+						}
+					},
+					showEffectOn: 'render',
+					rippleEffect: {
+						brushType: 'stroke'
+					},
+					hoverAnimation: true,
+					label: {
+						normal: {
+							formatter: '{b}',
+							position: 'right',
+							show: true
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: '#fc8675',
+							shadowBlur: 10,
+							shadowColor: '#333'
+						}
+					},
+					zlevel: 1
+				}],
+				tooltip: {
+					trigger: 'item',
+					//鼠标hover显示内容
+					formatter: function(params) {
+						return params.name;
+					}
+				}
+			}
+			myChart1.setOption(option1);
+			var option2 = {
+
+				title: {
+					text: '指标评分对比图',
+					textStyle: {        
+						fontSize: 16,
+						        fontStyle: 'normal',
+						        fontWeight: '700',
+						      
+					},
+					x: 'left',
+					y: 'top',
+					textAlign: 'left'
+				},
+				color: ['#C23531', '#F2B23A', '#26AFB4'],
+				tooltip: {
+					show: false
+				},
+				legend: {
+					data: ['卡罗拉', '丰田', '总体'],
+					orient: 'vertical',
+					left: 'right',
+					top: '80%',
+				},
+				radar: {
+					//shape: 'circle',
+					name: {
+						textStyle: {
+							color: '#000',
+						}
+					},
+					indicator: [{
+							name: '空间',
+							max: 4.55,
+							min: 4.2
+						}, {
+							name: '外观',
+							max: 4.55,
+							min: 4.2
+						}, {
+							name: '内饰',
+							max: 4.55,
+							min: 4.2
+						}, {
+							name: '配置',
+							max: 4.55,
+							min: 4.2
+						}, {
+							name: '动力',
+							max: 4.55,
+							min: 4.2
+						}, {
+							name: '操控',
+							max: 4.55,
+							min: 4.2
+						}, {
+							name: '舒适性',
+							max: 4.55,
+							min: 4.2
+						}, {
+							name: '油耗',
+							max: 4.55,
+							min: 4.2
+						}, {
+							name: '性价比',
+							max: 4.55,
+							min: 4.2
+						}
+
+					]
+				},
+				series: [{
+					name: ' ',
+					type: 'radar',
+					// areaStyle: {normal: {}},
+					data: [{
+						value: [4.490654, 4.490654, 4.378505, 4.46729, 4.439252, 4.443925, 4.453271, 4.38785, 4.471963],
+						name: '卡罗拉'
+					}, {
+						value: [4.469388, 4.5, 4.329082, 4.397959, 4.415816, 4.42602, 4.42602, 4.392041, 4.524694],
+						name: '丰田'
+					}, {
+						value: [4.518277, 4.53429, 4.446715, 4.458973, 4.470348, 4.480177, 4.493098, 4.374489, 4.475428],
+						name: '总体'
+					}]
+				}]
+
+			}
+			myChart2.setOption(option2);
+			var option3 = {
+				color: ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0', '#ABE0E0', '#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					 y: 10,
+					 x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['25以下', '25-29', '30-34', '35-39', '40-44', '45-49', '50及以上'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 50,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '年龄百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [1, 16, 30, 20, 15, 10, 8],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+			}
+			myChart3.setOption(option3);
+			var option4 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['高中及以下', '大专/高职', '本科', '硕士及以上'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 70,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '学历百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [9, 29, 55, 7],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart4.setOption(option4);
+			var option5 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['单身汪', '二人世界', '亲子之家', '三世同堂', '四世同堂'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 70,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '家庭百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [11, 17, 59, 13, 0],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart5.setOption(option5);
+			var option6 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['2年及以下', '3-5年', '6-8年', '9-14年', '15年及以上'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 70,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '驾龄百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [2, 26, 32, 21, 19],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart6.setOption(option6);
+			var option7 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['新购', '换购', '增购'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 90,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '增换代购百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [70, 27, 3],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#41B9B9', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart7.setOption(option7);
+		}
+
+		function kameirui() {
+
+			var follow1 = document.getElementById('geo02');
+			var myChart1 = echarts.init(follow1);
+			var follow2 = document.getElementById('radar02');
+			var myChart2 = echarts.init(follow2);
+			var follow3 = document.getElementById('age02');
+			var myChart3 = echarts.init(follow3);
+			var follow4 = document.getElementById('xueli02');
+			var myChart4 = echarts.init(follow4);
+			var follow5 = document.getElementById('jiating02');
+			var myChart5 = echarts.init(follow5);
+			var follow6 = document.getElementById('jialing02');
+			var myChart6 = echarts.init(follow6);
+			var follow7 = document.getElementById('zenggou02');
+			var myChart7 = echarts.init(follow7);
+			var geoCoordMap = geoCoordMap1;
+			var map = {
+				"city": [{
+					"name": "阿坝州",
+					"value": 1
+				}, {
+					"name": "阿克苏地区",
+					"value": 71
+				}, {
+					"name": "阿拉善盟",
+					"value": 4
+				}, {
+					"name": "阿勒泰地区",
+					"value": 8
+				}, {
+					"name": "阿里地区",
+					"value": 0
+				}, {
+					"name": "安康",
+					"value": 5
+				}, {
+					"name": "安庆",
+					"value": 277
+				}, {
+					"name": "安顺",
+					"value": 110
+				}, {
+					"name": "安阳",
+					"value": 108
+				}, {
+					"name": "鞍山",
+					"value": 331
+				}, {
+					"name": "巴彦淖尔",
+					"value": 102
+				}, {
+					"name": "巴音郭楞州",
+					"value": 92
+				}, {
+					"name": "巴中",
+					"value": 4
+				}, {
+					"name": "白城",
+					"value": 40
+				}, {
+					"name": "白山",
+					"value": 46
+				}, {
+					"name": "白银",
+					"value": 3
+				}, {
+					"name": "百色",
+					"value": 18
+				}, {
+					"name": "蚌埠",
+					"value": 214
+				}, {
+					"name": "包头",
+					"value": 238
+				}, {
+					"name": "宝鸡",
+					"value": 145
+				}, {
+					"name": "保定",
+					"value": 677
+				}, {
+					"name": "保山",
+					"value": 0
+				}, {
+					"name": "北海",
+					"value": 309
+				}, {
+					"name": "北京",
+					"value": 3620
+				}, {
+					"name": "本溪",
+					"value": 141
+				}, {
+					"name": "毕节",
+					"value": 38
+				}, {
+					"name": "滨州",
+					"value": 132
+				}, {
+					"name": "亳州",
+					"value": 19
+				}, {
+					"name": "博尔塔拉州",
+					"value": 14
+				}, {
+					"name": "沧州",
+					"value": 329
+				}, {
+					"name": "昌都地区",
+					"value": 0
+				}, {
+					"name": "昌吉州",
+					"value": 130
+				}, {
+					"name": "常德",
+					"value": 306
+				}, {
+					"name": "常州",
+					"value": 1185
+				}, {
+					"name": "朝阳",
+					"value": 179
+				}, {
+					"name": "潮州",
+					"value": 341
+				}, {
+					"name": "郴州",
+					"value": 404
+				}, {
+					"name": "成都",
+					"value": 3511
+				}, {
+					"name": "承德",
+					"value": 119
+				}, {
+					"name": "池州",
+					"value": 9
+				}, {
+					"name": "赤峰",
+					"value": 78
+				}, {
+					"name": "崇左",
+					"value": 22
+				}, {
+					"name": "滁州",
+					"value": 18
+				}, {
+					"name": "楚雄州",
+					"value": 1
+				}, {
+					"name": "达州",
+					"value": 137
+				}, {
+					"name": "大理州",
+					"value": 252
+				}, {
+					"name": "大连",
+					"value": 1133
+				}, {
+					"name": "大庆",
+					"value": 340
+				}, {
+					"name": "大同",
+					"value": 203
+				}, {
+					"name": "大兴安岭地区",
+					"value": 0
+				}, {
+					"name": "丹东",
+					"value": 204
+				}, {
+					"name": "德宏州",
+					"value": 2
+				}, {
+					"name": "德阳",
+					"value": 171
+				}, {
+					"name": "德州",
+					"value": 188
+				}, {
+					"name": "迪庆州",
+					"value": 0
+				}, {
+					"name": "定西",
+					"value": 3
+				}, {
+					"name": "东莞",
+					"value": 5955
+				}, {
+					"name": "东营",
+					"value": 265
+				}, {
+					"name": "鄂尔多斯",
+					"value": 200
+				}, {
+					"name": "鄂州",
+					"value": 48
+				}, {
+					"name": "恩施州",
+					"value": 145
+				}, {
+					"name": "防城港",
+					"value": 49
+				}, {
+					"name": "佛山",
+					"value": 3948
+				}, {
+					"name": "福州",
+					"value": 1273
+				}, {
+					"name": "抚顺",
+					"value": 121
+				}, {
+					"name": "抚州",
+					"value": 167
+				}, {
+					"name": "阜新",
+					"value": 164
+				}, {
+					"name": "阜阳",
+					"value": 334
+				}, {
+					"name": "甘南州",
+					"value": 0
+				}, {
+					"name": "甘孜州",
+					"value": 1
+				}, {
+					"name": "赣州",
+					"value": 883
+				}, {
+					"name": "固原",
+					"value": 1
+				}, {
+					"name": "广安",
+					"value": 12
+				}, {
+					"name": "广元",
+					"value": 19
+				}, {
+					"name": "广州",
+					"value": 13850
+				}, {
+					"name": "贵港",
+					"value": 205
+				}, {
+					"name": "贵阳",
+					"value": 864
+				}, {
+					"name": "桂林",
+					"value": 261
+				}, {
+					"name": "哈尔滨",
+					"value": 1621
+				}, {
+					"name": "哈密地区",
+					"value": 14
+				}, {
+					"name": "海北州",
+					"value": 0
+				}, {
+					"name": "海东地区",
+					"value": 3
+				}, {
+					"name": "海口",
+					"value": 1398
+				}, {
+					"name": "海南州",
+					"value": 0
+				}, {
+					"name": "海西州",
+					"value": 3
+				}, {
+					"name": "邯郸",
+					"value": 442
+				}, {
+					"name": "汉中",
+					"value": 178
+				}, {
+					"name": "杭州",
+					"value": 3921
+				}, {
+					"name": "合肥",
+					"value": 1470
+				}, {
+					"name": "和田地区",
+					"value": 13
+				}, {
+					"name": "河池",
+					"value": 27
+				}, {
+					"name": "河源",
+					"value": 472
+				}, {
+					"name": "菏泽",
+					"value": 165
+				}, {
+					"name": "贺州",
+					"value": 160
+				}, {
+					"name": "鹤壁",
+					"value": 20
+				}, {
+					"name": "鹤岗",
+					"value": 46
+				}, {
+					"name": "黑河",
+					"value": 8
+				}, {
+					"name": "衡水",
+					"value": 242
+				}, {
+					"name": "衡阳",
+					"value": 415
+				}, {
+					"name": "红河州",
+					"value": 233
+				}, {
+					"name": "呼和浩特",
+					"value": 435
+				}, {
+					"name": "呼伦贝尔",
+					"value": 27
+				}, {
+					"name": "葫芦岛",
+					"value": 138
+				}, {
+					"name": "湖州",
+					"value": 508
+				}, {
+					"name": "怀化",
+					"value": 147
+				}, {
+					"name": "淮安",
+					"value": 345
+				}, {
+					"name": "淮北",
+					"value": 152
+				}, {
+					"name": "淮南",
+					"value": 22
+				}, {
+					"name": "黄冈",
+					"value": 263
+				}, {
+					"name": "黄南州",
+					"value": 0
+				}, {
+					"name": "黄山",
+					"value": 148
+				}, {
+					"name": "黄石",
+					"value": 139
+				}, {
+					"name": "惠州",
+					"value": 1471
+				}, {
+					"name": "鸡西",
+					"value": 15
+				}, {
+					"name": "吉安",
+					"value": 165
+				}, {
+					"name": "吉林",
+					"value": 214
+				}, {
+					"name": "济南",
+					"value": 931
+				}, {
+					"name": "济宁",
+					"value": 256
+				}, {
+					"name": "佳木斯",
+					"value": 159
+				}, {
+					"name": "嘉兴",
+					"value": 1050
+				}, {
+					"name": "嘉峪关",
+					"value": 1
+				}, {
+					"name": "江门",
+					"value": 1166
+				}, {
+					"name": "焦作",
+					"value": 180
+				}, {
+					"name": "揭阳",
+					"value": 506
+				}, {
+					"name": "金昌",
+					"value": 4
+				}, {
+					"name": "金华",
+					"value": 1414
+				}, {
+					"name": "锦州",
+					"value": 213
+				}, {
+					"name": "晋城",
+					"value": 77
+				}, {
+					"name": "晋中",
+					"value": 104
+				}, {
+					"name": "荆门",
+					"value": 296
+				}, {
+					"name": "荆州",
+					"value": 341
+				}, {
+					"name": "景德镇",
+					"value": 9
+				}, {
+					"name": "九江",
+					"value": 284
+				}, {
+					"name": "酒泉",
+					"value": 35
+				}, {
+					"name": "喀什地区",
+					"value": 78
+				}, {
+					"name": "开封",
+					"value": 104
+				}, {
+					"name": "克拉玛依",
+					"value": 28
+				}, {
+					"name": "克孜勒苏州",
+					"value": 0
+				}, {
+					"name": "昆明",
+					"value": 1735
+				}, {
+					"name": "拉萨",
+					"value": 39
+				}, {
+					"name": "来宾",
+					"value": 11
+				}, {
+					"name": "莱芜",
+					"value": 72
+				}, {
+					"name": "兰州",
+					"value": 383
+				}, {
+					"name": "廊坊",
+					"value": 473
+				}, {
+					"name": "乐山",
+					"value": 140
+				}, {
+					"name": "丽江",
+					"value": 1
+				}, {
+					"name": "丽水",
+					"value": 150
+				}, {
+					"name": "连云港",
+					"value": 461
+				}, {
+					"name": "凉山州",
+					"value": 34
+				}, {
+					"name": "辽阳",
+					"value": 256
+				}, {
+					"name": "辽源",
+					"value": 64
+				}, {
+					"name": "聊城",
+					"value": 132
+				}, {
+					"name": "林芝地区",
+					"value": 0
+				}, {
+					"name": "临沧",
+					"value": 4
+				}, {
+					"name": "临汾",
+					"value": 152
+				}, {
+					"name": "临夏州",
+					"value": 1
+				}, {
+					"name": "临沂",
+					"value": 689
+				}, {
+					"name": "柳州",
+					"value": 569
+				}, {
+					"name": "六安",
+					"value": 187
+				}, {
+					"name": "六盘水",
+					"value": 123
+				}, {
+					"name": "龙岩",
+					"value": 453
+				}, {
+					"name": "陇南",
+					"value": 2
+				}, {
+					"name": "娄底",
+					"value": 175
+				}, {
+					"name": "泸州",
+					"value": 226
+				}, {
+					"name": "洛阳",
+					"value": 281
+				}, {
+					"name": "漯河",
+					"value": 126
+				}, {
+					"name": "吕梁",
+					"value": 6
+				}, {
+					"name": "马鞍山",
+					"value": 131
+				}, {
+					"name": "茂名",
+					"value": 909
+				}, {
+					"name": "眉山",
+					"value": 206
+				}, {
+					"name": "梅州",
+					"value": 556
+				}, {
+					"name": "绵阳",
+					"value": 420
+				}, {
+					"name": "牡丹江",
+					"value": 161
+				}, {
+					"name": "那曲地区",
+					"value": 1
+				}, {
+					"name": "南昌",
+					"value": 1078
+				}, {
+					"name": "南充",
+					"value": 170
+				}, {
+					"name": "南京",
+					"value": 2189
+				}, {
+					"name": "南宁",
+					"value": 2306
+				}, {
+					"name": "南平",
+					"value": 100
+				}, {
+					"name": "南通",
+					"value": 1159
+				}, {
+					"name": "南阳",
+					"value": 340
+				}, {
+					"name": "内江",
+					"value": 5
+				}, {
+					"name": "宁波",
+					"value": 2626
+				}, {
+					"name": "宁德",
+					"value": 15
+				}, {
+					"name": "怒江州",
+					"value": 0
+				}, {
+					"name": "攀枝花",
+					"value": 58
+				}, {
+					"name": "盘锦",
+					"value": 351
+				}, {
+					"name": "平顶山",
+					"value": 191
+				}, {
+					"name": "平凉",
+					"value": 4
+				}, {
+					"name": "萍乡",
+					"value": 96
+				}, {
+					"name": "莆田",
+					"value": 343
+				}, {
+					"name": "濮阳",
+					"value": 109
+				}, {
+					"name": "普洱",
+					"value": 63
+				}, {
+					"name": "七台河",
+					"value": 42
+				}, {
+					"name": "齐齐哈尔",
+					"value": 246
+				}, {
+					"name": "黔东南州",
+					"value": 100
+				}, {
+					"name": "黔南州",
+					"value": 72
+				}, {
+					"name": "黔西南州",
+					"value": 48
+				}, {
+					"name": "钦州",
+					"value": 264
+				}, {
+					"name": "秦皇岛",
+					"value": 364
+				}, {
+					"name": "青岛",
+					"value": 1168
+				}, {
+					"name": "清远",
+					"value": 431
+				}, {
+					"name": "庆阳",
+					"value": 58
+				}, {
+					"name": "衢州",
+					"value": 250
+				}, {
+					"name": "曲靖",
+					"value": 135
+				}, {
+					"name": "泉州",
+					"value": 1342
+				}, {
+					"name": "日喀则地区",
+					"value": 2
+				}, {
+					"name": "日照",
+					"value": 224
+				}, {
+					"name": "三门峡",
+					"value": 56
+				}, {
+					"name": "三明",
+					"value": 160
+				}, {
+					"name": "三亚",
+					"value": 380
+				}, {
+					"name": "厦门",
+					"value": 1458
+				}, {
+					"name": "山南地区",
+					"value": 0
+				}, {
+					"name": "汕头",
+					"value": 794
+				}, {
+					"name": "汕尾",
+					"value": 175
+				}, {
+					"name": "商洛",
+					"value": 0
+				}, {
+					"name": "商丘",
+					"value": 247
+				}, {
+					"name": "上海",
+					"value": 4703
+				}, {
+					"name": "上饶",
+					"value": 230
+				}, {
+					"name": "韶关",
+					"value": 317
+				}, {
+					"name": "邵阳",
+					"value": 252
+				}, {
+					"name": "绍兴",
+					"value": 1559
+				}, {
+					"name": "深圳",
+					"value": 7182
+				}, {
+					"name": "沈阳",
+					"value": 2520
+				}, {
+					"name": "十堰",
+					"value": 291
+				}, {
+					"name": "石家庄",
+					"value": 882
+				}, {
+					"name": "石嘴山",
+					"value": 3
+				}, {
+					"name": "双鸭山",
+					"value": 50
+				}, {
+					"name": "朔州",
+					"value": 5
+				}, {
+					"name": "四平",
+					"value": 89
+				}, {
+					"name": "松原",
+					"value": 102
+				}, {
+					"name": "苏州",
+					"value": 4000
+				}, {
+					"name": "绥化",
+					"value": 116
+				}, {
+					"name": "随州",
+					"value": 113
+				}, {
+					"name": "遂宁",
+					"value": 127
+				}, {
+					"name": "塔城地区",
+					"value": 15
+				}, {
+					"name": "台州",
+					"value": 1364
+				}, {
+					"name": "太原",
+					"value": 1032
+				}, {
+					"name": "泰安",
+					"value": 168
+				}, {
+					"name": "泰州",
+					"value": 477
+				}, {
+					"name": "唐山",
+					"value": 1122
+				}, {
+					"name": "天津",
+					"value": 2989
+				}, {
+					"name": "天水",
+					"value": 3
+				}, {
+					"name": "铁岭",
+					"value": 171
+				}, {
+					"name": "通化",
+					"value": 108
+				}, {
+					"name": "通辽",
+					"value": 211
+				}, {
+					"name": "铜川",
+					"value": 2
+				}, {
+					"name": "铜陵",
+					"value": 74
+				}, {
+					"name": "铜仁",
+					"value": 146
+				}, {
+					"name": "吐鲁番地区",
+					"value": 3
+				}, {
+					"name": "威海",
+					"value": 297
+				}, {
+					"name": "潍坊",
+					"value": 542
+				}, {
+					"name": "渭南",
+					"value": 195
+				}, {
+					"name": "温州",
+					"value": 2635
+				}, {
+					"name": "文山州",
+					"value": 1
+				}, {
+					"name": "乌海",
+					"value": 48
+				}, {
+					"name": "乌兰察布",
+					"value": 53
+				}, {
+					"name": "乌鲁木齐",
+					"value": 1007
+				}, {
+					"name": "无锡",
+					"value": 1730
+				}, {
+					"name": "芜湖",
+					"value": 148
+				}, {
+					"name": "吴忠",
+					"value": 50
+				}, {
+					"name": "梧州",
+					"value": 234
+				}, {
+					"name": "武汉",
+					"value": 3167
+				}, {
+					"name": "武威",
+					"value": 2
+				}, {
+					"name": "西安",
+					"value": 3216
+				}, {
+					"name": "西宁",
+					"value": 164
+				}, {
+					"name": "西双版纳州",
+					"value": 129
+				}, {
+					"name": "锡林郭勒盟",
+					"value": 177
+				}, {
+					"name": "咸宁",
+					"value": 34
+				}, {
+					"name": "咸阳",
+					"value": 130
+				}, {
+					"name": "湘潭",
+					"value": 322
+				}, {
+					"name": "湘西州",
+					"value": 11
+				}, {
+					"name": "襄阳",
+					"value": 299
+				}, {
+					"name": "孝感",
+					"value": 145
+				}, {
+					"name": "忻州",
+					"value": 21
+				}, {
+					"name": "新乡",
+					"value": 177
+				}, {
+					"name": "新余",
+					"value": 157
+				}, {
+					"name": "信阳",
+					"value": 244
+				}, {
+					"name": "邢台",
+					"value": 317
+				}, {
+					"name": "兴安盟",
+					"value": 105
+				}, {
+					"name": "宿迁",
+					"value": 196
+				}, {
+					"name": "宿州",
+					"value": 196
+				}, {
+					"name": "徐州",
+					"value": 443
+				}, {
+					"name": "许昌",
+					"value": 162
+				}, {
+					"name": "宣城",
+					"value": 178
+				}, {
+					"name": "雅安",
+					"value": 2
+				}, {
+					"name": "烟台",
+					"value": 557
+				}, {
+					"name": "延安",
+					"value": 99
+				}, {
+					"name": "延边州",
+					"value": 145
+				}, {
+					"name": "盐城",
+					"value": 340
+				}, {
+					"name": "扬州",
+					"value": 839
+				}, {
+					"name": "阳江",
+					"value": 355
+				}, {
+					"name": "阳泉",
+					"value": 3
+				}, {
+					"name": "伊春",
+					"value": 8
+				}, {
+					"name": "伊犁州",
+					"value": 109
+				}, {
+					"name": "宜宾",
+					"value": 48
+				}, {
+					"name": "宜昌",
+					"value": 350
+				}, {
+					"name": "宜春",
+					"value": 216
+				}, {
+					"name": "益阳",
+					"value": 226
+				}, {
+					"name": "银川",
+					"value": 388
+				}, {
+					"name": "鹰潭",
+					"value": 14
+				}, {
+					"name": "营口",
+					"value": 295
+				}, {
+					"name": "永州",
+					"value": 106
+				}, {
+					"name": "榆林",
+					"value": 250
+				}, {
+					"name": "玉林",
+					"value": 347
+				}, {
+					"name": "玉树州",
+					"value": 0
+				}, {
+					"name": "玉溪",
+					"value": 125
+				}, {
+					"name": "岳阳",
+					"value": 292
+				}, {
+					"name": "云浮",
+					"value": 271
+				}, {
+					"name": "运城",
+					"value": 188
+				}, {
+					"name": "枣庄",
+					"value": 192
+				}, {
+					"name": "湛江",
+					"value": 660
+				}, {
+					"name": "张家界",
+					"value": 12
+				}, {
+					"name": "张家口",
+					"value": 233
+				}, {
+					"name": "张掖",
+					"value": 42
+				}, {
+					"name": "漳州",
+					"value": 545
+				}, {
+					"name": "长春",
+					"value": 1101
+				}, {
+					"name": "长沙",
+					"value": 2914
+				}, {
+					"name": "长治",
+					"value": 121
+				}, {
+					"name": "昭通",
+					"value": 91
+				}, {
+					"name": "肇庆",
+					"value": 453
+				}, {
+					"name": "镇江",
+					"value": 407
+				}, {
+					"name": "郑州",
+					"value": 2941
+				}, {
+					"name": "中山",
+					"value": 1455
+				}, {
+					"name": "中卫",
+					"value": 2
+				}, {
+					"name": "重庆",
+					"value": 2066
+				}, {
+					"name": "舟山",
+					"value": 223
+				}, {
+					"name": "周口",
+					"value": 180
+				}, {
+					"name": "珠海",
+					"value": 620
+				}, {
+					"name": "株洲",
+					"value": 347
+				}, {
+					"name": "驻马店",
+					"value": 128
+				}, {
+					"name": "资阳",
+					"value": 1
+				}, {
+					"name": "淄博",
+					"value": 227
+				}, {
+					"name": "自贡",
+					"value": 135
+				}, {
+					"name": "遵义",
+					"value": 197
+				}, ],
+			}
+			var data = map.city;
+			var orderData = data.sort(function(a, b) {
+				return b.value - a.value;
+			})
+			var top10Data = orderData.slice(0, 10);
+			var convertData = function(city) {
+				var res = [];
+				for(var i = 0; i < city.length; i++) {
+					var geoCoord = geoCoordMap[city[i].name];
+					if(geoCoord) {
+						res.push({
+							name: city[i].name,
+							value: geoCoord.concat(city[i].value)
+						});
+					}
+				}
+				return res;
+			};
+			var categoryData = [];
+			for(var i = 0; i < top10Data.length; i++) {
+				categoryData.push(top10Data[i].name);
+			}
+			var option1 = {
+				backgroundColor: '#FFF',
+				animation: true,
+				animationDuration: 1000,
+				animationEasing: 'cubicInOut',
+				animationDurationUpdate: 1000,
+				animationEasingUpdate: 'cubicInOut',
+				title: {
+					//				text: '居住地',
+					textStyle: {
+						color: '#333'
+					}
+				},
+				legend: {
+					orient: 'vertical',
+					y: 'bottom',
+					x: 'right',
+					data: ['客户数量'],
+					textStyle: {
+						color: '#fff'
+					}
+				},
+				geo: {
+					map: 'china',
+					left: 50,
+					label: {
+						emphasis: {
+							show: false
+						}
+					},
+					roam: false,
+					itemStyle: {
+						normal: {
+							areaColor: '#e6e5e5',
+							borderColor: '#111'
+						},
+						emphasis: {
+							areaColor: '#c7c7c7'
+						}
+					}
+				},
+				series: [{
+					name: '',
+					type: 'scatter',
+					coordinateSystem: 'geo',
+					data: convertData(data),
+					symbolSize: function(val) {
+						/*
+												var wid = document.getElementById("geo02").clientWidth;
+												if(val[2] < 50) {
+													return 4;
+												} else if(50 <= val[2] && val[2] < 200) {
+													return 10;
+												} else if(200 <= val[2] && val[2] < 500) {
+													return 16;
+												} else if(val[2] >= 500) {
+													var flag = Math.floor(val[2] / 500) * 6;
+													var item = 16 + flag;
+													return item;
+												}
+
+											*/
+						var wid = document.getElementById("geo01").clientWidth;
+						if(val[2] < 50) {
+							return 1;
+						} else if(50 <= val[2] && val[2] < 200) {
+							return 2;
+						} else if(200 <= val[2] && val[2] < 500) {
+							return 4;
+						} else if(val[2] >= 500) {
+							var flag = Math.floor(val[2] / 500) * 1;
+							var item = 4 + flag;
+							return item;
+						}
+					},
+					label: {
+						normal: {
+							formatter: '{b}',
+							position: 'right',
+							show: false
+						},
+						emphasis: {
+							show: false
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: '#fc8675'
+						}
+					}
+				}, {
+					name: 'Top 5',
+					type: 'effectScatter',
+					coordinateSystem: 'geo',
+					data: convertData(data.sort(function(a, b) {
+						return b.value - a.value;
+					}).slice(0, 5)),
+					symbolSize: function(val) {
+						var wid = document.getElementById("geo01").clientWidth;
+						if(val[2] < 50) {
+							return 1;
+						} else if(50 <= val[2] && val[2] < 200) {
+							return 2;
+						} else if(200 <= val[2] && val[2] < 500) {
+							return 4;
+						} else if(val[2] >= 500) {
+							var flag = Math.floor(val[2] / 500) * 1;
+							var item = 4 + flag;
+							return item;
+						}
+					},
+					showEffectOn: 'render',
+					rippleEffect: {
+						brushType: 'stroke'
+					},
+					hoverAnimation: true,
+					label: {
+						normal: {
+							formatter: '{b}',
+							position: 'right',
+							show: true
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: '#fc8675',
+							shadowBlur: 10,
+							shadowColor: '#333'
+						}
+					},
+					zlevel: 1
+				}],
+				tooltip: {
+					trigger: 'item',
+					//鼠标hover显示内容
+					formatter: function(params) {
+						return params.name;
+					}
+				}
+			}
+			myChart1.setOption(option1);
+			var option2 = {
+
+				title: {
+					text: '指标评分对比图',
+					textStyle: {        
+						fontSize: 16,
+						        fontStyle: 'normal',
+						        fontWeight: '700',
+						      
+					},
+					x: 'left',
+					y: 'top',
+					textAlign: 'left'
+				},
+				color: ['#C23531', '#F2B23A', '#26AFB4'],
+				tooltip: {
+					show: false
+				},
+				legend: {
+					data: ['凯美瑞', '丰田', '总体'],
+					orient: 'vertical',
+					left: 'right',
+					top: '80%',
+				},
+				radar: {
+					//shape: 'circle',
+					name: {
+						textStyle: {
+							color: '#000',
+						}
+					},
+					indicator: [{
+							name: '空间',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '外观',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '内饰',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '配置',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '动力',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '操控',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '舒适性',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '油耗',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '性价比',
+							max: 4.7,
+							min: 4.1
+						}
+
+					]
+				},
+				series: [{
+					name: ' ',
+					type: 'radar',
+					// areaStyle: {normal: {}},
+					data: [{
+						value: [4.347826, 4.695652, 4.347826, 4.391304, 4.347829, 4.391304, 4.608696, 4.217391, 4.608696],
+						name: '凯美瑞'
+					}, {
+						value: [4.469388, 4.5, 4.329082, 4.397959, 4.415816, 4.42602, 4.42602, 4.392041, 4.524694],
+						name: '丰田'
+					}, {
+						value: [4.518277, 4.53429, 4.446715, 4.458973, 4.470348, 4.480177, 4.493098, 4.374489, 4.475428],
+						name: '总体'
+					}]
+				}]
+
+			}
+			myChart2.setOption(option2);
+			var option3 = {
+				color: ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0', '#ABE0E0', '#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					 y: 10,
+					 x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['25以下', '25-29', '30-34', '35-39', '40-44', '45-49', '50及以上'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 50,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '年龄百分比',
+					type: 'bar',
+					barWidth: '30',
+					//					data: [1, 12, 25, 25, 18, 12, 8],
+					data: [1,12,24,26,18,12,7],
+
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+			}
+			myChart3.setOption(option3);
+			var option4 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['高中及以下', '大专/高职', '本科', '硕士及以上'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 70,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '学历百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [12, 36, 48, 4],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart4.setOption(option4);
+			var option5 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['单身汪', '二人世界', '亲子之家', '三世同堂', '四世同堂'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 70,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '家庭百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [7, 15, 65, 13, 0],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart5.setOption(option5);
+			var option6 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['2年及以下', '3-5年', '6-8年', '9-14年', '15年及以上'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 70,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '驾龄百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [1, 11, 23, 31, 34],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#ABE0E0', '#ABE0E0', '#41B9B9'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart6.setOption(option6);
+			var option7 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['新购', '换购', '增购'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 90,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '增换代购百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [66, 27, 7],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#41B9B9', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart7.setOption(option7);
+		}
+
+		function rongfang() {
+
+			var follow1 = document.getElementById('geo03');
+			var myChart1 = echarts.init(follow1);
+			var follow2 = document.getElementById('radar03');
+			var myChart2 = echarts.init(follow2);
+			var follow3 = document.getElementById('age03');
+			var myChart3 = echarts.init(follow3);
+			var follow4 = document.getElementById('xueli03');
+			var myChart4 = echarts.init(follow4);
+			var follow5 = document.getElementById('jiating03');
+			var myChart5 = echarts.init(follow5);
+			var follow6 = document.getElementById('jialing03');
+			var myChart6 = echarts.init(follow6);
+			var follow7 = document.getElementById('zenggou03');
+			var myChart7 = echarts.init(follow7);
+			var geoCoordMap = geoCoordMap1;
+			var map = {
+				"city": [{
+					"name": "阿坝州",
+					"value": 7
+				}, {
+					"name": "阿克苏地区",
+					"value": 234
+				}, {
+					"name": "阿拉善盟",
+					"value": 2
+				}, {
+					"name": "阿勒泰地区",
+					"value": 39
+				}, {
+					"name": "阿里地区",
+					"value": 2
+				}, {
+					"name": "安康",
+					"value": 193
+				}, {
+					"name": "安庆",
+					"value": 163
+				}, {
+					"name": "安顺",
+					"value": 46
+				}, {
+					"name": "安阳",
+					"value": 62
+				}, {
+					"name": "鞍山",
+					"value": 475
+				}, {
+					"name": "巴彦淖尔",
+					"value": 131
+				}, {
+					"name": "巴音郭楞州",
+					"value": 240
+				}, {
+					"name": "巴中",
+					"value": 61
+				}, {
+					"name": "白城",
+					"value": 118
+				}, {
+					"name": "白山",
+					"value": 1
+				}, {
+					"name": "白银",
+					"value": 81
+				}, {
+					"name": "百色",
+					"value": 161
+				}, {
+					"name": "蚌埠",
+					"value": 148
+				}, {
+					"name": "包头",
+					"value": 505
+				}, {
+					"name": "宝鸡",
+					"value": 169
+				}, {
+					"name": "保定",
+					"value": 551
+				}, {
+					"name": "保山",
+					"value": 144
+				}, {
+					"name": "北海",
+					"value": 181
+				}, {
+					"name": "北京",
+					"value": 2832
+				}, {
+					"name": "本溪",
+					"value": 116
+				}, {
+					"name": "毕节",
+					"value": 8
+				}, {
+					"name": "滨州",
+					"value": 299
+				}, {
+					"name": "亳州",
+					"value": 37
+				}, {
+					"name": "博尔塔拉州",
+					"value": 37
+				}, {
+					"name": "沧州",
+					"value": 521
+				}, {
+					"name": "昌都地区",
+					"value": 3
+				}, {
+					"name": "昌吉州",
+					"value": 185
+				}, {
+					"name": "常德",
+					"value": 514
+				}, {
+					"name": "常州",
+					"value": 515
+				}, {
+					"name": "朝阳",
+					"value": 200
+				}, {
+					"name": "潮州",
+					"value": 395
+				}, {
+					"name": "郴州",
+					"value": 22
+				}, {
+					"name": "成都",
+					"value": 2967
+				}, {
+					"name": "承德",
+					"value": 154
+				}, {
+					"name": "池州",
+					"value": 3
+				}, {
+					"name": "赤峰",
+					"value": 358
+				}, {
+					"name": "崇左",
+					"value": 30
+				}, {
+					"name": "滁州",
+					"value": 59
+				}, {
+					"name": "楚雄州",
+					"value": 212
+				}, {
+					"name": "达州",
+					"value": 150
+				}, {
+					"name": "大理州",
+					"value": 428
+				}, {
+					"name": "大连",
+					"value": 1544
+				}, {
+					"name": "大庆",
+					"value": 491
+				}, {
+					"name": "大同",
+					"value": 325
+				}, {
+					"name": "大兴安岭地区",
+					"value": 47
+				}, {
+					"name": "丹东",
+					"value": 279
+				}, {
+					"name": "德宏州",
+					"value": 197
+				}, {
+					"name": "德阳",
+					"value": 89
+				}, {
+					"name": "德州",
+					"value": 88
+				}, {
+					"name": "迪庆州",
+					"value": 5
+				}, {
+					"name": "定西",
+					"value": 61
+				}, {
+					"name": "东莞",
+					"value": 6059
+				}, {
+					"name": "东营",
+					"value": 280
+				}, {
+					"name": "鄂尔多斯",
+					"value": 201
+				}, {
+					"name": "鄂州",
+					"value": 33
+				}, {
+					"name": "恩施州",
+					"value": 239
+				}, {
+					"name": "防城港",
+					"value": 121
+				}, {
+					"name": "佛山",
+					"value": 2515
+				}, {
+					"name": "福州",
+					"value": 1077
+				}, {
+					"name": "抚顺",
+					"value": 137
+				}, {
+					"name": "抚州",
+					"value": 162
+				}, {
+					"name": "阜新",
+					"value": 94
+				}, {
+					"name": "阜阳",
+					"value": 232
+				}, {
+					"name": "甘南州",
+					"value": 3
+				}, {
+					"name": "甘孜州",
+					"value": 46
+				}, {
+					"name": "赣州",
+					"value": 322
+				}, {
+					"name": "固原",
+					"value": 3
+				}, {
+					"name": "广安",
+					"value": 46
+				}, {
+					"name": "广元",
+					"value": 77
+				}, {
+					"name": "广州",
+					"value": 6880
+				}, {
+					"name": "贵港",
+					"value": 183
+				}, {
+					"name": "贵阳",
+					"value": 798
+				}, {
+					"name": "桂林",
+					"value": 428
+				}, {
+					"name": "哈尔滨",
+					"value": 1993
+				}, {
+					"name": "哈密地区",
+					"value": 120
+				}, {
+					"name": "海北州",
+					"value": 4
+				}, {
+					"name": "海东地区",
+					"value": 24
+				}, {
+					"name": "海口",
+					"value": 1185
+				}, {
+					"name": "海南州",
+					"value": 12
+				}, {
+					"name": "海西州",
+					"value": 33
+				}, {
+					"name": "邯郸",
+					"value": 173
+				}, {
+					"name": "汉中",
+					"value": 163
+				}, {
+					"name": "杭州",
+					"value": 1870
+				}, {
+					"name": "合肥",
+					"value": 700
+				}, {
+					"name": "和田地区",
+					"value": 75
+				}, {
+					"name": "河池",
+					"value": 156
+				}, {
+					"name": "河源",
+					"value": 281
+				}, {
+					"name": "菏泽",
+					"value": 114
+				}, {
+					"name": "贺州",
+					"value": 145
+				}, {
+					"name": "鹤壁",
+					"value": 33
+				}, {
+					"name": "鹤岗",
+					"value": 109
+				}, {
+					"name": "黑河",
+					"value": 65
+				}, {
+					"name": "衡水",
+					"value": 117
+				}, {
+					"name": "衡阳",
+					"value": 339
+				}, {
+					"name": "红河州",
+					"value": 299
+				}, {
+					"name": "呼和浩特",
+					"value": 650
+				}, {
+					"name": "呼伦贝尔",
+					"value": 147
+				}, {
+					"name": "葫芦岛",
+					"value": 148
+				}, {
+					"name": "湖州",
+					"value": 378
+				}, {
+					"name": "怀化",
+					"value": 123
+				}, {
+					"name": "淮安",
+					"value": 148
+				}, {
+					"name": "淮北",
+					"value": 43
+				}, {
+					"name": "淮南",
+					"value": 7
+				}, {
+					"name": "黄冈",
+					"value": 250
+				}, {
+					"name": "黄南州",
+					"value": 2
+				}, {
+					"name": "黄山",
+					"value": 9
+				}, {
+					"name": "黄石",
+					"value": 183
+				}, {
+					"name": "惠州",
+					"value": 1133
+				}, {
+					"name": "鸡西",
+					"value": 99
+				}, {
+					"name": "吉安",
+					"value": 86
+				}, {
+					"name": "吉林",
+					"value": 415
+				}, {
+					"name": "济南",
+					"value": 1329
+				}, {
+					"name": "济宁",
+					"value": 217
+				}, {
+					"name": "佳木斯",
+					"value": 215
+				}, {
+					"name": "嘉兴",
+					"value": 815
+				}, {
+					"name": "嘉峪关",
+					"value": 1
+				}, {
+					"name": "江门",
+					"value": 1485
+				}, {
+					"name": "焦作",
+					"value": 50
+				}, {
+					"name": "揭阳",
+					"value": 612
+				}, {
+					"name": "金昌",
+					"value": 22
+				}, {
+					"name": "金华",
+					"value": 852
+				}, {
+					"name": "锦州",
+					"value": 209
+				}, {
+					"name": "晋城",
+					"value": 273
+				}, {
+					"name": "晋中",
+					"value": 271
+				}, {
+					"name": "荆门",
+					"value": 194
+				}, {
+					"name": "荆州",
+					"value": 505
+				}, {
+					"name": "景德镇",
+					"value": 12
+				}, {
+					"name": "九江",
+					"value": 221
+				}, {
+					"name": "酒泉",
+					"value": 176
+				}, {
+					"name": "喀什地区",
+					"value": 135
+				}, {
+					"name": "开封",
+					"value": 100
+				}, {
+					"name": "克拉玛依",
+					"value": 221
+				}, {
+					"name": "克孜勒苏州",
+					"value": 0
+				}, {
+					"name": "昆明",
+					"value": 2516
+				}, {
+					"name": "拉萨",
+					"value": 210
+				}, {
+					"name": "来宾",
+					"value": 100
+				}, {
+					"name": "莱芜",
+					"value": 11
+				}, {
+					"name": "兰州",
+					"value": 1183
+				}, {
+					"name": "廊坊",
+					"value": 360
+				}, {
+					"name": "乐山",
+					"value": 226
+				}, {
+					"name": "丽江",
+					"value": 101
+				}, {
+					"name": "丽水",
+					"value": 135
+				}, {
+					"name": "连云港",
+					"value": 80
+				}, {
+					"name": "凉山州",
+					"value": 40
+				}, {
+					"name": "辽阳",
+					"value": 138
+				}, {
+					"name": "辽源",
+					"value": 86
+				}, {
+					"name": "聊城",
+					"value": 141
+				}, {
+					"name": "林芝地区",
+					"value": 11
+				}, {
+					"name": "临沧",
+					"value": 74
+				}, {
+					"name": "临汾",
+					"value": 289
+				}, {
+					"name": "临夏州",
+					"value": 13
+				}, {
+					"name": "临沂",
+					"value": 403
+				}, {
+					"name": "柳州",
+					"value": 371
+				}, {
+					"name": "六安",
+					"value": 166
+				}, {
+					"name": "六盘水",
+					"value": 191
+				}, {
+					"name": "龙岩",
+					"value": 169
+				}, {
+					"name": "陇南",
+					"value": 31
+				}, {
+					"name": "娄底",
+					"value": 100
+				}, {
+					"name": "泸州",
+					"value": 203
+				}, {
+					"name": "洛阳",
+					"value": 246
+				}, {
+					"name": "漯河",
+					"value": 63
+				}, {
+					"name": "吕梁",
+					"value": 48
+				}, {
+					"name": "马鞍山",
+					"value": 22
+				}, {
+					"name": "茂名",
+					"value": 585
+				}, {
+					"name": "眉山",
+					"value": 121
+				}, {
+					"name": "梅州",
+					"value": 487
+				}, {
+					"name": "绵阳",
+					"value": 340
+				}, {
+					"name": "牡丹江",
+					"value": 99
+				}, {
+					"name": "那曲地区",
+					"value": 2
+				}, {
+					"name": "南昌",
+					"value": 851
+				}, {
+					"name": "南充",
+					"value": 217
+				}, {
+					"name": "南京",
+					"value": 1573
+				}, {
+					"name": "南宁",
+					"value": 1505
+				}, {
+					"name": "南平",
+					"value": 50
+				}, {
+					"name": "南通",
+					"value": 649
+				}, {
+					"name": "南阳",
+					"value": 365
+				}, {
+					"name": "内江",
+					"value": 15
+				}, {
+					"name": "宁波",
+					"value": 1548
+				}, {
+					"name": "宁德",
+					"value": 88
+				}, {
+					"name": "怒江州",
+					"value": 0
+				}, {
+					"name": "攀枝花",
+					"value": 4
+				}, {
+					"name": "盘锦",
+					"value": 222
+				}, {
+					"name": "平顶山",
+					"value": 214
+				}, {
+					"name": "平凉",
+					"value": 131
+				}, {
+					"name": "萍乡",
+					"value": 34
+				}, {
+					"name": "莆田",
+					"value": 159
+				}, {
+					"name": "濮阳",
+					"value": 103
+				}, {
+					"name": "普洱",
+					"value": 28
+				}, {
+					"name": "七台河",
+					"value": 13
+				}, {
+					"name": "齐齐哈尔",
+					"value": 238
+				}, {
+					"name": "黔东南州",
+					"value": 87
+				}, {
+					"name": "黔南州",
+					"value": 71
+				}, {
+					"name": "黔西南州",
+					"value": 64
+				}, {
+					"name": "钦州",
+					"value": 181
+				}, {
+					"name": "秦皇岛",
+					"value": 291
+				}, {
+					"name": "青岛",
+					"value": 960
+				}, {
+					"name": "清远",
+					"value": 455
+				}, {
+					"name": "庆阳",
+					"value": 117
+				}, {
+					"name": "衢州",
+					"value": 92
+				}, {
+					"name": "曲靖",
+					"value": 413
+				}, {
+					"name": "泉州",
+					"value": 630
+				}, {
+					"name": "日喀则地区",
+					"value": 40
+				}, {
+					"name": "日照",
+					"value": 185
+				}, {
+					"name": "三门峡",
+					"value": 101
+				}, {
+					"name": "三明",
+					"value": 53
+				}, {
+					"name": "三亚",
+					"value": 307
+				}, {
+					"name": "厦门",
+					"value": 725
+				}, {
+					"name": "山南地区",
+					"value": 8
+				}, {
+					"name": "汕头",
+					"value": 849
+				}, {
+					"name": "汕尾",
+					"value": 322
+				}, {
+					"name": "商洛",
+					"value": 5
+				}, {
+					"name": "商丘",
+					"value": 204
+				}, {
+					"name": "上海",
+					"value": 3026
+				}, {
+					"name": "上饶",
+					"value": 84
+				}, {
+					"name": "韶关",
+					"value": 313
+				}, {
+					"name": "邵阳",
+					"value": 185
+				}, {
+					"name": "绍兴",
+					"value": 656
+				}, {
+					"name": "深圳",
+					"value": 4139
+				}, {
+					"name": "沈阳",
+					"value": 3707
+				}, {
+					"name": "十堰",
+					"value": 108
+				}, {
+					"name": "石家庄",
+					"value": 853
+				}, {
+					"name": "石嘴山",
+					"value": 2
+				}, {
+					"name": "双鸭山",
+					"value": 64
+				}, {
+					"name": "朔州",
+					"value": 92
+				}, {
+					"name": "四平",
+					"value": 116
+				}, {
+					"name": "松原",
+					"value": 187
+				}, {
+					"name": "苏州",
+					"value": 1913
+				}, {
+					"name": "绥化",
+					"value": 48
+				}, {
+					"name": "随州",
+					"value": 84
+				}, {
+					"name": "遂宁",
+					"value": 32
+				}, {
+					"name": "塔城地区",
+					"value": 40
+				}, {
+					"name": "台州",
+					"value": 990
+				}, {
+					"name": "太原",
+					"value": 1118
+				}, {
+					"name": "泰安",
+					"value": 120
+				}, {
+					"name": "泰州",
+					"value": 217
+				}, {
+					"name": "唐山",
+					"value": 890
+				}, {
+					"name": "天津",
+					"value": 1546
+				}, {
+					"name": "天水",
+					"value": 157
+				}, {
+					"name": "铁岭",
+					"value": 151
+				}, {
+					"name": "通化",
+					"value": 154
+				}, {
+					"name": "通辽",
+					"value": 231
+				}, {
+					"name": "铜川",
+					"value": 0
+				}, {
+					"name": "铜陵",
+					"value": 162
+				}, {
+					"name": "铜仁",
+					"value": 47
+				}, {
+					"name": "吐鲁番地区",
+					"value": 3
+				}, {
+					"name": "威海",
+					"value": 425
+				}, {
+					"name": "潍坊",
+					"value": 553
+				}, {
+					"name": "渭南",
+					"value": 201
+				}, {
+					"name": "温州",
+					"value": 531
+				}, {
+					"name": "文山州",
+					"value": 140
+				}, {
+					"name": "乌海",
+					"value": 69
+				}, {
+					"name": "乌兰察布",
+					"value": 1
+				}, {
+					"name": "乌鲁木齐",
+					"value": 1457
+				}, {
+					"name": "无锡",
+					"value": 1683
+				}, {
+					"name": "芜湖",
+					"value": 161
+				}, {
+					"name": "吴忠",
+					"value": 67
+				}, {
+					"name": "梧州",
+					"value": 115
+				}, {
+					"name": "武汉",
+					"value": 2085
+				}, {
+					"name": "武威",
+					"value": 157
+				}, {
+					"name": "西安",
+					"value": 2760
+				}, {
+					"name": "西宁",
+					"value": 715
+				}, {
+					"name": "西双版纳州",
+					"value": 44
+				}, {
+					"name": "锡林郭勒盟",
+					"value": 71
+				}, {
+					"name": "咸宁",
+					"value": 121
+				}, {
+					"name": "咸阳",
+					"value": 25
+				}, {
+					"name": "湘潭",
+					"value": 158
+				}, {
+					"name": "湘西州",
+					"value": 16
+				}, {
+					"name": "襄阳",
+					"value": 350
+				}, {
+					"name": "孝感",
+					"value": 222
+				}, {
+					"name": "忻州",
+					"value": 91
+				}, {
+					"name": "新乡",
+					"value": 157
+				}, {
+					"name": "新余",
+					"value": 125
+				}, {
+					"name": "信阳",
+					"value": 139
+				}, {
+					"name": "邢台",
+					"value": 428
+				}, {
+					"name": "兴安盟",
+					"value": 129
+				}, {
+					"name": "宿迁",
+					"value": 236
+				}, {
+					"name": "宿州",
+					"value": 84
+				}, {
+					"name": "徐州",
+					"value": 259
+				}, {
+					"name": "许昌",
+					"value": 130
+				}, {
+					"name": "宣城",
+					"value": 37
+				}, {
+					"name": "雅安",
+					"value": 17
+				}, {
+					"name": "烟台",
+					"value": 760
+				}, {
+					"name": "延安",
+					"value": 137
+				}, {
+					"name": "延边州",
+					"value": 148
+				}, {
+					"name": "盐城",
+					"value": 285
+				}, {
+					"name": "扬州",
+					"value": 309
+				}, {
+					"name": "阳江",
+					"value": 671
+				}, {
+					"name": "阳泉",
+					"value": 82
+				}, {
+					"name": "伊春",
+					"value": 33
+				}, {
+					"name": "伊犁州",
+					"value": 183
+				}, {
+					"name": "宜宾",
+					"value": 96
+				}, {
+					"name": "宜昌",
+					"value": 548
+				}, {
+					"name": "宜春",
+					"value": 97
+				}, {
+					"name": "益阳",
+					"value": 84
+				}, {
+					"name": "银川",
+					"value": 609
+				}, {
+					"name": "鹰潭",
+					"value": 9
+				}, {
+					"name": "营口",
+					"value": 305
+				}, {
+					"name": "永州",
+					"value": 118
+				}, {
+					"name": "榆林",
+					"value": 296
+				}, {
+					"name": "玉林",
+					"value": 220
+				}, {
+					"name": "玉树州",
+					"value": 3
+				}, {
+					"name": "玉溪",
+					"value": 313
+				}, {
+					"name": "岳阳",
+					"value": 419
+				}, {
+					"name": "云浮",
+					"value": 338
+				}, {
+					"name": "运城",
+					"value": 258
+				}, {
+					"name": "枣庄",
+					"value": 135
+				}, {
+					"name": "湛江",
+					"value": 1008
+				}, {
+					"name": "张家界",
+					"value": 61
+				}, {
+					"name": "张家口",
+					"value": 301
+				}, {
+					"name": "张掖",
+					"value": 111
+				}, {
+					"name": "漳州",
+					"value": 609
+				}, {
+					"name": "长春",
+					"value": 1820
+				}, {
+					"name": "长沙",
+					"value": 1459
+				}, {
+					"name": "长治",
+					"value": 155
+				}, {
+					"name": "昭通",
+					"value": 72
+				}, {
+					"name": "肇庆",
+					"value": 604
+				}, {
+					"name": "镇江",
+					"value": 143
+				}, {
+					"name": "郑州",
+					"value": 2072
+				}, {
+					"name": "中山",
+					"value": 1087
+				}, {
+					"name": "中卫",
+					"value": 5
+				}, {
+					"name": "重庆",
+					"value": 1588
+				}, {
+					"name": "舟山",
+					"value": 106
+				}, {
+					"name": "周口",
+					"value": 176
+				}, {
+					"name": "珠海",
+					"value": 744
+				}, {
+					"name": "株洲",
+					"value": 212
+				}, {
+					"name": "驻马店",
+					"value": 144
+				}, {
+					"name": "资阳",
+					"value": 26
+				}, {
+					"name": "淄博",
+					"value": 446
+				}, {
+					"name": "自贡",
+					"value": 82
+				}, {
+					"name": "遵义",
+					"value": 341
+				}, ],
+			}
+			var data = map.city;
+			var orderData = data.sort(function(a, b) {
+				return b.value - a.value;
+			})
+			var top10Data = orderData.slice(0, 10);
+			var convertData = function(city) {
+				var res = [];
+				for(var i = 0; i < city.length; i++) {
+					var geoCoord = geoCoordMap[city[i].name];
+					if(geoCoord) {
+						res.push({
+							name: city[i].name,
+							value: geoCoord.concat(city[i].value)
+						});
+					}
+				}
+				return res;
+			};
+			var categoryData = [];
+			for(var i = 0; i < top10Data.length; i++) {
+				categoryData.push(top10Data[i].name);
+			}
+			var option1 = {
+				backgroundColor: '#FFF',
+				animation: true,
+				animationDuration: 1000,
+				animationEasing: 'cubicInOut',
+				animationDurationUpdate: 1000,
+				animationEasingUpdate: 'cubicInOut',
+				title: {
+					//				text: '居住地',
+					textStyle: {
+						color: '#333'
+					}
+				},
+				legend: {
+					orient: 'vertical',
+					y: 'bottom',
+					x: 'right',
+					data: ['客户数量'],
+					textStyle: {
+						color: '#fff'
+					}
+				},
+				geo: {
+					map: 'china',
+					left: 50,
+					label: {
+						emphasis: {
+							show: false
+						}
+					},
+					roam: false,
+					itemStyle: {
+						normal: {
+							areaColor: '#e6e5e5',
+							borderColor: '#111'
+						},
+						emphasis: {
+							areaColor: '#c7c7c7'
+						}
+					}
+				},
+				series: [{
+					name: '',
+					type: 'scatter',
+					coordinateSystem: 'geo',
+					data: convertData(data),
+					symbolSize: function(val) {
+						var wid = document.getElementById("geo01").clientWidth;
+						if(val[2] < 50) {
+							return 1;
+						} else if(50 <= val[2] && val[2] < 200) {
+							return 2;
+						} else if(200 <= val[2] && val[2] < 500) {
+							return 4;
+						} else if(val[2] >= 500) {
+							var flag = Math.floor(val[2] / 500) * 1;
+							var item = 4 + flag;
+							return item;
+						}
+					},
+					label: {
+						normal: {
+							formatter: '{b}',
+							position: 'right',
+							show: false
+						},
+						emphasis: {
+							show: false
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: '#fc8675'
+						}
+					}
+				}, {
+					name: 'Top 5',
+					type: 'effectScatter',
+					coordinateSystem: 'geo',
+					data: convertData(data.sort(function(a, b) {
+						return b.value - a.value;
+					}).slice(0, 5)),
+					symbolSize: function(val) {
+						var wid = document.getElementById("geo01").clientWidth;
+						if(val[2] < 50) {
+							return 1;
+						} else if(50 <= val[2] && val[2] < 200) {
+							return 2;
+						} else if(200 <= val[2] && val[2] < 500) {
+							return 4;
+						} else if(val[2] >= 500) {
+							var flag = Math.floor(val[2] / 500) * 1;
+							var item = 4 + flag;
+							return item;
+						}
+					},
+					showEffectOn: 'render',
+					rippleEffect: {
+						brushType: 'stroke'
+					},
+					hoverAnimation: true,
+					label: {
+						normal: {
+							formatter: '{b}',
+							position: 'right',
+							show: true
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: '#fc8675',
+							shadowBlur: 10,
+							shadowColor: '#333'
+						}
+					},
+					zlevel: 1
+				}],
+				tooltip: {
+					trigger: 'item',
+					//鼠标hover显示内容
+					formatter: function(params) {
+						return params.name;
+					}
+				}
+			}
+			myChart1.setOption(option1);
+			var option2 = {
+
+				title: {
+					text: '指标评分对比图',
+					textStyle: {        
+						fontSize: 16,
+						        fontStyle: 'normal',
+						        fontWeight: '700',
+						      
+					},
+					x: 'left',
+					y: 'top',
+					textAlign: 'left'
+				},
+				color: ['#C23531', '#F2B23A', '#26AFB4'],
+				tooltip: {
+					show: false
+				},
+				legend: {
+					//					data: ['总体', '丰田', 'RAV4荣放'],
+					data: ['RAV4荣放', '丰田', '总体'],
+					orient: 'vertical',
+					left: 'right',
+					top: '80%',
+				},
+				radar: {
+					//shape: 'circle',
+					name: {
+						textStyle: {
+							color: '#000',
+						}
+					},
+					indicator: [{
+							name: '空间',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '外观',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '内饰',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '配置',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '动力',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '操控',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '舒适性',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '油耗',
+							max: 4.7,
+							min: 4.1
+						}, {
+							name: '性价比',
+							max: 4.7,
+							min: 4.1
+						}
+
+					]
+				},
+				series: [{
+					name: ' ',
+					type: 'radar',
+					// areaStyle: {normal: {}},
+					data: [{
+						value: [4.423077, 4.538462, 4.153846, 4.384615, 4.461538, 4.576923, 4.384615, 4.384615, 4.615385],
+						name: 'RAV4荣放'
+					}, {
+						value: [4.469388, 4.5, 4.329082, 4.397959, 4.415816, 4.42602, 4.42602, 4.392041, 4.524694],
+						name: '丰田'
+					}, {
+						value: [4.518277, 4.53429, 4.446715, 4.458973, 4.470348, 4.480177, 4.493098, 4.374489, 4.475428],
+						name: '总体'
+					}, ]
+				}]
+
+			}
+			myChart2.setOption(option2);
+			var option3 = {
+				color: ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0', '#ABE0E0', '#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					 y: 10,
+					 x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['25以下', '25-29', '30-34', '35-39', '40-44', '45-49', '50及以上'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 50,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '年龄百分比',
+					type: 'bar',
+					barWidth: '30',
+					//					data: [1, 12, 23, 23, 19, 14, 8],
+					data: [1,15,26,24,16,10,8],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+			}
+			myChart3.setOption(option3);
+			var option4 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['高中及以下', '大专/高职', '本科', '硕士及以上'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 70,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '学历百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [12, 30, 54, 4],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart4.setOption(option4);
+			var option5 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['单身汪', '二人世界', '亲子之家', '三世同堂', '四世同堂'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 70,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '家庭百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [8, 13, 66, 12, 1],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart5.setOption(option5);
+			var option6 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['2年及以下', '3-5年', '6-8年', '9-14年', '15年及以上'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 70,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '驾龄百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [1, 11, 23, 37, 28],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#ABE0E0', '#ABE0E0', '#ABE0E0', '#41B9B9', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart6.setOption(option6);
+			var option7 = {
+
+				color: ['#ABE0E0'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+
+				},
+				grid: { 
+					x: 30,
+					y: 10,
+					x2: 50,
+					y2: 40,
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['新购', '换购', '增购'],
+					axisLabel: {
+						show: true,
+						textStyle: {
+							color: '#000', //更改坐标轴文字颜色
+						}
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ABE0E0' //更改坐标轴颜色
+						}
+					}
+				}],
+				yAxis: [{
+					type: 'value',
+					max: 90,
+					"axisLine": { //y轴
+						"show": false
+
+					},
+					"axisTick": { //y轴刻度线
+						"show": false
+					},
+					"splitLine": { //网格线
+						"show": false
+					},
+					axisLabel: {
+						show: false
+					}
+				}],
+				series: [{
+					name: '增换代购百分比',
+					type: 'bar',
+					barWidth: '30',
+					data: [83, 12, 5],
+					label: {
+						show: true,
+						position: 'top',
+						formatter: '{c}%'　,
+						color: '#000'
+							//这是关键，在需要的地方加上就行了
+					},
+					itemStyle: {
+						//通常情况下：
+						normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+							color: function(params) {
+								var colorList = ['#41B9B9', '#ABE0E0', '#ABE0E0'];
+								return colorList[params.dataIndex];
+							}
+						},
+					},
+				}]
+
+			}
+			myChart7.setOption(option7);
+		}
+	</script>
+
+</html>

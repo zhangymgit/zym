@@ -1,0 +1,854 @@
+[
+  {
+    "value": "ALPINA",
+    "data": {
+      "category": "A"
+    }
+  },
+  {
+    "value": "阿尔法·罗密欧",
+    "data": {
+      "category": "A"
+    }
+  },
+  {
+    "value": "阿斯顿·马丁",
+    "data": {
+      "category": "A"
+    }
+  },
+  {
+    "value": "奥迪",
+    "data": {
+      "category": "A"
+    }
+  },
+  {
+    "value": "保时捷",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "奔驰",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "北汽制造",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "北汽新能源",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "别克",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "本田",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "北汽昌河",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "巴博斯",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "宝骏",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "宝马",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "宝沃",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "北汽幻速",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "北汽威旺",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "奔腾",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "比速汽车",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "比亚迪",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "标致",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "宾利",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "北汽绅宝",
+    "data": {
+      "category": "B"
+    }
+  },
+  {
+    "value": "长安",
+    "data": {
+      "category": "C"
+    }
+  },
+  {
+    "value": "成功汽车",
+    "data": {
+      "category": "C"
+    }
+  },
+  {
+    "value": "长安欧尚",
+    "data": {
+      "category": "C"
+    }
+  },
+  {
+    "value": "长安轻型车",
+    "data": {
+      "category": "C"
+    }
+  },
+  {
+    "value": "长安跨越",
+    "data": {
+      "category": "C"
+    }
+  },
+  {
+    "value": "长城",
+    "data": {
+      "category": "C"
+    }
+  },
+  {
+    "value": "大众",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "DS",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "东南",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "电咖",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "东风风神",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "东风风度",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "东风风光",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "东风小康",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "东风风行",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "东风",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "道奇",
+    "data": {
+      "category": "D"
+    }
+  },
+  {
+    "value": "法拉利",
+    "data": {
+      "category": "F"
+    }
+  },
+  {
+    "value": "福特",
+    "data": {
+      "category": "F"
+    }
+  },
+  {
+    "value": "丰田",
+    "data": {
+      "category": "F"
+    }
+  },
+  {
+    "value": "菲亚特",
+    "data": {
+      "category": "F"
+    }
+  },
+  {
+    "value": "福田",
+    "data": {
+      "category": "F"
+    }
+  },
+  {
+    "value": "福田乘用车",
+    "data": {
+      "category": "F"
+    }
+  },
+  {
+    "value": "福迪",
+    "data": {
+      "category": "F"
+    }
+  },
+  {
+    "value": "福汽启腾",
+    "data": {
+      "category": "F"
+    }
+  },
+  {
+    "value": "GMC",
+    "data": {
+      "category": "G"
+    }
+  },
+  {
+    "value": "广汽传祺",
+    "data": {
+      "category": "G"
+    }
+  },
+  {
+    "value": "广汽新能源",
+    "data": {
+      "category": "G"
+    }
+  },
+  {
+    "value": "观致",
+    "data": {
+      "category": "G"
+    }
+  },
+  {
+    "value": "国金汽车",
+    "data": {
+      "category": "G"
+    }
+  },
+  {
+    "value": "广汽集团",
+    "data": {
+      "category": "G"
+    }
+  },
+  {
+    "value": "广汽吉奥",
+    "data": {
+      "category": "G"
+    }
+  },
+  {
+    "value": "华泰",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "海马",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "哈弗",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "汉腾汽车",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "红旗",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "华骐",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "华颂",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "华泰新能源",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "哈飞",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "红星汽车",
+    "data": {
+      "category": "H"
+    }
+  },
+  {
+    "value": "九龙",
+    "data": {
+      "category": "J"
+    }
+  },
+  {
+    "value": "吉利汽车",
+    "data": {
+      "category": "J"
+    }
+  },
+  {
+    "value": "Jeep",
+    "data": {
+      "category": "J"
+    }
+  },
+  {
+    "value": "金杯",
+    "data": {
+      "category": "J"
+    }
+  },
+  {
+    "value": "江淮",
+    "data": {
+      "category": "J"
+    }
+  },
+  {
+    "value": "江铃集团新能源",
+    "data": {
+      "category": "J"
+    }
+  },
+  {
+    "value": "捷豹",
+    "data": {
+      "category": "J"
+    }
+  },
+  {
+    "value": "捷途",
+    "data": {
+      "category": "J"
+    }
+  },
+  {
+    "value": "君马汽车",
+    "data": {
+      "category": "J"
+    }
+  },
+  {
+    "value": "克莱斯勒",
+    "data": {
+      "category": "K"
+    }
+  },
+  {
+    "value": "开瑞",
+    "data": {
+      "category": "K"
+    }
+  },
+  {
+    "value": "凯迪拉克",
+    "data": {
+      "category": "K"
+    }
+  },
+  {
+    "value": "凯翼",
+    "data": {
+      "category": "K"
+    }
+  },
+  {
+    "value": "兰博基尼",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "路特斯",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "雷诺",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "LITE",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "猎豹汽车",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "铃木",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "路虎",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "劳斯莱斯",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "力帆汽车",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "雷克萨斯",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "莲花汽车",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "林肯",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "领克",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "陆风",
+    "data": {
+      "category": "L"
+    }
+  },
+  {
+    "value": "玛莎拉蒂",
+    "data": {
+      "category": "M"
+    }
+  },
+  {
+    "value": "MINI",
+    "data": {
+      "category": "M"
+    }
+  },
+  {
+    "value": "马自达",
+    "data": {
+      "category": "M"
+    }
+  },
+  {
+    "value": "迈凯伦",
+    "data": {
+      "category": "M"
+    }
+  },
+  {
+    "value": "名爵",
+    "data": {
+      "category": "M"
+    }
+  },
+  {
+    "value": "摩根",
+    "data": {
+      "category": "M"
+    }
+  },
+  {
+    "value": "纳智捷",
+    "data": {
+      "category": "N"
+    }
+  },
+  {
+    "value": "讴歌",
+    "data": {
+      "category": "O"
+    }
+  },
+  {
+    "value": "欧拉",
+    "data": {
+      "category": "O"
+    }
+  },
+  {
+    "value": "欧尚汽车",
+    "data": {
+      "category": "O"
+    }
+  },
+  {
+    "value": "起亚",
+    "data": {
+      "category": "Q"
+    }
+  },
+  {
+    "value": "奇瑞",
+    "data": {
+      "category": "Q"
+    }
+  },
+  {
+    "value": "卡威",
+    "data": {
+      "category": "Q"
+    }
+  },
+  {
+    "value": "启辰",
+    "data": {
+      "category": "Q"
+    }
+  },
+  {
+    "value": "全球鹰",
+    "data": {
+      "category": "Q"
+    }
+  },
+  {
+    "value": "日产",
+    "data": {
+      "category": "R"
+    }
+  },
+  {
+    "value": "荣威",
+    "data": {
+      "category": "R"
+    }
+  },
+  {
+    "value": "三菱",
+    "data": {
+      "category": "S"
+    }
+  },
+  {
+    "value": "smart",
+    "data": {
+      "category": "S"
+    }
+  },
+  {
+    "value": "SWM斯威汽车",
+    "data": {
+      "category": "S"
+    }
+  },
+  {
+    "value": "斯柯达",
+    "data": {
+      "category": "S"
+    }
+  },
+  {
+    "value": "双龙",
+    "data": {
+      "category": "S"
+    }
+  },
+  {
+    "value": "斯巴鲁",
+    "data": {
+      "category": "S"
+    }
+  },
+  {
+    "value": "上汽大通",
+    "data": {
+      "category": "S"
+    }
+  },
+  {
+    "value": "特斯拉",
+    "data": {
+      "category": "T"
+    }
+  },
+  {
+    "value": "泰卡特",
+    "data": {
+      "category": "T"
+    }
+  },
+  {
+    "value": "腾势",
+    "data": {
+      "category": "T"
+    }
+  },
+  {
+    "value": "五十铃",
+    "data": {
+      "category": "W"
+    }
+  },
+  {
+    "value": "WEY",
+    "data": {
+      "category": "W"
+    }
+  },
+  {
+    "value": "威马汽车",
+    "data": {
+      "category": "W"
+    }
+  },
+  {
+    "value": "蔚来",
+    "data": {
+      "category": "W"
+    }
+  },
+  {
+    "value": "沃尔沃",
+    "data": {
+      "category": "W"
+    }
+  },
+  {
+    "value": "五菱汽车",
+    "data": {
+      "category": "W"
+    }
+  },
+  {
+    "value": "潍柴英致",
+    "data": {
+      "category": "W"
+    }
+  },
+  {
+    "value": "雪铁龙",
+    "data": {
+      "category": "X"
+    }
+  },
+  {
+    "value": "现代",
+    "data": {
+      "category": "X"
+    }
+  },
+  {
+    "value": "雪佛兰",
+    "data": {
+      "category": "X"
+    }
+  },
+  {
+    "value": "小鹏汽车",
+    "data": {
+      "category": "X"
+    }
+  },
+  {
+    "value": "一汽",
+    "data": {
+      "category": "Y"
+    }
+  },
+  {
+    "value": "英菲尼迪",
+    "data": {
+      "category": "Y"
+    }
+  },
+  {
+    "value": "永源",
+    "data": {
+      "category": "Y"
+    }
+  },
+  {
+    "value": "驭胜",
+    "data": {
+      "category": "Y"
+    }
+  },
+  {
+    "value": "御捷",
+    "data": {
+      "category": "Y"
+    }
+  },
+  {
+    "value": "云度",
+    "data": {
+      "category": "Y"
+    }
+  },
+  {
+    "value": "云雀汽车",
+    "data": {
+      "category": "Y"
+    }
+  },
+  {
+    "value": "众泰",
+    "data": {
+      "category": "Z"
+    }
+  },
+  {
+    "value": "之诺",
+    "data": {
+      "category": "Z"
+    }
+  },
+  {
+    "value": "知豆",
+    "data": {
+      "category": "Z"
+    }
+  },
+  {
+    "value": "中华",
+    "data": {
+      "category": "Z"
+    }
+  },
+  {
+    "value": "中兴",
+    "data": {
+      "category": "Z"
+    }
+  }
+]

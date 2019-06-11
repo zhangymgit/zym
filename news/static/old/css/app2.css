@@ -1,0 +1,483 @@
+#app {
+    height: 100%
+}
+
+#robotInfo[data-v-45fa4d89] {
+    width: 100%;
+    min-height: 100%;
+    background: #f0faff url(/static/img/top.605fb96.png) no-repeat top;
+    background-size: 100%;
+    background-color: #f0faff
+}
+
+#robotInfo .infoWarp[data-v-45fa4d89] {
+    padding: .5rem 1.1rem
+}
+
+#robotInfo .infoWarp .back[data-v-45fa4d89] {
+    text-align: center
+}
+
+#robotInfo .infoWarp .back span[data-v-45fa4d89] {
+    display: inline-block;
+    width: 7.05rem;
+    height: 2rem;
+    box-shadow: inset 0 2px 4px 0 rgba(106, 148, 173, .5), inset 0 4px 3px 0 #0075d7;
+    border-radius: 1rem;
+    background: #009ffb;
+    font-size: .75rem;
+    font-family: PingFangSC-Regular;
+    color: #fff;
+    line-height: 2rem;
+    text-align: center
+}
+
+#robotInfo .infoWarp .infoHead[data-v-45fa4d89] {
+    height: 5.25rem;
+    padding-left: .5rem;
+    margin-top: .75rem;
+    margin-bottom: 2.3rem
+}
+
+#robotInfo .infoWarp .infoHead .img-warp[data-v-45fa4d89] {
+    float: left;
+    width: 5.275rem;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 #6ea4d8;
+    background: #fff;
+    margin-right: 1.3rem;
+    overflow: hidden
+}
+
+#robotInfo .infoWarp .infoHead .img-warp img[data-v-45fa4d89] {
+    width: 100%;
+    height: 100%
+}
+
+#robotInfo .infoWarp .infoHead .info-warp[data-v-45fa4d89] {
+    float: left;
+    padding-top: 1.125rem;
+    color: #1868a6
+}
+
+#robotInfo .infoWarp .infoHead .info-warp div[data-v-45fa4d89] {
+    font-size: 0
+}
+
+#robotInfo .infoWarp .infoHead .info-warp div h2[data-v-45fa4d89] {
+    line-height: 1.675rem;
+    font-size: 1.2rem;
+    margin-bottom: .2rem
+}
+
+#robotInfo .infoWarp .infoHead .info-warp div .sex[data-v-45fa4d89] {
+    font-size: .6rem;
+    font-family: PingFangSC-Regular;
+    color: #646464;
+    line-height: .825rem
+}
+
+#robotInfo .infoWarp .infoHead .info-warp p[data-v-45fa4d89] {
+    line-height: 1rem;
+    font-size: 0
+}
+
+#robotInfo .infoWarp .infoHead .info-warp p span[data-v-45fa4d89] {
+    font-size: .7rem
+}
+
+#robotInfo .infoWarp .infoHead .info-warp p i[data-v-45fa4d89] {
+    font-size: .7rem;
+    margin: 0 .4rem
+}
+
+#robotInfo .infoWarp .infoCard[data-v-45fa4d89] {
+    width: 100%;
+    height: 7.125rem;
+    background: #fff;
+    background-size: 8.5rem;
+    border-radius: .2rem;
+    margin-bottom: 1.3rem;
+    box-shadow: 0 8px 28px 0 rgba(194, 222, 237, .5)
+}
+
+#robotInfo .infoWarp .infoCard .card-warp[data-v-45fa4d89] {
+    padding: .15rem 1.25rem 0
+}
+
+#robotInfo .infoWarp .infoCard .card-warp p[data-v-45fa4d89] {
+    font-size: .75rem;
+    line-height: 1.05rem;
+    color: #646464;
+    padding: .6rem 0;
+    border-bottom: 2px solid hsla(0, 0%, 84%, .34);
+    text-indent: .375rem
+}
+
+#robotInfo .infoWarp .infoCard .card-warp p[data-v-45fa4d89]:last-child {
+    border-bottom: none
+}
+
+#robotInfo .infoWarp .infoFoot[data-v-45fa4d89] {
+    width: 100%;
+    float: left;
+    margin-bottom: .6rem
+}
+
+#robotInfo .infoWarp .infoFoot .foot-warp[data-v-45fa4d89] {
+    padding: 0 1.45rem;
+    float: left
+}
+
+#robotInfo .infoWarp .infoFoot .foot-warp h5[data-v-45fa4d89] {
+    float: left;
+    width: 2.25rem;
+    padding-bottom: .175rem;
+    border-bottom: 2px solid rgba(199, 230, 252, .34);
+    font-size: .75rem;
+    color: #465a6b;
+    line-height: 1.05rem;
+    text-indent: .15rem;
+    margin-bottom: 1.05rem
+}
+
+#robotInfo .infoWarp .infoFoot .foot-warp ul[data-v-45fa4d89] {
+    width: 100%;
+    float: left
+}
+
+#robotInfo .infoWarp .infoFoot .foot-warp ul li[data-v-45fa4d89] {
+    float: left;
+    width: 2.7rem;
+    text-align: center;
+    margin: 0 .9rem 1rem 0
+}
+
+#robotInfo .infoWarp .infoFoot .foot-warp ul li div[data-v-45fa4d89] {
+    display: inline-block;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #80c5f6;
+    margin: 0 auto .75rem;
+    box-shadow: 0 4px 8px 0 rgba(110, 164, 216, .5)
+}
+
+#robotInfo .infoWarp .infoFoot .foot-warp ul li div img[data-v-45fa4d89] {
+    width: 100%;
+    height: 100%
+}
+
+#robotInfo .infoWarp .infoFoot .foot-warp ul li p[data-v-45fa4d89] {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: .6rem;
+    color: #465a6b;
+    line-height: .825rem
+}
+
+#robotInfo .infoWarp .infoFoot .foot-warp ul li[data-v-45fa4d89]:nth-of-type(4n) {
+    margin-right: 0
+}
+
+#robotInfo .infoWarp .infoFoot .foot-warp .tip[data-v-45fa4d89] {
+    display: block;
+    width: 100%;
+    color: #9f9f9f;
+    font-size: .65rem;
+    line-height: .65rem;
+    margin-top: 2.5rem
+}
+
+#chat {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #f0faff
+}
+
+#chat .chat-con {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 2.875rem;
+    overflow: hidden;
+    padding: 0 .75rem
+}
+
+#chat .chat-con .chat-list {
+    position: absolute;
+    top: 0;
+    left: .75rem;
+    right: .75rem;
+    float: left;
+    padding-top: 1.175rem
+}
+
+#chat .chat-con .chat-list li {
+    float: left;
+    width: 100%;
+    margin-bottom: .75rem
+}
+
+#chat .chat-con .chat-list li .avatar {
+    float: left;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 2px 4px 0 #6e8491
+}
+
+#chat .chat-con .chat-list li .avatar img {
+    width: 100%;
+    height: 100%
+}
+
+#chat .chat-con .chat-list li .msg {
+    font-size: .75rem;
+    line-height: 1.05rem;
+    word-break: break-all;
+    z-index: 1
+}
+
+#chat .chat-con .chat-list li .msg, #chat .chat-con .chat-list li .sound {
+    float: left;
+    max-width: 11rem;
+    padding: .5rem .75rem;
+    box-shadow: inset -1px 0 4px 0 #757778;
+    border-radius: 0 .8rem .8rem .8rem;
+    border: 3px solid #fff;
+    position: relative;
+    margin-left: .5rem
+}
+
+#chat .chat-con .chat-list li .sound {
+    min-width: 6.1rem;
+    height: 1rem
+}
+
+#chat .chat-con .chat-list li .sound img {
+    position: absolute;
+    top: .25rem;
+    left: .75rem;
+    width: 1.2rem
+}
+
+#chat .chat-con .chat-list li .sound i {
+    position: absolute;
+    right: -.5rem;
+    top: 0;
+    width: .35rem;
+    height: .35rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAOtJREFUKBWdUjsOgkAQZQYClQGNvYW2XsJYyx08gJWdV/AMHsLaeAlbG3uiEgsDhh33bSCuRhTdhvm8N0PmPXKsJ91u65jnc1JqIkQDtEhkL8zrju8vKUkuFZyq4ByGI6XUSkR6Vc3+EtGBmadRmm5RN0RDKoqNlLlNsGMNFnbdMciE3ztl2a5uk01EjM3tIBi6M89bOCLxK+BDHl2VurE+xC8kMw/HY329/ofpb1u4OL/tNCgydGqAe4KAwxD3qdogAedvORg2giMg7rdlxgDAggMwnABHQNw6srFc6Rpg9JDHs0weVzLVmfwOJqxv5BN/nd4AAAAASUVORK5CYII=) no-repeat;
+    background-size: 100% 100%
+}
+
+#chat .chat-con .chat-list li .sound .img {
+    position: absolute;
+    right: -1rem;
+    top: 0;
+    left: auto;
+    width: .8rem;
+    height: .8rem
+}
+
+#chat .chat-con .chat-list li .sound.tap {
+    background: rgba(0, 0, 0, .12)
+}
+
+#chat .chat-con .chat-list li .picture {
+    float: left;
+    padding: .5rem .75rem;
+    width: 6rem;
+    height: 6rem
+}
+
+#chat .chat-con .chat-list li .picture img {
+    width: 100%;
+    height: 100%
+}
+
+#chat .chat-con .chat-list li .video {
+    float: left;
+    width: 11rem;
+    height: 6rem;
+    padding: .5rem .75rem
+}
+
+#chat .chat-con .chat-list li .video video {
+    width: 100%;
+    height: 100%
+}
+
+#chat .chat-con .chat-list li.me .avatar {
+    float: right;
+    box-shadow: 0 2px 4px 0 #6e8491
+}
+
+#chat .chat-con .chat-list li.me .msg {
+    float: right;
+    margin-right: .5rem;
+    margin-left: 0;
+    padding: .5rem .75rem;
+    box-shadow: inset -1px 0 4px 0 #757778;
+    border-radius: .8rem 0 .8rem .8rem;
+    border: 3px solid #76bdf0
+}
+
+#chat .chat-foot {
+    position: absolute;
+    bottom: .25rem;
+    left: 0;
+    height: 2.875rem;
+    width: 100%;
+    z-index: 100
+}
+
+#chat .chat-foot .foot-left {
+    left: .25rem;
+    height: 2.1rem;
+    background: #fff;
+    border-radius: .45rem;
+    padding: 0;
+    box-shadow: inset 0 0 8px 0 hsla(0, 0%, 57%, .5)
+}
+
+#chat .chat-foot .foot-left, #chat .chat-foot .foot-left input {
+    position: absolute;
+    top: .45rem;
+    right: 4.95rem;
+    box-sizing: border-box
+}
+
+#chat .chat-foot .foot-left input {
+    bottom: .45rem;
+    left: .1rem;
+    width: 98%;
+    height: 1.4rem;
+    outline: none;
+    border: none;
+    z-index: 1;
+    font-size: .75rem;
+    padding-left: 2rem
+}
+
+#chat .chat-foot .foot-left i {
+    display: inline-block;
+    width: .875rem;
+    height: .875rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAAAXNSR0IArs4c6QAABDVJREFUWAnFmE1IVFEUgJtxFDVLy4oUqkUJmaVl/rvINApaRIugXQuj0MRo1cpVKxdJUJuMIopo0y4qKrUo8BdT+tGkP9Hoz8okbdDJ0b4zzH0+x/ea95wZffA895577j3fPffce9+4ZMkiPD09PTGdnZ2JZq4dZg2R0Hd1daWOj4+fY+xD09PTTofD8Y63rqCgoB45rXwuGFRra2v61NTUAxyvU86VBOh6YWFhOdIrOqdqiKRsbm7eANBTfMwBEr9E7UhbW1uNYlgQqKKiokEc3lJOjSTQNYDtlLYFgZJ8AawKedEIyK9zAXY+olAs2Ro9gICRNyeQ9Xp9QLlQdmZEIkVS5+P8DbJa79QPVom8pNerMrnljYmJcYQdqqWlJY/BH/ImynJQr1JORfrBKihe1uv9bbfT0tImwgrFkuUyuAAt1zm8QMQEQnsEjBw7jryilJRf069S6mE7pwSIgRskQsqRkgJBuQKQWcuGrQNgiVgu5T3FxcVD0icsUO3t7TmTk5MNjJckgxo9frBjgGnRETtgnPRP4FT/rfqFDCVni9frbWRAUyDNGRHjOUpEriqdkQwJitBnk8wCtMJocCMdEZviLed4uGbULrp5Jzq7aoddIHEoy8V7kjdK6kbPvKAEiMFsRUjn/HlUVNReouW7fHV6rWgbqqOjY7sAMdOV2igWC4C8cLlcZfn5+T//18VWTrFLskjqJoCS/zeoUZsAcVqX5eTk/DBq1+ssQ7HLMsmhR/MEeglQqRUggbMERQ5tA+YR9qv0M7JSJkKvYmNjS7Ozs79bsReboDkVChDj99gFCgrF1bGVCDVhaDtCAsRrK0ICJI/pWUEObaFdlmzWd5F0CvawZL3YlKq7LJh9YLthTrFkmzF8TJTWBnYIVgeoz+l0lnCXfQtma9Y+BwqgTcA8oUOqWSczPUBv2WW72GVfzGys6GclOudQMkD36WgbiD7veXeHCiTQLvmjHj4/ailvVHUb8kN0dPTuvLy8Tzb6mJpqy8fP6JSJiYlBLGeBmvacaRCgEoA+zqhCK2nL5/F4DjPUogPJdPQQB+3Mj6Tu53INa4SUf9/ySYKTT7KFTc8t1UEkQANsiF2cQwN6fbjKvkhx8+9jQMtAQJXwrR0RIJmYD4pZ77cyS2CecZcd4HL9rLfv6+tbNjw8fEqnawK6RdX5bK7Eh++q4mDt52C9odo4F8soF6k651ytyqlSpTSSwHxl0LN0OA/Q30CbkZGRRNrP6PQeyhoUbdW86dIunz8IDQr9Xuqnpc3/1Lm6u7uT3G53itIoCYib8h1mdpOEvsehOAdG2YZbupg9TG45n9YD0g95I9/Qd+Pi4hqzsrL+hNuhlfF8uw8QV29vb2xGRsaYlU6BNvSXH5SrlZ4JjeknxMG8it3t20jx8fGezMzMX8qW/7IkjI6OLlV1vt+H/gEJ4rGhxyfwVgAAAABJRU5ErkJggg==) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: .625rem;
+    left: 1rem;
+    z-index: 2
+}
+
+#chat .chat-foot .foot-right {
+    position: absolute;
+    right: .325rem;
+    top: .45rem;
+    width: 4.35rem;
+    height: 2.1rem;
+    border-radius: .45rem;
+    background: #009ffb;
+    /* box-shadow: inset 0 2px 4px 0 rgba(106, 148, 173, .5), inset 0 4px 3px 0 #0075d7; */
+    font-size: .85rem;
+    color: #fff;
+    line-height: 2.1rem;
+    text-align: center
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block
+}
+
+body {
+    line-height: 1
+}
+
+li, ol, ul {
+    list-style: none
+}
+
+blockquote, q {
+    quotes: none
+}
+
+blockquote:after, blockquote:before, q:after, q:before {
+    content: "";
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+body, html {
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden
+}
+
+@media only screen and (min-width: 320px) {
+    html {
+        font-size: 18px !important
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    html {
+        font-size: 20px !important
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    html {
+        font-size: 21.33px !important
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    html {
+        font-size: 22.08px !important
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    html {
+        font-size: 25.6px !important
+    }
+}
+
+.clearfix:after, .clearfix:before {
+    content: " ";
+    display: table
+}
+
+.clearfix:after {
+    clear: both
+}
+
+dd, dl, dt {
+    padding: 0;
+    margin: 0
+}
+
+/*# sourceMappingURL=app.20feb32afd4c1f759328917fa9c981e6.css.map */
